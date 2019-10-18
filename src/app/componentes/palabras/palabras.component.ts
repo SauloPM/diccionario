@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 // Modelos
 import { ElementoModel } from './../../modelos/elemento.models';
@@ -11,17 +11,44 @@ import { ServicioService } from './../../servicios/servicio.service';
   templateUrl: './palabras.component.html',
   styleUrls: ['./palabras.component.scss']
 })
-export class PalabrasComponent implements OnInit {
+export class PalabrasComponent {
 
   palabras: ElementoModel[] = [];
 
-  constructor( private servicio: ServicioService ) { }
+  // ─────────────── //
+  //     MÉTODOS     //
+  // ─────────────── //
 
-  ngOnInit() {
+  constructor( private servicio: ServicioService ) {
+    this.renderizarListado();
+  }
 
+  // ──────────────── //
+  //     AUXILIAR     //
+  // ──────────────── //
+
+  renderizarListado() {
     this.servicio.getPalabras().subscribe( ( data: any[] ) => {
-      console.log(data);
-      this.palabras = data;
+      this.palabras = data.sort( this.ordenarAlfabeticamente('ingles') );
     });
+  }
+
+  ordenarAlfabeticamente( property: any ) {
+
+    var sortOrder = 1;
+
+    if ( property[0] === '-' ) {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+
+    return function ( a: any, b: any ) {
+        if ( sortOrder == -1 ) {
+          return b[property].localeCompare( a[property] );
+        }
+        else {
+          return a[property].localeCompare( b[property] );
+        }        
+    }
   }
 }

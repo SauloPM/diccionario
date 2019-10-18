@@ -1,9 +1,50 @@
+// Colores
+$primary     : rgb(25,155,255);
+$lightprimary: rgb(115,185,255);
+
+// Responsive breakpoints
+$mobile : 480px;
+$tablet : 768px;
+$laptop : 980px;
+$desktop: 1200px;
+
+// Placeholder
+
+::-webkit-input-placeholder { color: $lightprimary }
+     :-ms-input-placeholder { color: $lightprimary }
+              ::placeholder { color: $lightprimary }
+
+// ─────────────── //
+//     GENERAL     //
+// ─────────────── //
+
+body {
+    color: $primary;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 35px;
+    font-family: 'Arsenal', sans-serif;
+}
+
+hr {
+    display: block;
+    border-color: $lightprimary;
+    margin-bottom: 50px;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     min-height: 100vh;
 }
+
+// ────────────── //
+//     COMMON     //
+// ────────────── //
 
 .nuevo {
     display: flex;
@@ -12,14 +53,14 @@
     color: white;
     font-size: 15px;
     text-decoration: none !important;
-    background: #3498db;
+    background: $primary;
     border-radius: 50%;
     position: fixed;
     bottom: 75px;
     right: 35px;
-    width: 50px;
-    height: 50px;
-    transition: .25s;
+    width: 60px;
+    height: 60px;
+    transition: .5s ease-in;
 
     &:hover {
         color: white;
@@ -38,6 +79,45 @@ footer {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 5px;
-    background: #3498db;
+    background: $primary;
     padding: 15px;
+}
+
+// ─────────────── //
+//     LISTADO     //
+// ─────────────── //
+
+.buscador {
+    color: $primary;
+    border: 1px solid $primary;
+    border-radius: 2px;
+    outline: none;
+    padding: 5px 25px;
+    margin-bottom: 25px;
+}
+
+.elemento {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+
+    .ingles,
+    .castellano {
+        border: 1px solid $primary;
+        padding: 5px 25px;
+        width: 100%;
+    }
+    
+    .ingles {
+        color: white;
+        background: $primary;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+    
+    .castellano {
+        color: $primary;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
 }

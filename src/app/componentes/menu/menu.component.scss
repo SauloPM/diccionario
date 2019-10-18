@@ -1,31 +1,48 @@
+// Colores
+$primary     : rgb(25,155,255);
+$lightprimary: rgb(115,185,255);
+
 #menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    background: #3498db;
-    padding: 0;
+    background: $primary;
     margin: 0 0 50px;
 
-    .item {
-        padding: 20px 30px;
-        transition: .25s;
+    .items {
+        display: flex;
+        align-items: center;
 
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-        &.activo {
-            background: white;
+        .item {
             
             a {
-                color: #3498db;
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 20px 30px;
+                position: relative;
+                left: 0;
+            }
+    
+            &.activo {
+                background: $lightprimary;
+            }
+    
+            &:hover a {
+                animation: meneo 1s infinite;
             }
         }
+    }
+}
 
-        &:hover {
-            opacity: .75;
-        }
+@keyframes meneo {
+
+    from, to {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%, 30%, 50%, 70%, 90% {
+      transform: translate3d(-5px, 0, 0);
+    }
+  
+    20%, 40%, 60%, 80% {
+      transform: translate3d(5px, 0, 0);
     }
 }

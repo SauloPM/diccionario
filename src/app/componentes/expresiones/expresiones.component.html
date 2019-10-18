@@ -1,1 +1,27 @@
-<p>expresiones works!</p>
+<div class="animated fadeIn">
+
+    <h1>Listado de expresiones</h1>
+    <hr>
+
+    <!-- ─────────────── -->
+    <!--     LISTADO     -->
+    <!-- ─────────────── -->
+    
+    <ng-container *ngIf="expresiones.length > 0">
+    
+        <input class="buscador" type="text" placeholder="Buscar">
+        
+        <div class="elemento" *ngFor="let expresion of expresiones; let i = index">
+            <div class="ingles">{{ expresion.ingles }}</div>
+            <div class="castellano">{{ expresion.espanol }}</div>
+        </div>
+    </ng-container>
+    
+    <!-- ──────────────────── -->
+    <!--     NOTIFICACIÓN     -->
+    <!-- ──────────────────── -->
+    
+    <ng-container *ngIf="expresiones.length == 0">
+        No se encontraron resultados
+    </ng-container>
+</div>

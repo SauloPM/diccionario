@@ -1,9 +1,27 @@
-<h1>Listado de palabras</h1>
-<hr>
+<div class="animated fadeIn">
 
-<div *ngIf="palabras.length > 0">
-    <div class="palabra" *ngFor="let palabra of palabras; let i = index">
-        <div class="ingles">{{ palabra.ingles }}</div>
-        <div class="castellano">{{ palabra.espanol }}</div>
-    </div>
+    <h1>Listado de palabras</h1>
+    <hr>
+
+    <!-- ─────────────── -->
+    <!--     LISTADO     -->
+    <!-- ─────────────── -->
+
+    <ng-container *ngIf="palabras.length > 0">
+
+        <input class="buscador" type="text" placeholder="Buscar">
+        
+        <div class="elemento" *ngFor="let palabra of palabras; let i = index">
+            <div class="ingles">{{ palabra.ingles }}</div>
+            <div class="castellano">{{ palabra.espanol }}</div>
+        </div>
+    </ng-container>
+
+    <!-- ──────────────────── -->
+    <!--     NOTIFICACIÓN     -->
+    <!-- ──────────────────── -->
+
+    <ng-container *ngIf="palabras.length == 0">
+        No se encontraron resultados
+    </ng-container>
 </div>

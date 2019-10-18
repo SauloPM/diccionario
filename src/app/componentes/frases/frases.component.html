@@ -1,1 +1,27 @@
-<p>frases works!</p>
+<div class="animated fadeIn">
+
+    <h1>Listado de frases</h1>
+    <hr>
+
+    <!-- ─────────────── -->
+    <!--     LISTADO     -->
+    <!-- ─────────────── -->
+
+    <ng-container *ngIf="frases.length > 0">
+
+        <input class="buscador" type="text" placeholder="Buscar">
+        
+        <div class="elemento" *ngFor="let frase of frases; let i = index">
+            <div class="ingles">{{ frase.ingles }}</div>
+            <div class="castellano">{{ frase.espanol }}</div>
+        </div>
+    </ng-container>
+
+    <!-- ──────────────────── -->
+    <!--     NOTIFICACIÓN     -->
+    <!-- ──────────────────── -->
+
+    <ng-container *ngIf="frases.length == 0">
+        No se encontraron resultados
+    </ng-container>
+</div>

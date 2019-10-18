@@ -29,17 +29,7 @@ export class FormularioComponent implements OnInit {
 
   constructor( private servicio: ServicioService, private route: ActivatedRoute ) { }
 
-  ngOnInit() {
-
-    const id = this.route.snapshot.paramMap.get( 'id' );
-
-    if ( id !== 'nuevo' ) {
-      this.servicio.getHeroe( id ).subscribe( ( data: ElementoModel ) => {
-        this.elemento = data;
-        this.elemento.id = id;
-      });
-    }
-  }
+  ngOnInit() { }
 
   guardar( formulario: NgForm ) {
 
@@ -48,30 +38,37 @@ export class FormularioComponent implements OnInit {
       return;
     }
 
-    // Spinner de SweetAlert2 para que el usuario sepa que su operación se está procesando
     Swal.fire({
-      title: 'Espere',
-      text: 'Guardando información',
-      type: 'info',
-      allowOutsideClick: false // Para evitar que el usuario lo pueda cerrar
+      title: 'Operación completada',
+      text: 'Operación completada con éxito',
+      type: 'success'
     });
-    Swal.showLoading();
 
-    let peticion: Observable<any>;
+    return;
 
-    if ( this.elemento.id ) {
-      peticion = this.servicio.actualizar( this.elemento );
-    } else {
-      peticion = this.servicio.crear( this.elemento );
-    }
+    // Swal.fire({
+    //   title: 'Espere',
+    //   text: 'Guardando información',
+    //   type: 'info',
+    //   allowOutsideClick: false // Para evitar que el usuario lo pueda cerrar
+    // });
+    // Swal.showLoading();
 
-    peticion.subscribe( data => {
-      Swal.fire({
-        title: 'Operación completada',
-        text: 'Operación completada con éxito',
-        type: 'success'
-      });
-    });
+    // let peticion: Observable<any>;
+
+    // if ( this.elemento.id ) {
+    //   peticion = this.servicio.actualizar( this.elemento );
+    // } else {
+    //   peticion = this.servicio.crear( this.elemento );
+    // }
+
+    // peticion.subscribe( data => {
+    //   Swal.fire({
+    //     title: 'Operación completada',
+    //     text: 'Operación completada con éxito',
+    //     type: 'success'
+    //   });
+    // });
 
   }
 
