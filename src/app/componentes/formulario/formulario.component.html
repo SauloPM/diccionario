@@ -1,0 +1,32 @@
+<div class="row animated fadeIn">
+  <div class="col">
+    <form #miFormulario="ngForm" (ngSubmit)="guardar( miFormulario )">
+
+      <!-- Firebase ID -->
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input type="text" class="form-control" disabled="disabled" placeholder="Firebase ID" [(ngModel)]="elemento.id" name="id">
+        <small class="form-text text-muted">Este campo se genera automáticamente</small>
+      </div>
+
+      <!-- Nombre -->
+      <div class="form-group">
+        <label>Traducción al español</label>
+        <input type="text" class="form-control" placeholder="Traducción al castellano" required [(ngModel)]="elemento.castellano" name="castellano">
+      </div>
+
+      <!-- Poder -->
+      <div class="form-group">
+        <label>Traducción al inglés</label>
+        <input type="text" class="form-control" placeholder="Traducción al inglés" [(ngModel)]="elemento.ingles" name="ingles">
+      </div>
+
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

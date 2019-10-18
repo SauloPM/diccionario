@@ -1,0 +1,9 @@
+<h1>Listado de palabras</h1>
+<hr>
+
+<div *ngIf="palabras.length > 0">
+    <div class="palabra" *ngFor="let palabra of palabras; let i = index">
+        <div class="ingles">{{ palabra.ingles }}</div>
+        <div class="castellano">{{ palabra.espanol }}</div>
+    </div>
+</div>

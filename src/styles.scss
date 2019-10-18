@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nuevo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 15px;
+    text-decoration: none !important;
+    background: #3498db;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 75px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    transition: .25s;
+
+    &:hover {
+        color: white;
+        transform: rotate(360deg);
+    }
+
+    &:active {
+        transform: scale(1.05);
+    }
+}
+
+footer {
+    color: rgba(255,255,255,.75);
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    background: #3498db;
+    padding: 15px;
+}

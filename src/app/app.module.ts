@@ -1,18 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Formularios
+import { FormsModule } from '@angular/forms';
+
+// HTTP
+import { HttpClientModule } from '@angular/common/http';
+
+// Rutas
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
+// Componentes
+import { AppComponent         } from './app.component';
+import { MenuComponent        } from './componentes/menu/menu.component';
+import { FrasesComponent      } from './componentes/frases/frases.component';
+import { PalabrasComponent    } from './componentes/palabras/palabras.component';
+import { FormularioComponent  } from './componentes/formulario/formulario.component';
+import { ExpresionesComponent } from './componentes/expresiones/expresiones.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    FrasesComponent,
+    PalabrasComponent,
+    FormularioComponent,
+    ExpresionesComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

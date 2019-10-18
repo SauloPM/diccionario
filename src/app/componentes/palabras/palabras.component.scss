@@ -1,0 +1,21 @@
+.palabra {
+    background: white;
+    margin-bottom: 25px;
+    
+    .ingles {
+        color: white;
+        background: blue;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 10px 25px;
+    }
+    
+    .castellano {
+        color: blue;
+        background: white;
+        border: 1px solid blue;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 10px 25px;
+    }
+}
