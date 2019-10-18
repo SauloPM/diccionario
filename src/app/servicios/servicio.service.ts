@@ -16,11 +16,11 @@ export class ServicioService {
 
   private url = 'https://diccionario-13f5a.firebaseio.com';
 
-  // ─────────────── //
-  //     MÉTODOS     //
-  // ─────────────── //
-
   constructor( private http: HttpClient ) { }
+
+  // ─────────────── //
+  //     LECTURA     //
+  // ─────────────── //
 
   getPalabras() {
     return this.http.get( `${ this.url }/palabras.json` ).pipe(
@@ -53,8 +53,12 @@ export class ServicioService {
     return this.http.get(`${ this.url }/expresiones/${ id }.json`);
   }
 
-  crearPalabra( palabra: ElementoModel ) {
-    return this.http.post( `${ this.url }/palabras.json`, palabra ).pipe(
+  // ───────────── //
+  //     CREAR     //
+  // ───────────── //
+
+  crear( categoria: string, palabra: ElementoModel ) {
+    return this.http.post( `${ this.url }/${ categoria }.json`, palabra ).pipe(
       map( ( data: any ) => {
         palabra.id = data.name;
         return palabra;
@@ -62,23 +66,9 @@ export class ServicioService {
     );
   }
 
-  crearFrase( frase: ElementoModel ) {
-    return this.http.post( `${ this.url }/frases.json`, frase ).pipe(
-      map( ( data: any ) => {
-        frase.id = data.name;
-        return frase;
-      })
-    );
-  }
-
-  crearExpresion( expresion: ElementoModel ) {
-    return this.http.post( `${ this.url }/expresiones.json`, expresion ).pipe(
-      map( ( data: any ) => {
-        expresion.id = data.name;
-        return expresion;
-      })
-    );
-  }
+  // ────────────────── //
+  //     ACTUALIZAR     //
+  // ────────────────── //
 
   // actuarlizarHeroe( heroe: ElementoModel ) {
 
@@ -90,6 +80,10 @@ export class ServicioService {
 
   //   return this.http.put( `${ this.url }/heroes/${ heroe.id }.json`, heroeSinID );
   // }
+
+  // ──────────────── //
+  //     ELIMINAR     //
+  // ──────────────── //
 
   // borrarHeroe( id: string ) {
   //   return this.http.delete(`${ this.url }/heroes/${ id }.json`);

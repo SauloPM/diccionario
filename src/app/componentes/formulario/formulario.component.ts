@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 // Modelos
 import { ElementoModel } from './../../modelos/elemento.models';
@@ -23,38 +23,30 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.scss']
 })
-export class FormularioComponent implements OnInit {
+export class FormularioComponent {
 
   elemento: ElementoModel = new ElementoModel();
 
-  constructor( private servicio: ServicioService, private route: ActivatedRoute ) { }
+  // ─────────────── //
+  //     MÉTODOS     //
+  // ─────────────── //
 
-  ngOnInit() { }
+  constructor( private servicio: ServicioService, private route: ActivatedRoute ) { }
 
   guardar( formulario: NgForm ) {
 
-    if ( formulario.invalid ) {
-      console.log('Formulario no válido');
+    // Campos obligatorios vacíos
+    if ( this.camposVacios( formulario ) ) {
       return;
     }
 
     Swal.fire({
-      title: 'Operación completada',
-      text: 'Operación completada con éxito',
-      type: 'success'
+      title: 'Espere',
+      text: 'Guardando información',
+      type: 'info',
+      allowOutsideClick: false // Para evitar que el usuario lo pueda cerrar
     });
-
-    return;
-
-    // Swal.fire({
-    //   title: 'Espere',
-    //   text: 'Guardando información',
-    //   type: 'info',
-    //   allowOutsideClick: false // Para evitar que el usuario lo pueda cerrar
-    // });
-    // Swal.showLoading();
-
-    // let peticion: Observable<any>;
+    Swal.showLoading();
 
     // if ( this.elemento.id ) {
     //   peticion = this.servicio.actualizar( this.elemento );
@@ -62,14 +54,37 @@ export class FormularioComponent implements OnInit {
     //   peticion = this.servicio.crear( this.elemento );
     // }
 
-    // peticion.subscribe( data => {
-    //   Swal.fire({
-    //     title: 'Operación completada',
-    //     text: 'Operación completada con éxito',
-    //     type: 'success'
-    //   });
-    // });
+    // Insertamos el nodo en la BD
+    let query: Observable<any> = this.servicio.crear( 'palabras', this.elemento );
 
+    // Notificamos al usuario
+    query.subscribe( data => {
+      Swal.fire({
+        title: 'Operación completada',
+        text: 'Operación completada con éxito',
+        type: 'success'
+      });
+    });
   }
 
+  // ──────────────── //
+  //     AUXILIAR     //
+  // ──────────────── //
+
+  camposVacios( formulario: NgForm ): boolean {
+
+    if ( formulario.invalid ) {
+      Swal.fire({
+        title: 'Se ha producido un error',
+        text: 'Es posible que haya dejado campos obligatorios vacíos',
+        type: 'error',
+        timer: 2500,
+        padding: '50px',
+        showConfirmButton: false,
+        allowOutsideClick: true // Para evitar que el usuario lo pueda cerrar
+      });
+    }
+
+    return formulario.invalid;
+  }
 }

@@ -9,8 +9,8 @@
     
     <ng-container *ngIf="expresiones.length > 0">
     
-        <div class="entrada">
-            <input class="buscador" type="text" placeholder="Buscar">
+        <div class="entrada buscador">
+            <input type="text" placeholder="Buscar">
             <i class="icono fa fa-search" aria-hidden="true"></i>
         </div>
         
@@ -28,3 +28,7 @@
         No se encontraron resultados
     </ng-container>
 </div>
+
+<a class="nuevo" [routerLink]="['/formulario', 'nuevo']">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+</a>
