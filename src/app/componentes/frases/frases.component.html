@@ -9,7 +9,10 @@
 
     <ng-container *ngIf="frases.length > 0">
 
-        <input class="buscador" type="text" placeholder="Buscar">
+        <div class="entrada">
+            <input class="buscador" type="text" placeholder="Buscar">
+            <i class="icono fa fa-search" aria-hidden="true"></i>
+        </div>
         
         <div class="elemento" *ngFor="let frase of frases; let i = index">
             <div class="ingles">{{ frase.ingles }}</div>
