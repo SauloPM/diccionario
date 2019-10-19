@@ -1,23 +1,23 @@
 <div class="animated fadeIn">
 
-  <h1>Crear nuevo elemento</h1>
+  <h1>{{ titulo }}</h1>
   <hr>
 
   <form class="formulario" #miFormulario="ngForm" (ngSubmit)="guardar( miFormulario )">
 
     <!-- Firebase ID -->
     <div class="entrada oculto">
-      <input type="text" disabled="disabled" placeholder="Firebase ID" [(ngModel)]="elemento.id" name="id">
+      <input type="text" disabled="disabled" placeholder="Firebase ID" [(ngModel)]="item.id" name="id">
     </div>
 
     <!-- Traducción al inglés -->
     <div class="entrada">
-      <input type="text" placeholder="Traducción al inglés" required [(ngModel)]="elemento.ingles" name="ingles" autocomplete="off">
+      <input type="text" placeholder="Traducción al inglés" required [(ngModel)]="item.ingles" name="ingles" autocomplete="off">
     </div>
     
     <!-- Traducción al castellano -->
     <div class="entrada">
-      <input type="text" placeholder="Traducción al castellano" required [(ngModel)]="elemento.castellano" name="castellano" autocomplete="off">
+      <input type="text" placeholder="Traducción al castellano" required [(ngModel)]="item.castellano" name="castellano" autocomplete="off">
     </div>
 
     <!-- Categoría -->

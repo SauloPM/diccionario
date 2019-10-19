@@ -41,9 +41,9 @@ export class ServicioService {
     );
   }
 
-  // ────────────────── //
-  //     ACTUALIZAR     //
-  // ────────────────── //
+  // ───────────────── //
+  //     MODIFICAR     //
+  // ───────────────── //
 
   getItem( categoria: string, id: string ) {
     return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);

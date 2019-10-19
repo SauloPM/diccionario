@@ -25,10 +25,11 @@ import { ActivatedRoute } from '@angular/router';
 export class FormularioComponent {
 
   id       : string = '';
+  titulo   : string = '';
   operacion: string = '';
   categoria: string = 'palabras';
   
-  elemento : Item   = { ingles: '', castellano: '' };
+  item : Item   = { ingles: '', castellano: '' };
 
   // ─────────────── //
   //     MÉTODOS     //
@@ -57,29 +58,15 @@ export class FormularioComponent {
     let query: Observable<any>;
 
     // Creamos la consulta según el caso
-    switch( this.operacion ) {
-
-      case 'crear':
-        query = this.servicio.crear( this.categoria, this.elemento );
-        break;
-
-      case 'modificar':
-        query = this.servicio.modificar( this.categoria, this.id );
-        break;
-
-      default:
-        query = this.servicio.eliminar( this.categoria, this.id );
+    if ( this.operacion === 'crear' ) {
+      console.log(this.item)
+      query = this.servicio.crear( this.categoria, this.item );
+    }
+    else {
+      query = this.servicio.modificar( this.categoria, this.item );
     }
 
-    // if ( this.elemento.id ) {
-    //   peticion = this.servicio.actualizar( this.elemento );
-    // } else {
-    //   peticion = this.servicio.crear( this.elemento );
-    // }
-
-    
-
-    // Insertamos el nodo en la BD
+    // Ejecutamos la consulta
     query.subscribe( data => {
 
       // Notificamos al usuario
@@ -91,6 +78,7 @@ export class FormularioComponent {
 
       // Vaciamos el formulario
       this.vaciarFormulario();
+      
     });
   }
 
@@ -106,6 +94,8 @@ export class FormularioComponent {
       this.categoria = parametroURL['categoria'];
 
       this.rellenarFormulario();
+
+      this.titulo = this.operacion == 'crear' ? 'Crear nuevo ítem' : 'Modificar ítem';
 
     });
   }
@@ -134,7 +124,7 @@ export class FormularioComponent {
   rellenarFormulario() {
     if ( this.operacion !== 'crear' ) {
       this.servicio.getItem( this.categoria, this.id ).subscribe( ( data: Item ) => {
-        this.elemento = data;
+        this.item = data;
       });
     }
   }
