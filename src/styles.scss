@@ -89,25 +89,26 @@ hr {
 // ────────────────── //
 
 .formulario {
+    text-align: center;
     margin-top: 75px;
 }
 
 .entrada {
-    border: 1px solid $primary;
-    border-radius: 2px;
+    display: block;
+    background: white;
     outline: none;
     margin: 0 auto 25px;
     position: relative;
-    width: 100%;
-    max-width: 400px;
     
     input {
         color: black;
-        border: none;
+        border: 1px solid $primary;
         outline: none;
         padding: 0;
         margin: 0;
         padding: 10px 20px;
+        width: 100%;
+        max-width: 400px;
     }
 
     .icono {
@@ -124,7 +125,6 @@ hr {
     color: white;
     background: $primary;
     border: 1px solid $primary;
-    border-radius: 2px;
     outline: none;
     padding: 10px 20px;
     margin: 0 auto;
@@ -144,23 +144,23 @@ hr {
 
 .buscador {
     margin: 0 0 25px;
-    width: fit-content;
-
+    
     input {
         padding: 5px 40px;
+        max-width: 250px;
     }
 }
 
 .elemento {
     display: flex;
     border-top: 1px solid $primary;
-    width: 100%;
 
     .ingles,
     .castellano {
+        flex-shrink: 0;
         color: black;
         padding: 10px 15px;
-        width: 100%;
+        width: 50%;
     }
 
     .ingles {
