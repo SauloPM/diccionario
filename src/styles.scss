@@ -95,8 +95,6 @@ hr {
 
 .entrada {
     display: block;
-    background: white;
-    outline: none;
     margin: 0 auto 25px;
     position: relative;
     
@@ -104,7 +102,6 @@ hr {
         color: black;
         border: 1px solid $primary;
         outline: none;
-        padding: 0;
         margin: 0;
         padding: 10px 20px;
         width: 100%;
@@ -113,10 +110,42 @@ hr {
 
     .icono {
         color: rgba(25,155,255,.5);
+        background: white;
         position: absolute;
         top: 50%;
         left: 15px;
         transform: translateY(-50%);
+    }
+}
+
+.selector {
+    margin: 0 auto 25px;
+    border: 1px solid $primary;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    
+    select {
+        color: black;
+        border: none;
+        outline: none;
+        margin: 0;
+        padding: 10px 20px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .icono {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $primary;
+        background: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 45px;
     }
 }
 
@@ -127,7 +156,7 @@ hr {
     border: 1px solid $primary;
     outline: none;
     padding: 10px 20px;
-    margin: 0 auto;
+    margin: 50px auto 0;
     width: 100%;
     max-width: 400px;
     transition: .5s;
