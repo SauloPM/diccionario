@@ -1,13 +1,13 @@
 <div id="menu">
     <div class="container items">
         <div class="item" routerLinkActive="activo">
-            <a routerLink="palabras">Palabras</a>
+            <a [routerLink]="['listado', 'palabras']">Palabras</a>
         </div>
         <div class="item" routerLinkActive="activo">
-            <a routerLink="frases">Frases</a>
+            <a [routerLink]="['listado', 'frases']">Frases</a>
         </div>
         <div class="item" routerLinkActive="activo">
-            <a routerLink="expresiones">Expresiones</a>
+            <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
         </div>
     </div>
 </div>

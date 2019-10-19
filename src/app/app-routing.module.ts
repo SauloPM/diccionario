@@ -2,23 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Componentes
-import { FrasesComponent      } from './componentes/frases/frases.component';
-import { PalabrasComponent    } from './componentes/palabras/palabras.component';
-import { FormularioComponent  } from './componentes/formulario/formulario.component';
-import { ExpresionesComponent } from './componentes/expresiones/expresiones.component';
+import { ListadoComponent    } from './componentes/listado/listado.component';
+import { FormularioComponent } from './componentes/formulario/formulario.component';
 
 const routes: Routes = [
 
-  // Componentes
-  { path: 'frases'     , component: FrasesComponent      },
-  { path: 'palabras'   , component: PalabrasComponent    },
-  { path: 'expresiones', component: ExpresionesComponent },
-
   // Componetes » Rutas con parámetros
-  { path: 'formulario/:id' , component: FormularioComponent  },
+  { path: 'formulario/:id'    , component: FormularioComponent  },
+  { path: 'listado/:categoria', component: ListadoComponent },
 
   // Mapeos especiales
-  { path: '**', pathMatch: 'full', redirectTo: 'palabras'}
+  { path: '**', pathMatch: 'full', redirectTo: 'listado/palabras'}
 
 ];
 

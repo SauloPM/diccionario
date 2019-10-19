@@ -22,21 +22,8 @@ export class ServicioService {
   //     LECTURA     //
   // ─────────────── //
 
-  getPalabras() {
-    return this.http.get( `${ this.url }/palabras.json` ).pipe(
-      map( this.crearVector )
-    );
-    return this.http.get( `${ this.url }/palabras.json`);
-  }
-
-  getFrases() {
-    return this.http.get( `${ this.url }/frases.json` ).pipe(
-      map( this.crearVector )
-    );
-  }
-
-  getExpresiones() {
-    return this.http.get( `${ this.url }/expresiones.json` ).pipe(
+  getListado( categoria: string ) {
+    return this.http.get( `${ this.url }/${ categoria }.json` ).pipe(
       map( this.crearVector )
     );
   }

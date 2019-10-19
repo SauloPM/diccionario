@@ -17,6 +17,7 @@ import { FrasesComponent      } from './componentes/frases/frases.component';
 import { PalabrasComponent    } from './componentes/palabras/palabras.component';
 import { FormularioComponent  } from './componentes/formulario/formulario.component';
 import { ExpresionesComponent } from './componentes/expresiones/expresiones.component';
+import { ListadoComponent } from './componentes/listado/listado.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ExpresionesComponent } from './componentes/expresiones/expresiones.comp
     FrasesComponent,
     PalabrasComponent,
     FormularioComponent,
-    ExpresionesComponent
+    ExpresionesComponent,
+    ListadoComponent
   ],
   imports: [
     FormsModule,

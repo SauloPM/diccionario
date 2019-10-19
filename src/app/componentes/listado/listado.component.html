@@ -1,30 +1,30 @@
 <div class="animated fadeIn">
 
-    <h1>Listado de frases</h1>
+    <h1>Listado de {{ categoria }}</h1>
     <hr>
 
     <!-- ─────────────── -->
     <!--     LISTADO     -->
     <!-- ─────────────── -->
 
-    <ng-container *ngIf="frases.length > 0">
+    <ng-container *ngIf="items.length > 0">
 
         <div class="entrada buscador">
             <input type="text" placeholder="Buscar">
             <i class="icono fa fa-search" aria-hidden="true"></i>
         </div>
         
-        <div class="elemento" *ngFor="let frase of frases; let i = index">
-            <div class="ingles">{{ frase.ingles }}</div>
-            <div class="castellano">{{ frase.castellano }}</div>
+        <div class="elemento" *ngFor="let item of items; let i = index">
+            <div class="ingles">{{ item.ingles }}</div>
+            <div class="castellano">{{ item.castellano }}</div>
         </div>
     </ng-container>
 
-    <!-- ──────────────────── -->
-    <!--     NOTIFICACIÓN     -->
-    <!-- ──────────────────── -->
+    <!-- ───────────── -->
+    <!--     VACÍO     -->
+    <!-- ───────────── -->
 
-    <ng-container *ngIf="frases.length == 0">
+    <ng-container *ngIf="items.length == 0">
         No se encontraron resultados
     </ng-container>
 </div>
