@@ -8,8 +8,8 @@ import { FormularioComponent } from './componentes/formulario/formulario.compone
 const routes: Routes = [
 
   // Componetes » Rutas con parámetros
-  { path: 'listado/:categoria'   , component: ListadoComponent },
-  { path: 'formulario/:categoria', component: FormularioComponent  },
+  { path: 'listado/:categoria'                  , component: ListadoComponent     },
+  { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent  },
 
   // Mapeos especiales
   { path: '**', pathMatch: 'full', redirectTo: 'listado/palabras'}

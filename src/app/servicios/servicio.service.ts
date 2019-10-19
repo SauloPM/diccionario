@@ -49,16 +49,16 @@ export class ServicioService {
     return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);
   }
 
-  // actuarlizarHeroe( heroe: ElementoModel ) {
+  modificar( categoria: string, item: Item ) {
 
-  //   const heroeSinID = {
-  //     ...heroe
-  //   };
+    const itemSinID = {
+      ...item
+    };
 
-  //   delete heroeSinID.id;
+    delete itemSinID.id;
 
-  //   return this.http.put( `${ this.url }/heroes/${ heroe.id }.json`, heroeSinID );
-  // }
+    return this.http.put( `${ this.url }/${ categoria }/${ item.id }.json`, itemSinID );
+  }
 
   // ──────────────── //
   //     ELIMINAR     //
@@ -74,7 +74,7 @@ export class ServicioService {
 
   private crearVector( elemento: object ) {
 
-    const elementosVector: ElementoModel[] = [];
+    const elementosVector: Item[] = [];
 
     if ( elemento == null ) { // Caso de BD vacía
       return [];
@@ -82,7 +82,7 @@ export class ServicioService {
 
     Object.keys( elemento ).forEach( key => {
 
-      const tmp: ElementoModel = elemento[key];
+      const tmp: Item = elemento[key];
 
       if ( tmp !== null ) {
         tmp.id = key;

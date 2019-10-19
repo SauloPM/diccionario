@@ -182,9 +182,11 @@ hr {
 
 .elemento {
     display: flex;
+    text-decoration: none !important;
     border-top: 1px solid $primary;
     border-bottom: 1px solid $primary;
     margin-top: -1px;
+    transition: .5s;
     
     .ingles,
     .castellano {
@@ -192,10 +194,20 @@ hr {
         color: black;
         padding: 10px 15px;
         width: 50%;
+        transition: .25s;
     }
 
     .ingles {
         color: $primary;
+    }
+
+    &:hover {
+        background: $primary;
+
+        .ingles,
+        .castellano {
+            color: white;
+        }
     }
 }
 

@@ -9,6 +9,9 @@ import { Item } from 'src/app/interfaces/item';
 // Servicios
 import { ServicioService } from './../../servicios/servicio.service';
 
+// SweetAlert2
+import Swal from 'sweetalert2';
+
 // jQuery
 declare var $: any;
 
@@ -18,8 +21,8 @@ declare var $: any;
 })
 export class ListadoComponent implements AfterViewInit {
 
+  items    : Item[] = [];
   categoria: string = '';
-  items: Item[] = [];
 
   // ─────────────── //
   //     MÉTODOS     //
@@ -51,6 +54,21 @@ export class ListadoComponent implements AfterViewInit {
             $(this).parent().css("display", "none");
           }
       });
+    });
+  }
+
+  borrar( item: Item, i: number ) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no puede deshacerse',
+      type: 'question',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then( decisionUsuario => {
+      if ( decisionUsuario.value ) {
+        this.items.splice( i, 1 );
+        this.servicio.eliminar( this.categoria, item.id ).subscribe();
+      }
     });
   }
   

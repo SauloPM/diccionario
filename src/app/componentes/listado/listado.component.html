@@ -15,10 +15,18 @@
             <i class="icono fa fa-search" aria-hidden="true"></i>
         </div>
         
-        <div class="elemento" *ngFor="let item of items">
-            <div class="ingles">{{ item.ingles }}</div>
-            <div class="castellano">{{ item.castellano }}</div>
-        </div>
+        <ng-container *ngFor="let item of items; let i = index">
+            <div class="elemento">
+                <div class="ingles">{{ item.ingles }}</div>
+                <div class="castellano">{{ item.castellano }}</div>
+                <a class="btn btn-warning" [routerLink]="['/formulario', 'modificar', categoria, item.id]">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <button class="btn btn-danger" (click)="borrar( item, i )">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </div>
+        </ng-container>
     </ng-container>
 
     <!-- Vacío -->
@@ -27,7 +35,7 @@
     </ng-container>
 
     <!-- Nuevo -->
-    <a class="nuevo" [routerLink]="['/formulario', categoria]">
+    <a class="nuevo" [routerLink]="['/formulario', 'crear', categoria, '']">
         <i class="fa fa-plus" aria-hidden="true"></i>
     </a>
 </div>

@@ -24,8 +24,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormularioComponent {
 
-  elemento : Item   = { ingles: '', castellano: '' };
+  id       : string = '';
+  operacion: string = '';
   categoria: string = 'palabras';
+  
+  elemento : Item   = { ingles: '', castellano: '' };
 
   // ─────────────── //
   //     MÉTODOS     //
@@ -47,9 +50,26 @@ export class FormularioComponent {
       title: 'Espere',
       text: 'Guardando información',
       type: 'info',
-      allowOutsideClick: false // Para evitar que el usuario lo pueda cerrar
+      allowOutsideClick: false
     });
     Swal.showLoading();
+
+    let query: Observable<any>;
+
+    // Creamos la consulta según el caso
+    switch( this.operacion ) {
+
+      case 'crear':
+        query = this.servicio.crear( this.categoria, this.elemento );
+        break;
+
+      case 'modificar':
+        query = this.servicio.modificar( this.categoria, this.id );
+        break;
+
+      default:
+        query = this.servicio.eliminar( this.categoria, this.id );
+    }
 
     // if ( this.elemento.id ) {
     //   peticion = this.servicio.actualizar( this.elemento );
@@ -57,8 +77,7 @@ export class FormularioComponent {
     //   peticion = this.servicio.crear( this.elemento );
     // }
 
-    // Creamos la consulta
-    let query: Observable<any> = this.servicio.crear( this.categoria, this.elemento );
+    
 
     // Insertamos el nodo en la BD
     query.subscribe( data => {
@@ -81,7 +100,13 @@ export class FormularioComponent {
 
   getParametrosURL() {
     this.router.params.subscribe( parametroURL => {
+
+      this.id        = parametroURL['id'       ];
+      this.operacion = parametroURL['operacion'];
       this.categoria = parametroURL['categoria'];
+
+      this.rellenarFormulario();
+
     });
   }
 
@@ -104,6 +129,14 @@ export class FormularioComponent {
     }
 
     return formulario.invalid;
+  }
+
+  rellenarFormulario() {
+    if ( this.operacion !== 'crear' ) {
+      this.servicio.getItem( this.categoria, this.id ).subscribe( ( data: Item ) => {
+        this.elemento = data;
+      });
+    }
   }
 
   vaciarFormulario() {
