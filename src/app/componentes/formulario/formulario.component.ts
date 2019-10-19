@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-// Modelos
-import { ElementoModel } from './../../modelos/elemento.models';
+// Interfaces
+import { Item } from 'src/app/interfaces/item';
 
 // Manejo de formularios
 import { NgForm } from '@angular/forms';
@@ -25,7 +25,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormularioComponent {
 
-  elemento: ElementoModel = new ElementoModel();
+  elemento: Item[] = [];
 
   // ─────────────── //
   //     MÉTODOS     //

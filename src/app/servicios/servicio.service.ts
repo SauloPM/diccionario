@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-// Modelos
-import { ElementoModel } from './../modelos/elemento.models';
+// Interfaces
+import { Item } from 'src/app/interfaces/item';
 
 // Peticiones HTTP
 import { HttpClient } from '@angular/common/http';
@@ -44,7 +44,7 @@ export class ServicioService {
   //     CREAR     //
   // ───────────── //
 
-  crear( categoria: string, palabra: ElementoModel ) {
+  crear( categoria: string, palabra: Item ) {
     return this.http.post( `${ this.url }/${ categoria }.json`, palabra ).pipe(
       map( ( data: any ) => {
         palabra.id = data.name;
