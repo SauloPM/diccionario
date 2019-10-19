@@ -143,7 +143,7 @@ hr {
 // ─────────────── //
 
 .buscador {
-    margin: 0 0 25px;
+    margin: 0 0 26px;
     
     input {
         padding: 5px 40px;
@@ -154,7 +154,9 @@ hr {
 .elemento {
     display: flex;
     border-top: 1px solid $primary;
-
+    border-bottom: 1px solid $primary;
+    margin-top: -1px;
+    
     .ingles,
     .castellano {
         flex-shrink: 0;
@@ -165,10 +167,6 @@ hr {
 
     .ingles {
         color: $primary;
-    }
-
-    &:last-child {
-        border-bottom: 1px solid $primary;
     }
 }
 

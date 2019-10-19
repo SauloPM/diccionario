@@ -7,6 +7,7 @@
     <!--     LISTADO     -->
     <!-- ─────────────── -->
 
+    <!-- Listado -->
     <ng-container *ngIf="items.length > 0">
 
         <div class="entrada buscador">
@@ -20,15 +21,13 @@
         </div>
     </ng-container>
 
-    <!-- ───────────── -->
-    <!--     VACÍO     -->
-    <!-- ───────────── -->
-
+    <!-- Vacío -->
     <ng-container *ngIf="items.length == 0">
         No se encontraron resultados
     </ng-container>
-</div>
 
-<a class="nuevo" [routerLink]="['/formulario', 'nuevo']">
-    <i class="fa fa-plus" aria-hidden="true"></i>
-</a>
+    <!-- Nuevo -->
+    <a class="nuevo" [routerLink]="['/formulario', categoria]">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+</div>

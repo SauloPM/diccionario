@@ -20,6 +20,15 @@
       <input type="text" placeholder="Traducción al castellano" required [(ngModel)]="elemento.castellano" name="castellano" autocomplete="off">
     </div>
 
+    <!-- Categoría -->
+    <div class="selector">
+      <select [(ngModel)]="categoria" name="categoria" (ngModelChange)="cambiarCategoria( $event )">
+        <option value="palabras">Palabra</option>
+        <option value="frases">Frase</option>
+        <option value="expresiones">Expresión</option>
+      </select>
+    </div>
+
     <!-- Botón -->
     <button type="submit" class="boton">
       Guardar

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 
-// URL Parameters
+// Get parameter from URL
 import { ActivatedRoute } from '@angular/router';
 
 // Interfaces
@@ -14,8 +14,7 @@ declare var $: any;
 
 @Component({
   selector: 'app-listado',
-  templateUrl: './listado.component.html',
-  styleUrls: ['./listado.component.scss']
+  templateUrl: './listado.component.html'
 })
 export class ListadoComponent implements AfterViewInit {
 

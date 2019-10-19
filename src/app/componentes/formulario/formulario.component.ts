@@ -15,28 +15,30 @@ import Swal from 'sweetalert2';
 // Observables
 import { Observable } from 'rxjs';
 
-// Get URL parameter from URL
+// Get parameter from URL
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
-  templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.scss']
+  templateUrl: './formulario.component.html'
 })
 export class FormularioComponent {
 
-  elemento: Item[] = [];
+  elemento : Item   = { id: '', ingles: '', castellano: '' };
+  categoria: string = 'palabras';
 
   // ─────────────── //
   //     MÉTODOS     //
   // ─────────────── //
 
-  constructor( private servicio: ServicioService, private route: ActivatedRoute ) { }
+  constructor( private servicio: ServicioService, private router: ActivatedRoute ) {
+    this.getCategoria();
+  }
 
   guardar( formulario: NgForm ) {
 
     // Campos obligatorios vacíos
-    if ( this.camposVacios( formulario ) ) {
+    if ( this.existenCamposVacios( formulario ) ) {
       this.vaciarFormulario();
       return;
     }
@@ -56,7 +58,7 @@ export class FormularioComponent {
     // }
 
     // Creamos la consulta
-    let query: Observable<any> = this.servicio.crear( 'palabras', this.elemento );
+    let query: Observable<any> = this.servicio.crear( this.categoria, this.elemento );
 
     // Insertamos el nodo en la BD
     query.subscribe( data => {
@@ -77,7 +79,17 @@ export class FormularioComponent {
   //     AUXILIAR     //
   // ──────────────── //
 
-  camposVacios( formulario: NgForm ): boolean {
+  getCategoria() {
+    this.router.params.subscribe( parametroURL => {
+      this.categoria = parametroURL['categoria'];
+    });
+  }
+
+  cambiarCategoria( itemSeleccionado: string ) {
+    this.categoria = itemSeleccionado;
+  }
+
+  existenCamposVacios( formulario: NgForm ): boolean {
 
     if ( formulario.invalid ) {
       Swal.fire({
