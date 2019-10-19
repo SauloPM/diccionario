@@ -28,18 +28,6 @@ export class ServicioService {
     );
   }
 
-  getPalabra( id: string ) {
-    return this.http.get(`${ this.url }/palabras/${ id }.json`);
-  }
-
-  getFrase( id: string ) {
-    return this.http.get(`${ this.url }/frases/${ id }.json`);
-  }
-
-  getExpresion( id: string ) {
-    return this.http.get(`${ this.url }/expresiones/${ id }.json`);
-  }
-
   // ───────────── //
   //     CREAR     //
   // ───────────── //
@@ -56,6 +44,10 @@ export class ServicioService {
   // ────────────────── //
   //     ACTUALIZAR     //
   // ────────────────── //
+
+  getItem( categoria: string, id: string ) {
+    return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);
+  }
 
   // actuarlizarHeroe( heroe: ElementoModel ) {
 

@@ -24,7 +24,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormularioComponent {
 
-  elemento : Item   = { id: '', ingles: '', castellano: '' };
+  elemento : Item   = { ingles: '', castellano: '' };
   categoria: string = 'palabras';
 
   // ─────────────── //
@@ -32,7 +32,7 @@ export class FormularioComponent {
   // ─────────────── //
 
   constructor( private servicio: ServicioService, private router: ActivatedRoute ) {
-    this.getCategoria();
+    this.getParametrosURL();
   }
 
   guardar( formulario: NgForm ) {
@@ -79,7 +79,7 @@ export class FormularioComponent {
   //     AUXILIAR     //
   // ──────────────── //
 
-  getCategoria() {
+  getParametrosURL() {
     this.router.params.subscribe( parametroURL => {
       this.categoria = parametroURL['categoria'];
     });
