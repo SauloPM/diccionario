@@ -50,14 +50,7 @@ export class ServicioService {
   }
 
   modificar( categoria: string, item: Item ) {
-
-    const itemSinID = {
-      ...item
-    };
-
-    delete itemSinID.id;
-
-    return this.http.put( `${ this.url }/${ categoria }/${ item.id }.json`, itemSinID );
+    return this.http.put( `${ this.url }/${ categoria }/${ item.id }.json`, item );
   }
 
   // ──────────────── //

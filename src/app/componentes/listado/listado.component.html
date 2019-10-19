@@ -19,12 +19,16 @@
             <div class="elemento">
                 <div class="ingles">{{ item.ingles }}</div>
                 <div class="castellano">{{ item.castellano }}</div>
-                <a class="btn btn-warning" [routerLink]="['/formulario', 'modificar', categoria, item.id]">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
-                <button class="btn btn-danger" (click)="borrar( item, i )">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
+
+                <!-- Botones -->
+                <div class="opciones">
+                    <a class="opcion editar" [routerLink]="['/formulario', 'modificar', categoria, item.id]">
+                        <i class="icono fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a class="opcion borrar" (click)="borrar( item, i )">
+                        <i class="icono fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </ng-container>
     </ng-container>

@@ -186,7 +186,9 @@ hr {
     border-top: 1px solid $primary;
     border-bottom: 1px solid $primary;
     margin-top: -1px;
+    position: relative;
     transition: .5s;
+    cursor: pointer;
     
     .ingles,
     .castellano {
@@ -201,12 +203,44 @@ hr {
         color: $primary;
     }
 
-    &:hover {
-        background: $primary;
+    .opciones {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: white;
+        padding: 0 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: .5s;
 
-        .ingles,
-        .castellano {
+        .opcion {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary;
+            font-size: 15px;
+            text-decoration: none;
+            border: 1px solid $lightprimary;
+            border-radius: 2px;
+            width: 28px;
+            height: 28px;
+            transition: .5s;
+
+            &.editar {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &:hover .opciones {
+        opacity: 1;
+
+        .opcion:hover {
             color: white;
+            background: $primary;
         }
     }
 }

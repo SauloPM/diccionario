@@ -59,12 +59,25 @@ export class FormularioComponent {
 
     // Creamos la consulta según el caso
     if ( this.operacion === 'crear' ) {
-      console.log(this.item)
       query = this.servicio.crear( this.categoria, this.item );
+      this.ejecutarConsulta( query );
     }
     else {
-      query = this.servicio.modificar( this.categoria, this.item );
+      query = this.servicio.eliminar( this.categoria, this.id );
+      query.subscribe( () => {
+
+        query = this.servicio.crear( this.categoria, this.item );
+        this.ejecutarConsulta( query );
+
+      });
     }
+  }
+
+  // ──────────────── //
+  //     AUXILIAR     //
+  // ──────────────── //
+
+  ejecutarConsulta( query: Observable<any> ) {
 
     // Ejecutamos la consulta
     query.subscribe( data => {
@@ -81,10 +94,6 @@ export class FormularioComponent {
       
     });
   }
-
-  // ──────────────── //
-  //     AUXILIAR     //
-  // ──────────────── //
 
   getParametrosURL() {
     this.router.params.subscribe( parametroURL => {
