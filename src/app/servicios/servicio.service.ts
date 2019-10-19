@@ -85,9 +85,9 @@ export class ServicioService {
   //     ELIMINAR     //
   // ──────────────── //
 
-  // borrarHeroe( id: string ) {
-  //   return this.http.delete(`${ this.url }/heroes/${ id }.json`);
-  // }
+  eliminar( categoria: string, id: string ) {
+    return this.http.delete(`${ this.url }/${ categoria }/${ id }.json`);
+  }
 
   // ──────────────── //
   //     AUXILIAR     //

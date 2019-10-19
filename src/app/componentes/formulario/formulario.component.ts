@@ -37,6 +37,7 @@ export class FormularioComponent {
 
     // Campos obligatorios vacíos
     if ( this.camposVacios( formulario ) ) {
+      this.vaciarFormulario();
       return;
     }
 
@@ -54,16 +55,21 @@ export class FormularioComponent {
     //   peticion = this.servicio.crear( this.elemento );
     // }
 
-    // Insertamos el nodo en la BD
+    // Creamos la consulta
     let query: Observable<any> = this.servicio.crear( 'palabras', this.elemento );
 
-    // Notificamos al usuario
+    // Insertamos el nodo en la BD
     query.subscribe( data => {
+
+      // Notificamos al usuario
       Swal.fire({
         title: 'Operación completada',
         text: 'Operación completada con éxito',
         type: 'success'
       });
+
+      // Vaciamos el formulario
+      this.vaciarFormulario();
     });
   }
 
@@ -86,5 +92,10 @@ export class FormularioComponent {
     }
 
     return formulario.invalid;
+  }
+
+  vaciarFormulario() {
+    document.querySelector('.entrada input[name="ingles"]'    ).value = '';
+    document.querySelector('.entrada input[name="castellano"]').value = '';
   }
 }

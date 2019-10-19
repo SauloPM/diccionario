@@ -28,6 +28,7 @@ body {
 }
 
 h1 {
+    color: black;
     font-size: 35px;
     font-family: 'Arsenal', sans-serif;
 }
@@ -92,7 +93,6 @@ hr {
 }
 
 .entrada {
-    color: $primary;
     border: 1px solid $primary;
     border-radius: 2px;
     outline: none;
@@ -102,7 +102,7 @@ hr {
     max-width: 400px;
     
     input {
-        color: $primary;
+        color: black;
         border: none;
         outline: none;
         padding: 0;
@@ -143,7 +143,8 @@ hr {
 // ─────────────── //
 
 .buscador {
-    display: inline-block;
+    margin: 0 0 25px;
+    width: fit-content;
 
     input {
         padding: 5px 40px;
@@ -152,27 +153,22 @@ hr {
 
 .elemento {
     display: flex;
-    margin-bottom: 10px;
+    border-top: 1px solid $primary;
     width: 100%;
 
     .ingles,
     .castellano {
-        border: 1px solid $primary;
-        padding: 5px 15px;
+        color: black;
+        padding: 10px 15px;
         width: 100%;
     }
-    
+
     .ingles {
-        color: white;
-        background: $primary;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-    }
-    
-    .castellano {
         color: $primary;
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
+    }
+
+    &:last-child {
+        border-bottom: 1px solid $primary;
     }
 }
 
@@ -184,5 +180,5 @@ footer {
     color: white;
     text-align: center;
     background: $primary;
-    padding: 15px;
+    padding: 12px;
 }
