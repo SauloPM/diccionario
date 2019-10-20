@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 
 // Get parameter from URL
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -36,7 +36,7 @@ export class FormularioComponent {
   //     MÉTODOS     //
   // ─────────────── //
 
-  constructor( private servicio: ServicioService, private router: ActivatedRoute ) {
+  constructor( private servicio: ServicioService, private router: Router, private activatedRoute: ActivatedRoute ) {
     this.getParametrosURL();
   }
 
@@ -68,8 +68,23 @@ export class FormularioComponent {
       query.subscribe( () => {
 
         query = this.servicio.crear( this.categoria, this.item );
-        this.ejecutarConsulta( query );
+        
+        query.subscribe( data => {
 
+          // Notificamos al usuario
+          Swal.fire({
+            title: 'Operación completada',
+            text: 'Operación completada con éxito',
+            type: 'success',
+          }).then( () => {
+
+            // Vaciamos el formulario
+            this.vaciarFormulario();
+
+            // Volvemos al listado
+            this.router.navigate( ['/listado', this.categoria] )
+          });
+        });
       });
     }
   }
@@ -97,7 +112,7 @@ export class FormularioComponent {
   }
 
   getParametrosURL() {
-    this.router.params.subscribe( parametroURL => {
+    this.activatedRoute.params.subscribe( parametroURL => {
 
       this.id        = parametroURL['id'       ];
       this.operacion = parametroURL['operacion'];
@@ -126,7 +141,7 @@ export class FormularioComponent {
         timer: 2500,
         padding: '50px',
         showConfirmButton: false,
-        allowOutsideClick: true // Para evitar que el usuario lo pueda cerrar
+        allowOutsideClick: true
       });
     }
 
