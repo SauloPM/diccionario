@@ -63,7 +63,9 @@ export class ListadoComponent implements AfterViewInit {
       text: 'Esta acción no puede deshacerse',
       type: 'question',
       showConfirmButton: true,
-      showCancelButton: true
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No'
     }).then( decisionUsuario => {
       if ( decisionUsuario.value ) {
         this.items.splice( i, 1 );

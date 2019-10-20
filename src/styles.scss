@@ -48,7 +48,7 @@ h1 {
 
 hr {
     display: block;
-    border-color: rgba(25,155,255,.25);
+    border-color: $lightprimary;
     margin-bottom: 50px;
 }
 
@@ -190,6 +190,10 @@ hr {
         background: white;
         box-shadow: none;
     }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 // ─────────────── //
@@ -329,4 +333,25 @@ footer {
     text-align: center;
     background: $primary;
     padding: 12px;
+}
+
+// ───────────────────── //
+//     SWEET ALERT 2     //
+// ───────────────────── //
+
+.swal2-popup {
+    border-radius: 2px !important;
+}
+
+.swal2-styled {
+    background: $primary  !important;
+    
+    &.swal2-cancel  {
+        background: $lightprimary !important;
+    }
+}
+
+.swal2-cancel:focus,
+.swal2-confirm:focus {
+    box-shadow: none !important;
 }
