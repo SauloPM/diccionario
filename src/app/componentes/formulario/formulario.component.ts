@@ -28,6 +28,7 @@ export class FormularioComponent {
   titulo   : string = '';
   operacion: string = '';
   categoria: string = 'palabras';
+  categoriaOriginal: string = '';
   
   item : Item   = { ingles: '', castellano: '' };
 
@@ -63,7 +64,7 @@ export class FormularioComponent {
       this.ejecutarConsulta( query );
     }
     else {
-      query = this.servicio.eliminar( this.categoria, this.id );
+      query = this.servicio.eliminar( this.categoriaOriginal, this.id );
       query.subscribe( () => {
 
         query = this.servicio.crear( this.categoria, this.item );
@@ -101,6 +102,8 @@ export class FormularioComponent {
       this.id        = parametroURL['id'       ];
       this.operacion = parametroURL['operacion'];
       this.categoria = parametroURL['categoria'];
+
+      this.categoriaOriginal = this.categoria;
 
       this.rellenarFormulario();
 
