@@ -1,19 +1,32 @@
+
 // Colores
+
 $primary     : rgb(25,155,255);
 $lightprimary: rgb(115,185,255);
 
+$primary     : rgb(095,040,205);
+$darkprimary : rgb(055,000,155);
+$lightprimary: rgb(135,080,245);
+
 // Responsive breakpoints
+
 $mobile : 480px;
 $tablet : 768px;
 $laptop : 980px;
 $desktop: 1200px;
 
 // Placeholder
-::-webkit-input-placeholder { color: rgba(25,155,255,.5) }
-     :-ms-input-placeholder { color: rgba(25,155,255,.5) }
-              ::placeholder { color: rgba(25,155,255,.5) }
+
+input::-webkit-input-placeholder { color: $primary; transition: .25s }
+     input:-ms-input-placeholder { color: $primary; transition: .25s }
+              input::placeholder { color: $primary; transition: .25s }
+
+input:focus::-webkit-input-placeholder { color: transparent }
+     input:focus:-ms-input-placeholder { color: transparent }
+              input:focus::placeholder { color: transparent }
 
 // Text selection
+
 ::-moz-selection { color: white; background: $primary }
      ::selection { color: white; background: $primary }
 
@@ -67,16 +80,24 @@ hr {
     text-decoration: none !important;
     background: $primary;
     border-radius: 50%;
+    box-shadow: 0 2px 5px $darkprimary;
     position: fixed;
-    bottom: 75px;
+    bottom: 35px;
     right: 35px;
     width: 60px;
     height: 60px;
     transition: .5s ease-in;
 
+    .icono {
+        transition: .5s ease-in;
+    }
+
     &:hover {
         color: white;
-        transform: rotate(360deg);
+
+        .icono {
+            transform: rotate(360deg);
+        }
     }
 
     &:active {
@@ -100,7 +121,8 @@ hr {
     
     input {
         color: black;
-        border: 1px solid $primary;
+        border: none;
+        border-bottom: 1px solid $primary;
         outline: none;
         margin: 0;
         padding: 10px 20px;
@@ -109,7 +131,7 @@ hr {
     }
 
     .icono {
-        color: rgba(25,155,255,.5);
+        color: $primary;
         background: white;
         position: absolute;
         top: 50%;
@@ -120,7 +142,8 @@ hr {
 
 .selector {
     margin: 0 auto 25px;
-    border: 1px solid $primary;
+    border: none;
+    border-bottom: 1px solid $primary;
     position: relative;
     width: 100%;
     max-width: 400px;
@@ -154,6 +177,7 @@ hr {
     color: white;
     background: $primary;
     border: 1px solid $primary;
+    box-shadow: 0 2px 5px $darkprimary;
     outline: none;
     padding: 10px 20px;
     margin: 50px auto 0;
@@ -164,6 +188,7 @@ hr {
     &:hover {
         color: $primary;
         background: white;
+        box-shadow: none;
     }
 }
 
@@ -172,9 +197,10 @@ hr {
 // ─────────────── //
 
 .buscador {
-    margin: 0 0 26px;
+    margin: 0 0 51px;
     
     input {
+        border: 1px solid $primary;
         padding: 5px 40px;
         max-width: 250px;
     }
@@ -200,7 +226,8 @@ hr {
     }
 
     .ingles {
-        color: $primary;
+        color: white;
+        background: $lightprimary;
     }
 
     .opciones {
@@ -242,6 +269,54 @@ hr {
             color: white;
             background: $primary;
         }
+    }
+}
+
+// ────────────── //
+//     NAVBAR     //
+// ────────────── //
+
+#menu {
+    background: $primary;
+
+    .items {
+        display: flex;
+        align-items: center;
+
+        .item {
+            
+            a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 20px 30px;
+                position: relative;
+                left: 0;
+            }
+    
+            &.activo {
+                background: $lightprimary;
+            }
+    
+            &:hover:not(.activo) a {
+                animation: meneo 1s;
+            }
+        }
+    }
+}
+
+@keyframes meneo {
+
+    from, to {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%, 30%, 50%, 70%, 90% {
+      transform: translate3d(-5px, 0, 0);
+    }
+  
+    20%, 40%, 60%, 80% {
+      transform: translate3d(5px, 0, 0);
     }
 }
 
