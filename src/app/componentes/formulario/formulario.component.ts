@@ -42,50 +42,27 @@ export class FormularioComponent {
 
   guardar( formulario: NgForm ) {
 
-    // Campos obligatorios vacíos
+    // Comprobamos que no haya campos obligatorios vacíos
     if ( this.existenCamposVacios( formulario ) ) {
       this.vaciarFormulario();
       return;
     }
 
+    // Loading
     Swal.fire({
       title: 'Espere',
-      text: 'Guardando información',
+      text: 'Procesando información',
       type: 'info',
       allowOutsideClick: false
     });
     Swal.showLoading();
 
-    let query: Observable<any>;
-
-    // Creamos la consulta según el caso
+    // Ejecutamos la consulta según el caso
     if ( this.operacion === 'crear' ) {
-      query = this.servicio.crear( this.categoria, this.item );
-      this.ejecutarConsulta( query );
+      this.crearItem();
     }
     else {
-      query = this.servicio.eliminar( this.categoriaOriginal, this.id );
-      query.subscribe( () => {
-
-        query = this.servicio.crear( this.categoria, this.item );
-
-        query.subscribe( data => {
-
-          // Notificamos al usuario
-          Swal.fire({
-            title: 'Operación completada',
-            text: 'Operación completada con éxito',
-            type: 'success',
-          }).then( () => {
-
-            // Vaciamos el formulario
-            this.vaciarFormulario();
-
-            // Volvemos al listado
-            this.router.navigate( ['/listado', this.categoria] )
-          });
-        });
-      });
+      this.modificarItem();
     }
   }
 
@@ -93,21 +70,36 @@ export class FormularioComponent {
   //     AUXILIAR     //
   // ──────────────── //
 
-  ejecutarConsulta( query: Observable<any> ) {
+  crearItem() {
+    this.servicio.crear( this.categoria, this.item ).subscribe( data => {
+      this.notificarUsuario();
+    });
+  }
 
-    // Ejecutamos la consulta
-    query.subscribe( data => {
-
-      // Notificamos al usuario
-      Swal.fire({
-        title: 'Operación completada',
-        text: 'Operación completada con éxito',
-        type: 'success'
+  modificarItem() {
+    this.servicio.eliminar( this.categoriaOriginal, this.id ).subscribe( () => {
+      this.servicio.crear( this.categoria, this.item ).subscribe( () => {
+        this.notificarUsuario( 'modificar' );
       });
+    });
+  }
+
+  notificarUsuario( operacion?: string ) {
+
+    // Notificamos al usuario
+    Swal.fire({
+      title: 'Operación completada',
+      text: 'Operación completada con éxito',
+      type: 'success'
+    }).then( () => {
 
       // Vaciamos el formulario
       this.vaciarFormulario();
 
+      // Volvemos al listado
+      if ( operacion === 'modificar' ) {
+        this.router.navigate( ['/listado', this.categoria] );
+      }
     });
   }
 
@@ -122,7 +114,7 @@ export class FormularioComponent {
 
       this.rellenarFormulario();
 
-      this.titulo = this.operacion == 'crear' ? 'Crear nuevo ítem' : 'Modificar ítem';
+      this.titulo = this.operacion === 'crear' ? 'Crear nuevo ítem' : 'Modificar ítem';
 
     });
   }
