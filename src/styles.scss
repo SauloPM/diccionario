@@ -201,13 +201,19 @@ hr {
 // ─────────────── //
 
 .buscador {
-    margin: 0 0 51px;
+    margin: 0 0 31px;
     
     input {
         border: 1px solid $primary;
         padding: 5px 40px;
         max-width: 250px;
     }
+}
+
+.recuento {
+    display: block;
+    text-align: right;
+    padding: 0 5px 5px 0;
 }
 
 .elemento {
@@ -266,12 +272,19 @@ hr {
         }
     }
 
-    &:hover .opciones {
-        opacity: 1;
+    &:hover {
 
-        .opcion:hover {
-            color: white;
-            background: $primary;
+        .ingles {
+            background: rgba(135,080,245,.85);
+        }
+
+        .opciones {
+            opacity: 1;
+    
+            .opcion:hover {
+                color: white;
+                background: $primary;
+            }
         }
     }
 }

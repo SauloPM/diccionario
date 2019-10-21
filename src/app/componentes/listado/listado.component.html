@@ -15,6 +15,7 @@
             <i class="icono fa fa-search" aria-hidden="true"></i>
         </div>
         
+        <small class="recuento">{{ items.length }} ítems</small>
         <ng-container *ngFor="let item of items; let i = index">
             <div class="elemento">
                 <div class="ingles">{{ item.ingles }}</div>
