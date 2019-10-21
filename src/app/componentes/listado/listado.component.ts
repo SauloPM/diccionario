@@ -35,12 +35,12 @@ export class ListadoComponent implements AfterViewInit {
   ngAfterViewInit() {
 
     // Escribir algo en el buscador
-    $(document).on('input', '.buscador input', function() {
+    $(document).on('input', '.buscador input', () => {
 
       let textoIngles  = '';
       let secuencia    = $('.buscador input').val().toLowerCase().trim();
 
-      $('.elemento .ingles').each( () => {
+      $('.elemento .ingles').each( function() {
 
         textoIngles = $(this).html().toLowerCase();
 
@@ -51,7 +51,7 @@ export class ListadoComponent implements AfterViewInit {
 
         // No ha habido coincidencia
         else {
-          $(this).parent().css('', 'none');
+          $(this).parent().css('display', 'none');
         }
       });
     });

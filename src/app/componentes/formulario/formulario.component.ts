@@ -29,7 +29,7 @@ export class FormularioComponent {
   operacion: string = '';
   categoria: string = 'palabras';
   categoriaOriginal: string = '';
-  
+
   item : Item   = { ingles: '', castellano: '' };
 
   // ─────────────── //
@@ -68,7 +68,7 @@ export class FormularioComponent {
       query.subscribe( () => {
 
         query = this.servicio.crear( this.categoria, this.item );
-        
+
         query.subscribe( data => {
 
           // Notificamos al usuario
