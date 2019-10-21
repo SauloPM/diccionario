@@ -35,24 +35,24 @@ export class ListadoComponent implements AfterViewInit {
   ngAfterViewInit() {
 
     // Escribir algo en el buscador
-    $(document).on("input", ".buscador input", function () {
-      
-      var textoIngles  = "";
-      var secuencia    = $(".buscador input").val().toLowerCase().trim();
+    $(document).on('input', '.buscador input', function() {
 
-      $(".elemento .ingles").each(function () {
+      let textoIngles  = '';
+      let secuencia    = $('.buscador input').val().toLowerCase().trim();
+
+      $('.elemento .ingles').each( () => {
 
         textoIngles = $(this).html().toLowerCase();
 
-          // Ha habido coincidencias o no se ha escrito nada
-          if (( textoIngles.indexOf( secuencia ) > -1 ) || ( secuencia.length == 0 )) {
-            $(this).parent().css("display", "");
-          }
+        // Ha habido coincidencias o no se ha escrito nada
+        if (( textoIngles.indexOf( secuencia ) > -1 ) || ( secuencia.length === 0 )) {
+          $(this).parent().css('display', '');
+        }
 
-          // No ha habido coincidencia
-          else {
-            $(this).parent().css("display", "none");
-          }
+        // No ha habido coincidencia
+        else {
+          $(this).parent().css('', 'none');
+        }
       });
     });
   }
@@ -73,14 +73,14 @@ export class ListadoComponent implements AfterViewInit {
       }
     });
   }
-  
+
   // ──────────────── //
   //     AUXILIAR     //
   // ──────────────── //
 
   getCategoria() {
     this.router.params.subscribe( parametroURL => {
-      this.categoria = parametroURL['categoria'];
+      this.categoria = parametroURL.categoria;
       this.getListado( this.categoria );
     });
   }
@@ -93,20 +93,19 @@ export class ListadoComponent implements AfterViewInit {
 
   ordenarAlfabeticamente( property: any ) {
 
-    var sortOrder = 1;
+    let sortOrder = 1;
 
     if ( property[0] === '-' ) {
       sortOrder = -1;
       property = property.substr(1);
     }
 
-    return function ( a: any, b: any ) {
-      if ( sortOrder == -1 ) {
+    return ( a: any, b: any ) => {
+      if ( sortOrder === -1 ) {
         return b[property].localeCompare( a[property] );
-      }
-      else {
+      } else {
         return a[property].localeCompare( b[property] );
-      }        
-    }
+      }
+    };
   }
 }
