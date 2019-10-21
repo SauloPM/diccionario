@@ -43,6 +43,10 @@
         ]
       }
     ],
+    "one-line": false,
+    "prefer-const": false,
+    "typedef-whitespace": false,
+    "no-inferrable-types": false,
     "no-consecutive-blank-lines": false,
     "no-console": [
       true,
@@ -53,10 +57,6 @@
       "trace"
     ],
     "no-empty": false,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
