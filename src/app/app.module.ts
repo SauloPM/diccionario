@@ -15,13 +15,15 @@ import { AppComponent        } from './app.component';
 import { MenuComponent       } from './componentes/menu/menu.component';
 import { ListadoComponent    } from './componentes/listado/listado.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ListadoComponent,
-    FormularioComponent
+    FormularioComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,

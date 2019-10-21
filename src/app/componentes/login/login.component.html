@@ -1,0 +1,22 @@
+<div class="animated fadeIn" style="margin: 50px 0">
+
+    <form class="formulario" #formularioLogin="ngForm" (ngSubmit)="onSubmit( formularioLogin )">
+
+        <!-- Email -->
+        <div class="entrada">
+            <small *ngIf="formularioLogin.submitted && formularioLogin.controls['email'].errors" class="validacion animated fadeIn text-danger text-left">Este campo es obligatorio</small>
+            <input type="email" email placeholder="Email" required [(ngModel)]="usuario.email" name="email" autocomplete="off">
+        </div>
+
+        <!-- Contraseña -->
+        <div class="entrada">
+            <small *ngIf="formularioLogin.submitted && formularioLogin.controls['clave'].errors" class="validacion animated fadeIn text-danger text-left">Este campo es obligatorio</small>
+            <input type="password" placeholder="Contraseña" required [(ngModel)]="usuario.clave" name="clave" autocomplete="off">
+        </div>
+
+        <!-- Botón -->
+        <button type="submit" class="boton">
+            Enviar
+        </button>
+    </form>
+</div>

@@ -196,6 +196,18 @@ hr {
     }
 }
 
+.validacion {
+    display: block;
+    padding-left: 5px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+}
+
 // ─────────────── //
 //     LISTADO     //
 // ─────────────── //
