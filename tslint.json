@@ -44,6 +44,7 @@
       }
     ],
     "one-line": false,
+    "no-string-literal": false,
     "prefer-const": false,
     "typedef-whitespace": false,
     "no-inferrable-types": false,
