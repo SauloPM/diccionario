@@ -107,7 +107,7 @@ export class FormularioComponent {
 
       // Vaciamos el formulario
       this.vaciarFormulario();
-      
+
     });
   }
 
@@ -157,7 +157,11 @@ export class FormularioComponent {
   }
 
   vaciarFormulario() {
-    document.querySelector('.entrada input[name="ingles"]'    ).value = '';
-    document.querySelector('.entrada input[name="castellano"]').value = '';
+
+    let inputIngles     = document.querySelector('.entrada input[name="ingles"]'    ) as HTMLInputElement;
+    let inputCastellano = document.querySelector('.entrada input[name="castellano"]') as HTMLInputElement;
+
+    inputIngles.value = '';
+    inputCastellano.value = '';
   }
 }
