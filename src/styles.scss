@@ -105,6 +105,98 @@ hr {
     }
 }
 
+// ───────────── //
+//     LOGIN     //
+// ───────────── //
+
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $primary;
+    min-height: 100vh;
+
+    .entrada {
+        margin: 0;
+
+        input {
+            color: white;
+            text-align: center;
+            background: $primary;
+            border: 1px solid white;
+            width: 275px;
+            max-width: 300px;
+
+            &:focus {
+                color: yellow;
+                border-left-color: yellow;
+                border-right-color: yellow;
+            }
+        }
+
+        &.email input {
+            border-bottom: none;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+
+            &:focus {
+                border-top-color: yellow;
+            }
+        }
+
+        &.clave input {
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+
+            &:focus {
+                border-bottom-color: yellow;
+            }
+        }
+
+        .validacion {
+            display: block;
+            color: yellow !important;
+            padding-left: 5px;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+        }
+    }
+
+    .boton {
+        color: white;
+        background: none;
+        border: 1px solid white;
+        border-radius: 2px;;
+        box-shadow: none;
+        margin-top: 25px;
+        
+        &:hover {
+            color: yellow;
+            border-color: yellow;
+        }
+
+        &:active {
+            color: $primary;
+            background: yellow;
+        }
+    }
+
+    // Placeholder
+
+    input::-webkit-input-placeholder { color: white }
+         input:-ms-input-placeholder { color: white }
+                  input::placeholder { color: white }
+
+    input:focus::-webkit-input-placeholder { color: transparent }
+         input:focus:-ms-input-placeholder { color: transparent }
+                  input:focus::placeholder { color: transparent }
+}
+
 // ────────────────── //
 //     FORMULARIO     //
 // ────────────────── //
@@ -183,29 +275,18 @@ hr {
     margin: 50px auto 0;
     width: 100%;
     max-width: 400px;
-    transition: .5s;
-
+    
     &:hover {
         color: $primary;
         background: white;
         box-shadow: none;
+        transition: .5s;
     }
 
     &:focus {
         outline: none;
+        transition: .25s;
     }
-}
-
-.validacion {
-    display: block;
-    padding-left: 5px;
-    margin: 0 auto;
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 400px;
 }
 
 // ─────────────── //
