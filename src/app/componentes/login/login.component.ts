@@ -6,6 +6,8 @@ import { AuthService } from './../../servicios/auth.service';
 // Modelos
 import { UsuarioModel } from './../../modelos/usuario.model';
 
+declare var $: any;
+
 // Formularios
 import { NgForm } from '@angular/forms';
 
@@ -23,7 +25,13 @@ export class LoginComponent implements OnInit {
     this.usuario = new UsuarioModel();
   }
 
+  pepe() {
+    console.log($('.entrada.email input').val());
+  }
+
   onSubmit( formulario: NgForm ) {
+
+    this.pepe();
 
     if ( formulario.invalid ) {
       return;
