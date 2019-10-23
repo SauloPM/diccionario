@@ -71,16 +71,15 @@ export class AuthService {
   // ──────────────── //
 
   private guardarToken( idToken: string ) {
-
     this.userToken = idToken;
-
     localStorage.setItem( 'token', idToken);
-
   }
 
   private leerToken() {
-
     return this.userToken = localStorage.getItem( 'token') ? localStorage.getItem( 'token' ) : '';
+  }
 
+  usuarioLogueado(): boolean {
+    return this.userToken.length > 2;
   }
 }

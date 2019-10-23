@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// Rutas protegidas
+import { AuthGuard } from './guards/auth.guard';
+
 // Componentes
 import { LoginComponent      } from './componentes/login/login.component';
 import { InicioComponent     } from './componentes/inicio/inicio.component';
@@ -13,9 +16,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   // Componetes » Rutas con parámetros
-  { path: 'inicio'                              , component: InicioComponent     },
-  { path: 'listado/:categoria'                  , component: ListadoComponent    },
-  { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent },
+  { path: 'listado/palabras'                    , component: InicioComponent,     canActivate: [ AuthGuard ] },
+  { path: 'listado/:categoria'                  , component: ListadoComponent,    canActivate: [ AuthGuard ] },
+  { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent, canActivate: [ AuthGuard ] },
 
   // Mapeos especiales
   { path: '**', pathMatch: 'full', redirectTo: 'login'}
