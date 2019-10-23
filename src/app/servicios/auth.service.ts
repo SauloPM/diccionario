@@ -6,15 +6,26 @@ import { HttpClient } from '@angular/common/http';
 // Modelos
 import { UsuarioModel } from './../modelos/usuario.model';
 
+// RXJS
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private userToken: string;
+
   private url    = 'https://identitytoolkit.googleapis.com/v1/accounts:';
   private APIKey = 'AIzaSyCp5KSR5BF-VQKoOvB12UKWAzc9PK5ynIM';
 
-  constructor( private http: HttpClient ) { }
+  // ─────────────── //
+  //     MÉTODOS     //
+  // ─────────────── //
+
+  constructor( private http: HttpClient ) {
+    this.leerToken();
+  }
 
   registrarse() {
 
@@ -26,7 +37,12 @@ export class AuthService {
     };
 
     // POST
-    return this.http.post( `${ this.url }signUp?key=${ this.APIKey }`, authData );
+    return this.http.post( `${ this.url }signUp?key=${ this.APIKey }`, authData ).pipe(
+      map( data => {
+        this.guardarToken( data['idToken'] );
+        return data;
+      })
+    );
   }
 
   login( usuario: UsuarioModel ) {
@@ -39,11 +55,32 @@ export class AuthService {
     };
 
     // POST
-    return this.http.post( `${ this.url }signInWithPassword?key=${ this.APIKey }`, authData );
-
+    return this.http.post( `${ this.url }signInWithPassword?key=${ this.APIKey }`, authData ).pipe(
+      map( data => {
+        this.guardarToken( data['idToken'] );
+        return data;
+      })
+    );
   }
 
   logout() {
+  }
+
+  // ──────────────── //
+  //     AUXILIAR     //
+  // ──────────────── //
+
+  private guardarToken( idToken: string ) {
+
+    this.userToken = idToken;
+
+    localStorage.setItem( 'token', idToken);
+
+  }
+
+  private leerToken() {
+
+    return this.userToken = localStorage.getItem( 'token') ? localStorage.getItem( 'token' ) : '';
 
   }
 }

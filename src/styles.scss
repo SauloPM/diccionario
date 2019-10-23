@@ -115,6 +115,8 @@ hr {
     justify-content: center;
     background: $primary;
     min-height: 100vh;
+    // background: url('assets/img/bg5.jpg') no-repeat center;
+    // background-size: cover;
 
     .entrada {
         margin: 0;
@@ -123,7 +125,7 @@ hr {
             color: white;
             text-align: center;
             background: $primary;
-            border: 1px solid white;
+            border: 2px solid white;
             width: 275px;
             max-width: 300px;
 
@@ -131,6 +133,7 @@ hr {
                 color: yellow;
                 border-left-color: yellow;
                 border-right-color: yellow;
+                box-shadow: 0 0 3px yellow;
             }
         }
 
@@ -156,6 +159,7 @@ hr {
         .validacion {
             display: block;
             color: yellow !important;
+            font-size: 10px;
             padding-left: 5px;
             margin: 0 auto;
             position: absolute;
@@ -170,7 +174,7 @@ hr {
     .boton {
         color: white;
         background: none;
-        border: 1px solid white;
+        border: 2px solid white;
         border-radius: 2px;;
         box-shadow: none;
         margin-top: 25px;
@@ -178,6 +182,7 @@ hr {
         &:hover {
             color: yellow;
             border-color: yellow;
+            box-shadow: 0 0 3px yellow;
         }
 
         &:active {
