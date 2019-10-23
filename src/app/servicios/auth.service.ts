@@ -72,8 +72,16 @@ export class AuthService {
   // ──────────────── //
 
   private guardarToken( idToken: string ) {
+
+    // Almacenamos el token en el local storage
     this.userToken = idToken;
     localStorage.setItem( 'token', idToken);
+
+    // Almacenamos la fecha de expiración en el local storage
+    let hoy = new Date();
+    hoy.setSeconds( 3600 );
+
+    localStorage.setItem( 'expira', hoy.getTime().toString() );
   }
 
   private leerToken() {
@@ -81,6 +89,13 @@ export class AuthService {
   }
 
   usuarioLogueado(): boolean {
-    return this.userToken.length > 2;
+
+    if ( this.userToken.length < 2 ) {
+      return false;
+    }
+
+    const fechaExpiracion = new Date().setTime( Number( localStorage.getItem( 'expira' )));
+
+    return fechaExpiracion > Number( new Date());
   }
 }
