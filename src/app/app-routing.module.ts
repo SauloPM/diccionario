@@ -12,16 +12,19 @@ import { FormularioComponent } from './componentes/formulario/formulario.compone
 
 const routes: Routes = [
 
-  // Componentes
+  // Mapeo ruta - componente
   { path: 'login', component: LoginComponent },
 
-  // Componetes » Rutas con parámetros
-  { path: 'listado/palabras'                    , component: InicioComponent,     canActivate: [ AuthGuard ] },
-  { path: 'listado/:categoria'                  , component: ListadoComponent,    canActivate: [ AuthGuard ] },
-  { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent, canActivate: [ AuthGuard ] },
+  // Mapeo ruta con parámetros - componente
+  { path: 'diccionario', component: InicioComponent, canActivate: [ AuthGuard ], children: [
+    { path: 'listado/:categoria'                  , component: ListadoComponent,    canActivate: [ AuthGuard ] },
+    { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent, canActivate: [ AuthGuard ] },
+  ]},
 
-  // Mapeos especiales
-  { path: '**', pathMatch: 'full', redirectTo: 'login'}
+  // Mapeo ruta » ruta
+  { path: '**'                 , pathMatch: 'full', redirectTo: 'login'                       },
+  { path: 'diccionario/listado', pathMatch: 'full', redirectTo: 'diccionario/listado/palabras'}
+
 
 ];
 

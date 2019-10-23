@@ -23,7 +23,7 @@
 
                 <!-- Botones -->
                 <div class="opciones">
-                    <a class="opcion editar" [routerLink]="['/formulario', 'modificar', categoria, item.id]">
+                    <a class="opcion editar" [routerLink]="['/diccionario/formulario', 'modificar', categoria, item.id]">
                         <i class="icono fa fa-pencil" aria-hidden="true"></i>
                     </a>
                     <a class="opcion borrar" (click)="borrar( item, i )">
@@ -40,7 +40,7 @@
     </ng-container>
 
     <!-- Nuevo -->
-    <a class="nuevo" [routerLink]="['/formulario', 'crear', categoria, '']">
+    <a class="nuevo" [routerLink]="['/diccionario/formulario', 'crear', categoria, '']">
         <i class="icono fa fa-plus" aria-hidden="true"></i>
     </a>
 </div>

@@ -82,7 +82,6 @@ export class ServicioService {
         elementosVector.push( tmp );
       }
 
-
     });
 
     return elementosVector;

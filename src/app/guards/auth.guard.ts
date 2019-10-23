@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
 
-    if (this.auth.usuarioLogueado() ) {
+    if ( this.auth.usuarioLogueado() ) {
       return true;
     }
     else {

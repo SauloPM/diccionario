@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { AuthService } from './../../servicios/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 
-  constructor() { }
+  constructor( private auth: AuthService, private router: Router) { }
 
+  salir() {
+
+    // Eliminamos el token del local storage
+    this.auth.logout();
+
+    // Redirigimos al usuario a la página del login
+    this.router.navigateByUrl( '/login' );
+  }
 }
