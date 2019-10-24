@@ -115,8 +115,6 @@ hr {
     justify-content: center;
     background: $primary;
     min-height: 100vh;
-    // background: url('assets/img/bg5.jpg') no-repeat center;
-    // background-size: cover;
 
     .entrada {
 
@@ -173,8 +171,23 @@ hr {
 
     // Recordar usuario
 
-    label {
-        color: white;
+    .recordar-usuario {
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px 0 0 10px;
+        width: 100%;
+        max-width: 400px;
+
+        input {
+            margin-right: 5px;
+        }
+
+        label {
+            color: white;
+            font-size: 10px;
+            position: relative;
+            bottom: 1px;
+        }
     }
 
     // Placeholder
