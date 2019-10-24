@@ -1,27 +1,38 @@
-<div id="menu">
+<nav class="navbar navbar-expand-md">
     <div class="container">
-        <div class="items">
-            <div class="izquierda">
-                <div class="item" routerLinkActive="activo">
-                    <a [routerLink]="['listado', 'palabras']">Palabras</a>
-                </div>
-                <div class="item" routerLinkActive="activo">
-                    <a [routerLink]="['listado', 'verbos']">Verbos</a>
-                </div>
-                <div class="item" routerLinkActive="activo">
-                    <a [routerLink]="['listado', 'frases']">Frases</a>
-                </div>
-                <div class="item" routerLinkActive="activo">
-                    <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
-                </div>
-            </div>
-            <div class="derecha">
-                <div class="item" routerLinkActive="activo">
-                    <a [routerLink]="['login']" (click)="salir()">
-                        Salir
-                    </a>
-                </div>
-            </div>
+
+        <!-- Burger button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="barra"></span>
+            <span class="barra"></span>
+            <span class="barra"></span>
+        </button>
+
+        <!-- Items -->
+        <div id="collapsibleNavbar" class="collapse navbar-collapse">
+
+            <!-- Izquierda -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['listado', 'palabras']">Palabras</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['listado', 'verbos']">Verbos</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['listado', 'frases']">Frases</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['listado', 'expresiones']">Expresiones</a>
+                </li>
+            </ul>
+
+            <!-- Derecha -->
+            <ul class="navbar-nav">
+                <li class="nav-item salir">
+                    <a class="nav-link" [routerLink]="['login']">Salir</a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>

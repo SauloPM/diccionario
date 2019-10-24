@@ -10,7 +10,7 @@ $lightprimary: rgb(135,080,245);
 
 // Responsive breakpoints
 
-$mobile : 480px;
+$mobile : 576px;
 $tablet : 768px;
 $laptop : 980px;
 $desktop: 1200px;
@@ -30,19 +30,29 @@ input:focus::-webkit-input-placeholder { color: transparent }
 ::-moz-selection { color: white; background: $primary }
      ::selection { color: white; background: $primary }
 
+// Scrollbar
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
 // ─────────────── //
 //     GENERAL     //
 // ─────────────── //
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: $primary;
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Poppins', sans-serif;
 }
 
 h1 {
     color: black;
-    font-size: 35px;
+    font-size: 30px;
     font-family: 'Arsenal', sans-serif;
 }
 
@@ -57,6 +67,19 @@ hr {
     justify-content: space-between;
     flex-direction: column;
     min-height: 100vh;
+}
+
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
 }
 
 // ───────────── //
@@ -339,6 +362,8 @@ input:-webkit-autofill:focus {
     
     .ingles,
     .castellano {
+        display: flex;
+        align-items: center;
         flex-shrink: 0;
         color: black;
         padding: 10px 15px;
@@ -421,36 +446,96 @@ input:-webkit-autofill:focus {
 //     NAVBAR     //
 // ────────────── //
 
-#menu {
+.navbar {
     background: $primary;
+    padding: 0;
 
-    .items {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    // Items
 
-        .izquierda {
-            display: flex;
+    .nav-item {
+        background: $lightprimary;
+        border-bottom: 1px solid rgba(095,040,205,.25);
+
+        .nav-link {
+            color: white;
+            padding: 10px 25px;
         }
 
-        .item {
-            
-            a {
-                display: block;
-                color: white;
-                text-decoration: none;
+        &.active .nav-link {
+            color: $darkprimary;
+        }
+
+        &.salir {
+            border: none;
+        }
+    }
+
+    // Burger Button
+
+    .navbar-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        border: none;
+        outline: none;
+        margin: 8px 16px 8px auto;
+        height: 35px;
+        width: 35px;
+
+        .barra {
+            display: block;
+            background: white;
+            width: 25px;
+            height: 1px;
+        }
+    }
+}
+
+@media only screen and (min-width: $mobile) {
+
+    .navbar {
+        
+        // Burger Button
+
+        .navbar-toggler {
+            margin: 8px 0 8px auto;
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet) {
+    
+    .navbar {
+        background-image: linear-gradient(45deg, $primary, $lightprimary);
+
+        // Items
+
+        .nav-item {
+            background: none;
+            border: none;
+
+            .nav-link {
                 padding: 20px 30px;
-                position: relative;
-                left: 0;
             }
-    
-            &.activo {
+
+            &.active {
                 background: $lightprimary;
+                
+                .nav-link {
+                    color: white;
+                }
             }
-    
-            &:hover:not(.activo) a {
+
+            &:hover:not(.active) .nav-link {
                 animation: meneo 1s;
             }
+        }
+
+        // Burger Button
+
+        .navbar-toggler {
+            display: none;
         }
     }
 }
