@@ -12,9 +12,6 @@ import { ServicioService } from './../../servicios/servicio.service';
 // SweetAlert2
 import Swal from 'sweetalert2';
 
-// Observables
-import { Observable } from 'rxjs';
-
 // Get parameter from URL
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -90,7 +87,11 @@ export class FormularioComponent {
     Swal.fire({
       title: 'Operación completada',
       text: 'Operación completada con éxito',
-      type: 'success'
+      type: 'success',
+      timer: 1000,
+      padding: '50px',
+      showConfirmButton: false,
+      allowOutsideClick: true
     }).then( () => {
 
       // Vaciamos el formulario
@@ -98,7 +99,7 @@ export class FormularioComponent {
 
       // Volvemos al listado
       if ( operacion === 'modificar' ) {
-        this.router.navigate( ['/listado', this.categoria] );
+        this.router.navigate( ['/diccionario/listado', this.categoria] );
       }
     });
   }
@@ -125,19 +126,24 @@ export class FormularioComponent {
 
   existenCamposVacios( formulario: NgForm ): boolean {
 
-    if ( formulario.invalid ) {
+    let inputIngles     = document.querySelector('.entrada input[name="ingles"]'    ) as HTMLInputElement;
+    let inputCastellano = document.querySelector('.entrada input[name="castellano"]') as HTMLInputElement;
+
+    let existenCamposVacios: boolean = formulario.invalid || inputIngles.value.trim() === '' || inputCastellano.value.trim() === '' ? true : false;
+
+    if ( existenCamposVacios ) {
       Swal.fire({
         title: 'Se ha producido un error',
         text: 'Es posible que haya dejado campos obligatorios vacíos',
         type: 'error',
-        timer: 2500,
+        timer: 1500,
         padding: '50px',
         showConfirmButton: false,
         allowOutsideClick: true
       });
     }
 
-    return formulario.invalid;
+    return existenCamposVacios;
   }
 
   rellenarFormulario() {
@@ -153,7 +159,9 @@ export class FormularioComponent {
     let inputIngles     = document.querySelector('.entrada input[name="ingles"]'    ) as HTMLInputElement;
     let inputCastellano = document.querySelector('.entrada input[name="castellano"]') as HTMLInputElement;
 
-    inputIngles.value = '';
+    inputIngles    .value = '';
     inputCastellano.value = '';
+
+    inputIngles.focus();
   }
 }
