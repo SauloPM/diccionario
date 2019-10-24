@@ -22,8 +22,9 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 
-  usuario: UsuarioModel = new UsuarioModel();
-  recordarUsuario: boolean = false;
+  usuario          : UsuarioModel = new UsuarioModel();
+  recordarUsuario  : boolean      = false;
+  mensajeErrorEmail: string       = '';
 
   // ─────────────── //
   //     MÉTODOS     //
@@ -38,15 +39,33 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // pepe() {
-  //   console.log($('.entrada.email input').val());
-  // }
-
   onSubmit( formulario: NgForm ) {
 
-    // this.pepe();
-
     if ( formulario.invalid ) {
+
+      let errorEmail = formulario.controls['email'].errors;
+      let errorClave = formulario.controls['clave'].errors;
+
+      if ( errorEmail !== null ) {
+
+        this.mensajeErrorEmail = errorEmail.email ? 'El formato es incorrecto' : 'Este campo es obligatorio';
+
+        $('.entrada.email input').addClass('animated shake fast');
+
+        setTimeout( () => {
+          $('.entrada.email input').removeClass('animated shake fast');
+        }, 1000);
+      }
+
+      if ( errorClave !== null ) {
+
+        $('.entrada.clave input').addClass('animated shake fast');
+
+        setTimeout( () => {
+          $('.entrada.clave input').removeClass('animated shake fast');
+        }, 1000);
+      }
+
       return;
     }
 
@@ -58,6 +77,7 @@ export class LoginComponent implements OnInit {
     });
     Swal.showLoading();
 
+    // Comprobamos que los datos del usuario sean correctos
     this.auth.login( this.usuario ).subscribe( respuesta => {
 
       // Cerramos el loading
@@ -78,7 +98,8 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         type: 'error',
         title: 'Se ha producido un error',
-        text: excepcion.error.error.message,
+        text: 'Datos incorrectos',
+        // text: excepcion.error.error.message,
         allowOutsideClick: false
       });
 

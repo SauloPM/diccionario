@@ -3,14 +3,14 @@
 
         <!-- Email -->
         <div class="entrada email">
-            <small *ngIf="formularioLogin.submitted && formularioLogin.controls['email'].errors" class="validacion animated fadeIn text-danger text-left">Este campo es obligatorio</small>
-            <input type="email" email placeholder="Email" required [(ngModel)]="usuario.email" name="email" autocomplete="off">
+            <small *ngIf="formularioLogin.submitted && formularioLogin.controls['email'].errors" class="validacion animated fadeIn">{{ mensajeErrorEmail }}</small>
+            <input type="email" email placeholder="Email" required [(ngModel)]="usuario.email" name="email" autocomplete="off" spellcheck="false">
         </div>
 
         <!-- Contraseña -->
         <div class="entrada clave">
-            <small *ngIf="formularioLogin.submitted && formularioLogin.controls['clave'].errors" class="validacion animated fadeIn text-danger text-left">Este campo es obligatorio</small>
-            <input type="password" placeholder="Contraseña" required [(ngModel)]="usuario.clave" name="clave" autocomplete="off">
+            <small *ngIf="formularioLogin.submitted && formularioLogin.controls['clave'].errors" class="validacion animated fadeIn">Este campo es obligatorio</small>
+            <input type="password" placeholder="Contraseña" required [(ngModel)]="usuario.clave" name="clave" autocomplete="off" spellcheck="false">
         </div>
 
         <!-- Botón -->

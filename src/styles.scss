@@ -119,45 +119,25 @@ hr {
     // background-size: cover;
 
     .entrada {
-        margin: 0;
 
         input {
             color: white;
             text-align: center;
             background: $primary;
             border: 2px solid white;
+            border-radius: 2px;
             width: 275px;
             max-width: 300px;
+            transition: .25s;
 
             &:focus {
                 color: yellow;
-                border-left-color: yellow;
-                border-right-color: yellow;
-                box-shadow: 0 0 3px yellow;
-            }
-        }
-
-        &.email input {
-            border-bottom: none;
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-
-            &:focus {
-                border-top-color: yellow;
-            }
-        }
-
-        &.clave input {
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-
-            &:focus {
-                border-bottom-color: yellow;
+                border-color: yellow;
+                box-shadow: 0 0 5px yellow, inset 1px 1px 10px $darkprimary;
             }
         }
 
         .validacion {
-            display: block;
             color: yellow !important;
             font-size: 10px;
             padding-left: 5px;
@@ -177,7 +157,7 @@ hr {
         border: 2px solid white;
         border-radius: 2px;;
         box-shadow: none;
-        margin-top: 25px;
+        margin-top: 40px;
         
         &:hover {
             color: yellow;
