@@ -28,6 +28,10 @@ export class ServicioService {
     );
   }
 
+  getItem( categoria: string, id: string ) {
+    return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);
+  }
+
   // ───────────── //
   //     CREAR     //
   // ───────────── //
@@ -44,10 +48,6 @@ export class ServicioService {
   // ───────────────── //
   //     MODIFICAR     //
   // ───────────────── //
-
-  getItem( categoria: string, id: string ) {
-    return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);
-  }
 
   modificar( categoria: string, item: Item ) {
     return this.http.put( `${ this.url }/${ categoria }/${ item.id }.json`, item );
