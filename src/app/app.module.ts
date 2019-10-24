@@ -13,10 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
 // Componentes
 import { AppComponent        } from './app.component';
 import { MenuComponent       } from './componentes/menu/menu.component';
+import { LoginComponent      } from './componentes/login/login.component';
+import { InicioComponent     } from './componentes/inicio/inicio.component';
 import { ListadoComponent    } from './componentes/listado/listado.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { InicioComponent } from './componentes/inicio/inicio.component';
 
 @NgModule({
   declarations: [

@@ -323,6 +323,7 @@ input:-webkit-autofill:focus {
     
     input {
         border: 1px solid $primary;
+        border-radius: 2px;
         padding: 5px 40px;
         max-width: 250px;
     }
@@ -368,8 +369,8 @@ input:-webkit-autofill:focus {
         top: 0;
         right: 0;
         bottom: 0;
-        opacity: 0;
         transition: .5s;
+        opacity: 0;
 
         .opcion {
             display: flex;
@@ -382,10 +383,15 @@ input:-webkit-autofill:focus {
             border-radius: 2px;
             width: 28px;
             height: 28px;
-            transition: .5s;
+            opacity: 0;
 
             &.editar {
                 margin-right: 5px;
+            }
+
+            &:hover {
+                color: white;
+                background: $primary;
             }
         }
     }
@@ -398,12 +404,24 @@ input:-webkit-autofill:focus {
 
         .opciones {
             opacity: 1;
+
+            .opcion.editar {
+                animation: revelar .5s .25s forwards;
+            }
     
-            .opcion:hover {
-                color: white;
-                background: $primary;
+            .opcion.borrar {
+                animation: revelar .5s .5s forwards;
             }
         }
+    }
+}
+
+@keyframes revelar {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
