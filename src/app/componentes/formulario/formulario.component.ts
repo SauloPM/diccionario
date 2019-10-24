@@ -68,8 +68,27 @@ export class FormularioComponent {
   // ──────────────── //
 
   crearItem() {
-    this.servicio.crear( this.categoria, this.item ).subscribe( data => {
-      this.notificarUsuario();
+    this.servicio.getRepetido( this.categoria, this.item.ingles ).subscribe( ( resultado: any ) => {
+
+      // ¿Elemento repetido?
+      if ( resultado.length > 0 ) {
+
+        // Notificamos al usuario
+        Swal.fire({
+          title: 'Se ha producido un error',
+          text: 'Ya existe un ítem con ese valor',
+          type: 'error',
+          timer: 1500,
+          padding: '50px',
+          showConfirmButton: false,
+          allowOutsideClick: true
+        });
+      }
+      else {
+        this.servicio.crear( this.categoria, this.item ).subscribe( data => {
+          this.notificarUsuario();
+        });
+      }
     });
   }
 

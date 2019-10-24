@@ -32,6 +32,14 @@ export class ServicioService {
     return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);
   }
 
+  getRepetido( categoria: string, valor: string ) {
+    return this.http.get(`${ this.url }/${ categoria }.json?orderBy="ingles"&equalTo="${ valor }"`).pipe(
+      map( this.crearVector )
+    );
+  }
+
+  // https://diccionario-13f5a.firebaseio.com/palabras.json?orderBy="ingles"&equalTo="Charade"
+
   // ───────────── //
   //     CREAR     //
   // ───────────── //
