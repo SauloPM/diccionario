@@ -25,6 +25,23 @@ input:focus::-webkit-input-placeholder { color: transparent }
      input:focus:-ms-input-placeholder { color: transparent }
               input:focus::placeholder { color: transparent }
 
+
+// Autofill
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    animation-name: autocompletar;
+    animation-fill-mode: both;
+}
+
+@keyframes autocompletar {
+    to {
+        color: white;
+        background: transparent;
+    }
+}
+
 // Text selection
 
 ::-moz-selection { color: white; background: $primary }
@@ -136,7 +153,9 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $primary;
+    flex-direction: column;
+    background: url('assets/img/dibujo.png') no-repeat center;
+    background-size: cover;
     min-height: 100vh;
 
     .entrada {
@@ -145,16 +164,17 @@ hr {
             color: white;
             text-align: center;
             background: $primary;
+            background: linear-gradient(180deg, transparent 50%, rgba(255,255,255,.025) 50%);
             border: 2px solid white;
+            border: 1px solid rgba(255,255,255,.075);
             border-radius: 2px;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
             width: 275px;
             max-width: 300px;
             transition: .25s;
 
             &:focus {
-                color: yellow;
-                border-color: yellow;
-                box-shadow: 0 0 5px yellow, inset 1px 1px 10px $darkprimary;
+                border-color: rgba(255,255,255,.5);
             }
         }
 
@@ -173,22 +193,48 @@ hr {
     }
 
     .boton {
-        color: white;
-        background: none;
+        display: block;
+        color: rgba(255,255,255,.7);
+        background: rgba(255,255,255,.25);
         border: 2px solid white;
+        border: none;
         border-radius: 2px;;
         box-shadow: none;
         margin-top: 40px;
+        position: relative;
+        height: 40px;
+        overflow: hidden;
+
+        .icono {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .icono:first-child {
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .icono:last-child {
+            right: -150%;
+            transform: translateX(-50%) translateY(-50%);
+        }
         
         &:hover {
-            color: yellow;
-            border-color: yellow;
-            box-shadow: 0 0 3px yellow;
+            background: rgba(255,255,255,.35);
+            
+            .icono:first-child {
+                animation: mover1 .5s .25s forwards;
+            }
+    
+            .icono:last-child {
+                animation: mover2 .5s .5s forwards;
+            }
         }
 
         &:active {
-            color: $primary;
-            background: yellow;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
         }
     }
 
@@ -196,6 +242,7 @@ hr {
 
     .recordar-usuario {
         display: flex;
+        display: none;
         justify-content: flex-start;
         padding: 10px 0 0 10px;
         width: 100%;
@@ -215,27 +262,41 @@ hr {
 
     // Placeholder
 
-    input::-webkit-input-placeholder { color: white }
-         input:-ms-input-placeholder { color: white }
-                  input::placeholder { color: white }
+    input::-webkit-input-placeholder { color: rgba(255,255,255,.35) }
+         input:-ms-input-placeholder { color: rgba(255,255,255,.35) }
+                  input::placeholder { color: rgba(255,255,255,.35) }
 
     input:focus::-webkit-input-placeholder { color: transparent }
          input:focus:-ms-input-placeholder { color: transparent }
                   input:focus::placeholder { color: transparent }
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus {
-    animation-name: autocompletar;
-    animation-fill-mode: both;
+@keyframes mover1 {
+
+    from {
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    to {
+        left: 150%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
 }
 
-@keyframes autocompletar {
-    to {
-        color: white;
-        background: $primary;
+@keyframes mover2 {
+
+    from {
+        right: 150%;
+        transform: translateX(-50%) translateY(-50%);
     }
+
+    to {
+        right: 50%;
+        transform: translateX(50%) translateY(-50%);
+    }
+
 }
 
 // ────────────────── //
