@@ -27,12 +27,12 @@ export class AuthService {
     this.leerToken();
   }
 
-  registrarse() {
+  registrarse( usuario: UsuarioModel ) {
 
     // Cabeceras de la petición HTTP
     const authData = {
-      email: '',
-      password: '',
+      email: usuario.email,
+      password: usuario.clave,
       returnSecureToken: true
     };
 
@@ -70,6 +70,10 @@ export class AuthService {
   // ──────────────── //
   //     AUXILIAR     //
   // ──────────────── //
+  
+  private leerToken() {
+    return this.userToken = localStorage.getItem( 'token') ? localStorage.getItem( 'token' ) : '';
+  }
 
   private guardarToken( idToken: string ) {
 
@@ -82,10 +86,6 @@ export class AuthService {
     hoy.setSeconds( 3600 );
 
     localStorage.setItem( 'expira', hoy.getTime().toString() );
-  }
-
-  private leerToken() {
-    return this.userToken = localStorage.getItem( 'token') ? localStorage.getItem( 'token' ) : '';
   }
 
   usuarioLogueado(): boolean {
