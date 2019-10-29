@@ -90,12 +90,14 @@ export class AuthService {
 
   usuarioLogueado(): boolean {
 
+    // Comprobamos que el token de seguridad se encuentre almacenado en el local storage
     if ( this.userToken.length < 2 ) {
       return false;
     }
 
+    // En caso afirmativo, comprobamos que no haya expirado
     const fechaExpiracion = new Date().setTime( Number( localStorage.getItem( 'expira' )));
 
-    return fechaExpiracion > Number( new Date());
+    return fechaExpiracion > Number( new Date() );
   }
 }
