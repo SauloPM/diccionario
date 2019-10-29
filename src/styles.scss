@@ -39,6 +39,7 @@ input:-webkit-autofill:focus {
     to {
         color: white;
         background: transparent;
+        background-image: linear-gradient(180deg, transparent 50%, rgba(255,255,255,.025) 50%);
     }
 }
 
@@ -64,13 +65,14 @@ html {
 body {
     color: $primary;
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', 'Poppins', sans-serif;
 }
 
 h1 {
     color: black;
     font-size: 30px;
-    font-family: 'Arsenal', sans-serif;
+    font-weight: 700;
+    // font-family: 'Arsenal', sans-serif;
 }
 
 hr {
@@ -163,9 +165,8 @@ hr {
         input {
             color: white;
             text-align: center;
-            background: $primary;
-            background: linear-gradient(180deg, transparent 50%, rgba(255,255,255,.025) 50%);
-            border: 2px solid white;
+            background: none;
+            background-image: linear-gradient(180deg, transparent 50%, rgba(255,255,255,.025) 50%);
             border: 1px solid rgba(255,255,255,.075);
             border-radius: 2px;
             box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
@@ -195,7 +196,10 @@ hr {
     .boton {
         display: block;
         color: rgba(255,255,255,.7);
+        font-size: 18px;
         background: rgba(255,255,255,.25);
+        background: rgb(255,0,100);
+        background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.075) 50%);
         border: 2px solid white;
         border: none;
         border-radius: 2px;;
@@ -206,6 +210,7 @@ hr {
         overflow: hidden;
 
         .icono {
+            // text-shadow: 0 2px 5px rgb(70,15,100);
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -223,6 +228,7 @@ hr {
         
         &:hover {
             background: rgba(255,255,255,.35);
+            background: rgb(255,150,25);
             
             .icono:first-child {
                 animation: mover1 .5s .25s forwards;
