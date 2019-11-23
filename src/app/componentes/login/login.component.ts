@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem( 'email', this.usuario.email );
       }
 
-      this.router.navigateByUrl( '/diccionario/listado/palabras' );
+      this.router.navigateByUrl( 'diccionario/listado/palabras' );
 
     }, ( excepcion ) => {
 

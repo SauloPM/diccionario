@@ -21,15 +21,13 @@ const routes: Routes = [
     { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent, canActivate: [ AuthGuard ] },
   ]},
 
-  // Mapeo ruta » ruta
+  // Mapeo ruta - ruta
   { path: '**'                 , pathMatch: 'full', redirectTo: 'login'                       },
-  { path: 'diccionario/listado', pathMatch: 'full', redirectTo: 'diccionario/listado/palabras'}
-
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
