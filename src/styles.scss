@@ -574,6 +574,7 @@ hr {
     
     .navbar {
         background-image: linear-gradient(45deg, $primary, $lightprimary);
+        background-image: linear-gradient(45deg, $primary 45%, rgb(250,0,100));
 
         // Items
 
