@@ -44,11 +44,14 @@ export class ServicioService {
   //     CREAR     //
   // ───────────── //
 
-  crear( categoria: string, palabra: Item ) {
-    return this.http.post( `${ this.url }/${ categoria }.json`, palabra ).pipe(
+  crear( categoria: string, item: Item ) {
+
+    item = this.sanitize( item );
+
+    return this.http.post( `${ this.url }/${ categoria }.json`, item ).pipe(
       map( ( data: any ) => {
-        palabra.id = data.name;
-        return palabra;
+        item.id = data.name;
+        return item;
       })
     );
   }
@@ -58,6 +61,9 @@ export class ServicioService {
   // ───────────────── //
 
   modificar( categoria: string, item: Item ) {
+
+    item = this.sanitize( item );
+
     return this.http.put( `${ this.url }/${ categoria }/${ item.id }.json`, item );
   }
 
@@ -72,6 +78,18 @@ export class ServicioService {
   // ──────────────── //
   //     AUXILIAR     //
   // ──────────────── //
+
+  private sanitize( item: Item ) {
+
+    item.ingles = item.ingles.trim();
+    item.ingles = item.ingles[0].toUpperCase() + item.ingles.slice(1);
+
+    item.castellano = item.castellano.trim();
+    item.castellano = item.castellano[0].toUpperCase() + item.castellano.slice(1);
+
+    return item;
+
+  }
 
   private crearVector( elemento: object ) {
 
