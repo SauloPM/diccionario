@@ -86,7 +86,7 @@ hr {
     justify-content: space-between;
     flex-direction: column;
     min-height: 100vh;
-    padding-bottom: 112px;
+    padding-bottom: 113px; // Para dejar una distancia de 50 píxeles entre la tabla y el formulario al hacer scroll down al máximo
 }
 
 // Mobile First
@@ -388,6 +388,7 @@ hr {
     color: white;
     background: $primary;
     border: 1px solid $primary;
+    border-radius: 2px;
     // box-shadow: 0 2px 5px $darkprimary;
     outline: none;
     padding: 10px 20px;
