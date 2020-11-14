@@ -1,12 +1,13 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 // Get parameter from URL
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // Interfaces
 import { Item } from 'src/app/interfaces/item';
 
 // Servicios
+import { AuthService     } from './../../servicios/auth.service';
 import { ServicioService } from './../../servicios/servicio.service';
 
 // SweetAlert2
@@ -19,7 +20,7 @@ declare var $: any;
   selector: 'app-listado',
   templateUrl: './listado.component.html'
 })
-export class ListadoComponent implements AfterViewInit {
+export class ListadoComponent implements OnInit, AfterViewInit {
 
   items    : Item[] = [];
   categoria: string = '';
@@ -28,14 +29,23 @@ export class ListadoComponent implements AfterViewInit {
   //     MÉTODOS     //
   // ─────────────── //
 
-  constructor( private servicio: ServicioService, private router: ActivatedRoute ) {
+  constructor( private servicio: ServicioService, private auth: AuthService, private router: Router, private activatedRoute: ActivatedRoute ) {
     this.getCategoria();
+  }
+
+  ngOnInit() {
+
+    // Redirigimos al usuario a la página del login si no hubiera iniciado sesión
+    // if (!this.auth.usuarioLogueado()) {
+    //   alert('Hola');
+    //   this.router.navigateByUrl( '/login' );
+    // }
   }
 
   ngAfterViewInit() {
 
     // Escribir algo en el buscador
-    $(document).on('input', '.buscador input', () => {
+    $( document ).on( 'input', '.buscador input', () => {
 
       let textoIngles  = '';
       let secuencia    = $('.buscador input').val().toLowerCase().trim();
@@ -79,7 +89,7 @@ export class ListadoComponent implements AfterViewInit {
   // ──────────────── //
 
   getCategoria() {
-    this.router.params.subscribe( parametroURL => {
+    this.activatedRoute.params.subscribe( parametroURL => {
       this.categoria = parametroURL.categoria;
       this.getListado( this.categoria );
     });
