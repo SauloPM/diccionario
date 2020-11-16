@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 // Get parameter from URL
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,54 +20,60 @@ declare var $: any;
   selector: 'app-listado',
   templateUrl: './listado.component.html'
 })
-export class ListadoComponent implements OnInit, AfterViewInit {
+export class ListadoComponent implements OnInit {
 
   items    : Item[] = [];
   categoria: string = '';
+
+  @ViewChild( 'formulario', { static: true } ) formulario: any;
 
   // ─────────────── //
   //     MÉTODOS     //
   // ─────────────── //
 
-  constructor( private servicio: ServicioService, private auth: AuthService, private router: Router, private activatedRoute: ActivatedRoute ) {
-    this.getCategoria();
-  }
-
+  constructor( private servicio: ServicioService, private auth: AuthService, private router: Router, private activatedRoute: ActivatedRoute ) { }
+  
   ngOnInit() {
+    
+    this.getCategoria();
 
     // Redirigimos al usuario a la página del login si no hubiera iniciado sesión
-    // if (!this.auth.usuarioLogueado()) {
-    //   alert('Hola');
-    //   this.router.navigateByUrl( '/login' );
-    // }
+    if ( !this.auth.usuarioLogueado() ) {
+      this.router.navigateByUrl( '/login' );
+    }
   }
 
-  ngAfterViewInit() {
+  buscar( secuencia: string ) {
 
-    // Escribir algo en el buscador
-    $( document ).on( 'input', '.buscador input', () => {
+    let textoIngles  = '';
 
-      let textoIngles  = '';
-      let secuencia    = $('.buscador input').val().toLowerCase().trim();
+    secuencia = secuencia.toLowerCase().trim();
 
-      $('.elemento .ingles').each( function() {
+    $( '.elemento .ingles' ).each( function() {
 
-        textoIngles = $(this).html().toLowerCase();
+      textoIngles = $( this ).html().toLowerCase();
 
-        // Ha habido coincidencias o no se ha escrito nada
-        if (( textoIngles.indexOf( secuencia ) > -1 ) || ( secuencia.length === 0 )) {
-          $(this).parent().css('display', '');
-        }
+      // Ha habido coincidencias o no se ha escrito nada
+      if (( textoIngles.indexOf( secuencia ) > -1 ) || ( secuencia.length === 0 )) {
+        $( this ).parent().css( 'display', '' );
+      }
 
-        // No ha habido coincidencia
-        else {
-          $(this).parent().css('display', 'none');
-        }
-      });
+      // No ha habido coincidencia
+      else {
+        $( this ).parent().css( 'display', 'none' );
+      }
     });
   }
 
-  borrar( item: Item, i: number ) {
+  editar( item: Item, categoria: string ) {
+
+    item.categoria = categoria;
+
+    this.formulario.rellenarFormulario( item );
+  }
+
+  eliminar( item: Item, i: number ) {
+
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Esta acción no puede deshacerse',
@@ -82,6 +88,15 @@ export class ListadoComponent implements OnInit, AfterViewInit {
         this.servicio.eliminar( this.categoria, item.id ).subscribe();
       }
     });
+  }
+
+  refrescarListado( categoria: string ) {
+
+    if ( categoria !== this.categoria ) {
+      this.router.navigate([ '/diccionario/listado', categoria ]);
+    } else {
+      this.getListado( categoria );
+    }
   }
 
   // ──────────────── //

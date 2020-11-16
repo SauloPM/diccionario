@@ -12,7 +12,7 @@
 
         <!-- Buscador -->
         <div class="entrada buscador">
-            <input type="text" placeholder="Buscar">
+            <input #buscador type="text" placeholder="Buscar en este listado" (keyup)="buscar( buscador.value )">
             <i class="icono fa fa-search" aria-hidden="true"></i>
         </div>
         
@@ -31,10 +31,10 @@
 
                 <!-- Botones para editar y eliminar -->
                 <div class="opciones">
-                    <a class="opcion editar" [routerLink]="['/diccionario/formulario', 'modificar', categoria, item.id]">
+                    <a class="opcion editar" (click)="editar(item, categoria)">
                         <i class="icono fa fa-pencil" aria-hidden="true"></i>
                     </a>
-                    <a class="opcion borrar" (click)="borrar( item, i )">
+                    <a class="opcion borrar" (click)="eliminar( item, i )">
                         <i class="icono fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -54,6 +54,6 @@
     </a> -->
 
     <!-- Formulario -->
-    <app-formulario></app-formulario>
+    <app-formulario #formulario (onModificarListado)="refrescarListado( $event )"></app-formulario>
 
 </div>
