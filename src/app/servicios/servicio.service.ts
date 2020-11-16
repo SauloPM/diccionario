@@ -32,8 +32,9 @@ export class ServicioService {
     return this.http.get(`${ this.url }/${ categoria }/${ id }.json`);
   }
 
-  getRepetido( categoria: string, valor: string ) {
-    return this.http.get(`${ this.url }/${ categoria }.json?orderBy="ingles"&equalTo="${ valor }"`).pipe(
+  getRepetido( item: Item ) {
+
+    return this.http.get(`${ this.url }/${ item.categoria }.json?orderBy="ingles"&equalTo="${ item.ingles }"`).pipe(
       map( this.crearVector )
     );
   }
@@ -44,11 +45,11 @@ export class ServicioService {
   //     CREAR     //
   // ───────────── //
 
-  crear( categoria: string, item: Item ) {
+  crear( item: Item ) {
 
     item = this.sanitize( item );
 
-    return this.http.post( `${ this.url }/${ categoria }.json`, item ).pipe(
+    return this.http.post( `${ this.url }/${ item.categoria }.json`, item ).pipe(
       map( ( data: any ) => {
         item.id = data.name;
         return item;
