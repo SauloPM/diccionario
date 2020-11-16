@@ -1,40 +1,57 @@
-import { Component } from '@angular/core';
-
-// Interfaces
-import { Item } from 'src/app/interfaces/item';
-
-// Manejo de formularios
-import { NgForm } from '@angular/forms';
+import { NgForm    } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 // Servicios
 import { ServicioService } from './../../servicios/servicio.service';
 
+// Interfaces
+import { Item } from 'src/app/interfaces/item';
+
 // SweetAlert2
 import Swal from 'sweetalert2';
+import { isNullOrUndefined } from 'util';
 
-// Get parameter from URL
-import { ActivatedRoute, Router } from '@angular/router';
+// jQuery
+declare var $: any;
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html'
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit {
 
-  id       : string = '';
-  titulo   : string = '';
-  operacion: string = '';
-  categoria: string = 'palabras';
-  categoriaOriginal: string = '';
+  estadoFormulario     : string;
+  textoCierreFormulario: string;
+  categoriaOriginal    : string = '';
 
-  item : Item   = { ingles: '', castellano: '' };
+  item: Item = { id: '', ingles: '', castellano: '', categoria: 'palabras' };
+
+  @Output() onModificarListado: EventEmitter<string>;
 
   // ─────────────── //
   //     MÉTODOS     //
   // ─────────────── //
 
-  constructor( private servicio: ServicioService, private router: Router, private activatedRoute: ActivatedRoute ) {
-    this.getParametrosURL();
+  constructor( private servicio: ServicioService ) {
+    this.onModificarListado = new EventEmitter();
+  }
+
+  ngOnInit() {
+
+    this.estadoFormulario = localStorage.getItem( 'estado-formulario' );
+
+    console.log( this.estadoFormulario );
+
+    if ( isNullOrUndefined( this.estadoFormulario ) ) {
+      this.estadoFormulario = 'abierto';
+    }
+
+    if ( this.estadoFormulario === 'abierto' ) {
+      this.abrirFormulario( 0 );
+    }
+    else {
+      this.cerrarFormulario( 0 );
+    }
   }
 
   guardar( formulario: NgForm ) {
@@ -54,8 +71,10 @@ export class FormularioComponent {
     });
     Swal.showLoading();
 
+    this.sanitize( this.item );
+
     // Ejecutamos la consulta según el caso
-    if ( this.operacion === 'crear' ) {
+    if ( this.item.id === '' ) {
       this.crearItem();
     }
     else {
@@ -67,8 +86,9 @@ export class FormularioComponent {
   //     AUXILIAR     //
   // ──────────────── //
 
-  crearItem() {
-    this.servicio.getRepetido( this.categoria, this.item.ingles ).subscribe( ( resultado: any ) => {
+  crearItem() {  
+
+    this.servicio.getRepetido( this.item ).subscribe( ( resultado: any ) => {
 
       // ¿Elemento repetido?
       if ( resultado.length > 0 ) {
@@ -85,7 +105,7 @@ export class FormularioComponent {
         });
       }
       else {
-        this.servicio.crear( this.categoria, this.item ).subscribe( data => {
+        this.servicio.crear( this.item ).subscribe( () => {
           this.notificarUsuario();
         });
       }
@@ -93,14 +113,15 @@ export class FormularioComponent {
   }
 
   modificarItem() {
-    this.servicio.eliminar( this.categoriaOriginal, this.id ).subscribe( () => {
-      this.servicio.crear( this.categoria, this.item ).subscribe( () => {
-        this.notificarUsuario( 'modificar' );
+
+    this.servicio.eliminar( this.categoriaOriginal, this.item.id ).subscribe( () => {
+      this.servicio.crear( this.item ).subscribe( () => {
+        this.notificarUsuario();
       });
     });
   }
 
-  notificarUsuario( operacion?: string ) {
+  notificarUsuario() {
 
     // Notificamos al usuario
     Swal.fire({
@@ -112,36 +133,14 @@ export class FormularioComponent {
       showConfirmButton: false,
       allowOutsideClick: true
     }).then( () => {
-
-      // Vaciamos el formulario
       this.vaciarFormulario();
-
-      // Volvemos al listado
-      if ( operacion === 'modificar' ) {
-        this.router.navigate( ['/diccionario/listado', this.categoria] );
-      }
+      this.onModificarListado.emit( this.item.categoria );
     });
   }
 
-  getParametrosURL() {
-    this.activatedRoute.params.subscribe( parametroURL => {
-
-      this.id        = parametroURL['id'       ];
-      this.operacion = parametroURL['operacion'];
-      this.categoria = parametroURL['categoria'];
-
-      this.categoriaOriginal = this.categoria;
-
-      this.rellenarFormulario();
-
-      this.titulo = this.operacion === 'crear' ? 'Crear nuevo ítem' : 'Modificar ítem';
-
-    });
-  }
-
-  cambiarCategoria( itemSeleccionado: string ) {
-    this.categoria = itemSeleccionado;
-  }
+  // ──────────────────── //
+  //     VALIDACIONES     //
+  // ──────────────────── //
 
   existenCamposVacios( formulario: NgForm ): boolean {
 
@@ -165,22 +164,79 @@ export class FormularioComponent {
     return existenCamposVacios;
   }
 
-  rellenarFormulario() {
-    if ( this.operacion !== 'crear' ) {
-      this.servicio.getItem( this.categoria, this.id ).subscribe( ( data: Item ) => {
-        this.item = data;
-      });
+  sanitize( item: Item ) {
+    
+    // Eliminamos los espacios sobrantes del principio y del final
+    item.ingles    .trim();
+    item.castellano.trim();
+
+    // Eliminamos el resto de espacios sobrantes
+    item.ingles    .replace( /\s+/g, ' ' );
+    item.castellano.replace( /\s+/g, ' ' );
+
+    // Eliminamos los símbolos '¡' y '¿' del texto en inglés porque en inglés no se utilizan
+    item.ingles.replace( /[^a-zA-Z!?()' ]/g, '' );
+
+    // Si se trata de un verbo y no empieza por "To", lo escribimos
+    if ( item.categoria === 'verbos' && item.ingles.search(/to/i) !== 0 ) {
+      item.ingles = `To ${ item.ingles }`;
     }
+
+    // Pasamos a mayúscula la primera letra
+    item.ingles    .replace( item.ingles    [0], item.ingles    [0].toUpperCase() );
+    item.castellano.replace( item.castellano[0], item.castellano[0].toUpperCase() );
+  }
+
+  // ────────────────── //
+  //     FORMULARIO     //
+  // ────────────────── //
+
+  rellenarFormulario( item: Item ) {
+    this.item.id           = item.id;
+    this.item.ingles       = item.ingles;
+    this.item.castellano   = item.castellano;
+    this.item.categoria    = item.categoria;
+    this.categoriaOriginal = item.categoria;
   }
 
   vaciarFormulario() {
+    this.item.id           = '';
+    this.item.ingles       = '';
+    this.item.castellano   = '';
+  }
 
-    let inputIngles     = document.querySelector('.entrada input[name="ingles"]'    ) as HTMLInputElement;
-    let inputCastellano = document.querySelector('.entrada input[name="castellano"]') as HTMLInputElement;
+  cambiarCategoria( categoria: string ) {
+    this.item.categoria = categoria;
+  }
 
-    inputIngles    .value = '';
-    inputCastellano.value = '';
+  minimizarFormulario() {
 
-    inputIngles.focus();
+    if ( this.estadoFormulario === 'abierto' ) {
+      this.cerrarFormulario();
+    } else {
+      this.abrirFormulario();
+    }
+    
+    this.estadoFormulario = this.estadoFormulario === 'abierto' ? 'cerrado' : 'abierto';
+    localStorage.setItem( 'estado-formulario', this.estadoFormulario );
+  }
+
+  abrirFormulario( duracionAnimacion: number = 250 ) {
+    $( '.formulario' ).animate({
+      bottom: '',
+    }, duracionAnimacion, () => {
+      this.textoCierreFormulario = 'Cerrar formulario';
+    });
+  }
+
+  cerrarFormulario( duracionAnimacion: number = 250 ) {
+
+    let alturaFormulario = $( '.formulario' ).outerHeight();
+
+    $( '.formulario' ).animate({
+      bottom: '-' + alturaFormulario + 'px',
+    }, duracionAnimacion, () => {
+      this.textoCierreFormulario = 'Abrir formulario';
+    });
   }
 }

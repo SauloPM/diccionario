@@ -1,5 +1,9 @@
-<form class="formulario" #miFormulario="ngForm" (ngSubmit)="guardar( miFormulario )" style="margin-top: 75px">
+<form #miFormulario="ngForm" class="formulario" (ngSubmit)="guardar( miFormulario )">
   <div class="container">
+
+    <small class="cierre" (click)="minimizarFormulario()">
+      {{ textoCierreFormulario }}
+    </small>
 
     <!-- Firebase ID -->
     <div class="entrada oculto">
@@ -18,7 +22,7 @@
 
     <!-- Categoría -->
     <div class="selector">
-      <select [(ngModel)]="categoria" name="categoria" (ngModelChange)="cambiarCategoria( $event )">
+      <select [(ngModel)]="item.categoria" name="categoria" (ngModelChange)="cambiarCategoria( $event )">
         <option value="palabras">Palabra</option>
         <option value="verbos">Verbos</option>
         <option value="frases">Frase</option>
