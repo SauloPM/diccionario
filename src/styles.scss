@@ -171,6 +171,7 @@ hr {
             border: 1px solid rgba(255,255,255,.075);
             border-radius: 2px;
             box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
+            margin-bottom: 25px;
             width: 275px;
             max-width: 300px;
             transition: .25s;
@@ -205,7 +206,7 @@ hr {
         border: none;
         border-radius: 2px;;
         box-shadow: none;
-        margin-top: 40px;
+        margin-top: 15px;
         position: relative;
         height: 40px;
         overflow: hidden;
@@ -314,7 +315,7 @@ hr {
     text-align: center;
     background: white;
     border-top: 1px solid $primary;
-    padding: 35px 100px;
+    padding: 35px 0;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -324,6 +325,19 @@ hr {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-column-gap: 25px;
+    }
+
+    .cierre {
+        color: $primary;
+        background: white;
+        border-top: 1px solid $primary;
+        border-left: 1px solid $primary;
+        padding: 5px 0 0;
+        position: absolute;
+        top: -22px;
+        right: 0;
+        width: 105px;
+        cursor: pointer;
     }
 }
 
@@ -500,11 +514,11 @@ hr {
             opacity: 1;
 
             .opcion.editar {
-                animation: revelar .5s .25s forwards;
+                animation: revelar .25s .1s forwards;
             }
     
             .opcion.borrar {
-                animation: revelar .5s .5s forwards;
+                animation: revelar .25s .15s forwards;
             }
         }
     }
