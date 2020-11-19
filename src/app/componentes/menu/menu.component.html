@@ -1,38 +1,40 @@
-<nav class="navbar navbar-expand-md">
-    <div class="container">
 
-        <!-- Burger button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="barra"></span>
-            <span class="barra"></span>
-            <span class="barra"></span>
-        </button>
+<div id="sidebar">
 
-        <!-- Items -->
-        <div id="collapsibleNavbar" class="collapse navbar-collapse">
-
-            <!-- Izquierda -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['listado', 'palabras']">Palabras</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['listado', 'verbos']">Verbos</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['listado', 'frases']">Frases</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['listado', 'expresiones']">Expresiones</a>
-                </li>
-            </ul>
-
-            <!-- Derecha -->
-            <ul class="navbar-nav">
-                <li class="nav-item salir">
-                    <a class="nav-link" href="#" (click)="salir()">Salir</a>
-                </li>
-            </ul>
-        </div>
+    <!-- Ítems -->
+    <div class="item" routerLinkActive="active">
+        <a [routerLink]="['listado', 'palabras']">Palabras</a>
     </div>
-</nav>
+    <div class="item" routerLinkActive="active">
+        <a [routerLink]="['listado', 'verbos']">Verbos</a>
+    </div>
+    <div class="item" routerLinkActive="active">
+        <a [routerLink]="['listado', 'frases']">Frases</a>
+    </div>
+    <div class="item" routerLinkActive="active">
+        <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
+    </div>
+    <div class="item" routerLinkActive="active">
+        <a [routerLink]="['gramatica', 'wish']">Wish</a>
+    </div>
+    <div class="item" routerLinkActive="active">
+        <a [routerLink]="['gramatica', 'used-to']">Used to</a>
+    </div>
+    <div class="item">
+        <a href="#" (click)="salir()">Cerrar sesión</a>
+    </div>
+
+    <!-- Cerrar sidebar -->
+    <div class="cerrar-sidebar" (click)="cerrarSidebar()">
+        <div class="barra"></div>
+        <div class="barra"></div>
+    </div>
+
+</div>
+
+<!-- Abrir sidebar -->
+<div class="abrir-sidebar" (click)="abrirSidebar()">
+    <div class="barra"></div>
+    <div class="barra"></div>
+    <div class="barra"></div>
+</div>
