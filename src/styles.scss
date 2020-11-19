@@ -1,19 +1,5 @@
 
-// Colores
-
-$primary     : rgb(25,155,255);
-$lightprimary: rgb(115,185,255);
-
-$primary     : rgb(095,040,205);
-$darkprimary : rgb(055,000,155);
-$lightprimary: rgb(135,080,245);
-
-// Responsive breakpoints
-
-$mobile : 576px;
-$tablet : 768px;
-$laptop : 980px;
-$desktop: 1200px;
+@import "~src/assets/styles/variables";
 
 // Placeholder
 
@@ -87,6 +73,11 @@ hr {
     flex-direction: column;
     min-height: 100vh;
     padding-bottom: 113px; // Para dejar una distancia de 50 píxeles entre la tabla y el formulario al hacer scroll down al máximo
+}
+
+#contenido {
+    margin-left: 300px;
+    transition: margin-left .25s;
 }
 
 // Mobile First
@@ -533,129 +524,58 @@ hr {
     }
 }
 
-// ────────────── //
-//     NAVBAR     //
-// ────────────── //
+// ───────────────── //
+//     GRAMÁTICA     //
+// ───────────────── //
 
-.navbar {
-    background: $primary;
-    padding: 0;
+#gramatica {
 
-    // Items
-
-    .nav-item {
-        background: $lightprimary;
-        border-bottom: 1px solid rgba(095,040,205,.25);
-
-        .nav-link {
-            color: white;
-            padding: 10px 25px;
-        }
-
-        &.active .nav-link {
-            color: $darkprimary;
-        }
-
-        &.salir {
-            border: none;
-        }
+    p {
+        color: black;
+        font-size: 15px;
+        margin-bottom: 35px;
     }
 
-    // Burger Button
-
-    .navbar-toggler {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-direction: column;
-        border: none;
-        outline: none;
-        margin: 8px 16px 8px auto;
-        height: 35px;
-        width: 35px;
-
-        .barra {
-            display: block;
-            background: white;
-            width: 25px;
-            height: 1px;
-        }
+    span {
+        color: $primary;
+        font-style: italic;
     }
-}
 
-@media only screen and (min-width: $mobile) {
+    .ejemplos {
+        background: transparentize($primary, 0.95);
+        border-left: 1px solid $primary;
+        padding: 35px;
+        margin-left: 35px;
+        margin-bottom: 35px;
 
-    .navbar {
-        
-        // Burger Button
+        p {
+            color: $primary;
+            font-style: italic;
 
-        .navbar-toggler {
-            margin: 8px 0 8px auto;
-        }
-    }
-}
-
-@media only screen and (min-width: $tablet) {
-    
-    .navbar {
-        background-image: linear-gradient(45deg, $primary, $lightprimary);
-        background-image: linear-gradient(45deg, $primary 45%, rgb(250,0,100));
-
-        // Items
-
-        .nav-item {
-            background: none;
-            border: none;
-
-            .nav-link {
-                padding: 20px 30px;
+            &:last-child {
+                margin-bottom: 0;
             }
 
-            &.active {
-                background: $lightprimary;
-                
-                .nav-link {
-                    color: white;
+            &.error {
+                color: red;
+
+                sup {
+                    font-size: 12px;
+                    font-style: normal;
+                    margin-left: 5px;
                 }
             }
-
-            &:hover:not(.active) .nav-link {
-                animation: meneo 1s;
-            }
         }
 
-        // Burger Button
-
-        .navbar-toggler {
-            display: none;
+        & + small {
+            display: block;
+            color: black;
+            font-size: 12px;
+            margin-top: -35px;
+            margin-left: 35px;
+            margin-bottom: 35px;
         }
     }
-}
-
-@keyframes meneo {
-
-    from, to {
-      transform: translate3d(0, 0, 0);
-    }
-  
-    10%, 30%, 50%, 70%, 90% {
-      transform: translate3d(-5px, 0, 0);
-    }
-  
-    20%, 40%, 60%, 80% {
-      transform: translate3d(5px, 0, 0);
-    }
-}
-
-// ────────────── //
-//     FOOTER     //
-// ────────────── //
-
-footer {
-    color: white;
-    text-align: center;
-    background: $primary;
-    padding: 12px;
 }
 
 // ───────────────────── //
