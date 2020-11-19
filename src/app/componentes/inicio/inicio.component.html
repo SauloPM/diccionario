@@ -1,9 +1,14 @@
 <div class="wrapper">
     <div>
-        <app-menu></app-menu>
-        <div class="container">
-            <router-outlet></router-outlet>
+
+        <!-- Sidebar -->
+        <app-menu (onAbrirSidebar)="abrirSidebar( $event )"></app-menu>
+
+        <!-- Contenido -->
+        <div id="contenido">
+            <div class="container">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
-    <!-- <footer>Diccionario</footer> -->
 </div>
