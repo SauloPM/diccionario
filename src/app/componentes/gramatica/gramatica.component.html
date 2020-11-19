@@ -1,0 +1,82 @@
+<div id="gramatica" class="animated fadeIn" style="margin: 50px 0">
+
+    <h1>{{ titulo }}</h1>
+    <hr>
+
+    <ng-container *ngIf="tiempoVerbal.length > 0">
+        <ng-container [ngSwitch]="tiempoVerbal">
+
+            <!--
+            ╔══════════════╗
+            ║     WISH     ║
+            ╚══════════════╝
+            -->
+
+            <ng-container *ngSwitchCase="'wish'">
+
+                <p>Se utiliza con el <strong>pasado simple</strong> para expresar un deseo</p>
+
+                <div class="ejemplos">
+                    <p>I wish I was younger</p>
+                    <p>He wishes he <u>were</u> rich</p>
+                    <p>He wishes she <u>were</u> travelling on first class</p>
+                </div>
+                <small>Nótese que hemos utilizado <span>were</span> en lugar de <span>was</span> con <span>he</span> y <span>she</span> para darle un aire más formal</small>
+
+                <p>Se utiliza con <strong>would</strong> para expresar el deseo de que una situación que nos produce enojo termine</p>
+
+                <div class="ejemplos">
+                    <p>I wish you would turn down the music!</p>
+                    <p class="error"><u>I</u> wish <u>I</u> would turn down the music!<sup><i class="fa fa-times-circle-o" aria-hidden="true"></i></sup></p>
+                </div>
+                <small>Nótese que el segundo ejemplo está mal, ya no se puede utilizar el mismo sujeto en ambas partes</small>
+
+                <p>Se utiliza con el <b>pasado perfecto</b> para expresar el deseo de haber hecho las cosas de manera distinta en el pasado (arrepentimiento)</p>
+
+                <div class="ejemplos">
+                    <p>I wish I had been paying attention during the lesson, now I feel lost!</p>
+                </div>
+
+            </ng-container>
+
+            <!--
+            ╔═════════════════╗
+            ║     USED TO     ║
+            ╚═════════════════╝
+            -->
+
+            <ng-container *ngSwitchCase="'used-to'">
+
+                <p>Se utiliza <b>usually + verb in infinitive</b> para algo que solemos hacer <u>en el presente</u></p>
+
+                <div class="ejemplos">
+                    <p>I usually go to sleep very soon</p>
+                    <p>I usually drink coffee after reading the news</p>
+                </div>
+                
+                <p>Se utiliza <b>used to + verb in infinitive</b> para algo que solíamos hacer <u>en el pasado, pero ahora no</u></p>
+
+                <div class="ejemplos">
+                    <p>I used to get up at six o'clock every morning</p>
+                    <p>I always used to do the houseworks every weekend</p>
+                </div>
+
+                <p>Se utiliza <strong>be used to + verb <u>in gerund</u></strong> para algo que <u>se ha convertido</u> en una rutina <u>en la actualidad</u></p>
+
+                <div class="ejemplos">
+                    <p>I'm used to work<u>ing</u> in a team</p>
+                    <p>He's finally used to liv<u>ing</u> in our country</p>
+                </div>
+
+                <p>Se utiliza <strong>get used to + verb <u>in gerund</u></strong> para algo que <u>todavía no se ha convertido</u> en una rutina, <u>estamos en el proceso</u></p>
+
+                <div class="ejemplos">
+                    <p>It's very hard to get used to working out every afternoon</p>
+                    <p>I can't get used to sleeping in complete darkness during the night, I'm terrified!</p>
+                </div>
+
+            </ng-container>
+
+        </ng-container>
+    </ng-container>
+</div>
