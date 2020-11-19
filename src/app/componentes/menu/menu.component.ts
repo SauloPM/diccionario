@@ -20,17 +20,6 @@ export class MenuComponent {
     this.onAbrirSidebar = new EventEmitter();
   }
 
-  abrirSidebar() {
-    $( '#sidebar' ).css( 'left', '' );
-    this.onAbrirSidebar.emit();
-  }
-  
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-  cerrarSidebar() {
-    $( '#sidebar' ).css( 'left', '-300px' );
-    this.onAbrirSidebar.emit( '0' );
-  }
-
   salir() {
 
     // Eliminamos el token del local storage
@@ -38,5 +27,44 @@ export class MenuComponent {
 
     // Redirigimos al usuario a la página del login
     this.router.navigateByUrl( '/login' );
+  }
+
+  // ─────────────── //
+  //     SIDEBAR     //
+  // ─────────────── //
+
+  abrirSidebar() {
+    $( '#sidebar' ).css( 'left', '' );
+    this.onAbrirSidebar.emit();
+  }
+  
+  cerrarSidebar() {
+    $( '#sidebar' ).css( 'left', '-300px' );
+    this.onAbrirSidebar.emit( '0' );
+  }
+
+  abrirSubmenu( target: string ) {
+
+    let flecha  = $( `.flecha[data-target=${ target }]` );
+    let submenu = $( `.submenu[data-target=${ target }]` );
+    let numeroItems = $( `.submenu[data-target=${ target }] > li` ).length;
+
+    // Giramos la flecha
+    if ( flecha.hasClass( 'active' )) {
+      flecha.css( 'transform', 'translateY(-50%)' );
+      flecha.removeClass( 'active' );
+    } else {
+      flecha.css( 'transform', 'translateY(-50%) rotate(180deg)' );
+      flecha.addClass( 'active' );
+    }
+
+    // Abrimos o cerramos el submenu
+    if ( submenu.hasClass( 'active' )) {
+      submenu.css( 'max-height', '' );
+      submenu.removeClass( 'active' );
+    } else {
+      submenu.css( 'max-height', numeroItems * 50+ 'px' );
+      submenu.addClass( 'active' );
+    }
   }
 }

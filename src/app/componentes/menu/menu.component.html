@@ -1,28 +1,5 @@
 
-<div id="sidebar">
-
-    <!-- Ítems -->
-    <div class="item" routerLinkActive="active">
-        <a [routerLink]="['listado', 'palabras']">Palabras</a>
-    </div>
-    <div class="item" routerLinkActive="active">
-        <a [routerLink]="['listado', 'verbos']">Verbos</a>
-    </div>
-    <div class="item" routerLinkActive="active">
-        <a [routerLink]="['listado', 'frases']">Frases</a>
-    </div>
-    <div class="item" routerLinkActive="active">
-        <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
-    </div>
-    <div class="item" routerLinkActive="active">
-        <a [routerLink]="['gramatica', 'wish']">Wish</a>
-    </div>
-    <div class="item" routerLinkActive="active">
-        <a [routerLink]="['gramatica', 'used-to']">Used to</a>
-    </div>
-    <div class="item">
-        <a href="#" (click)="salir()">Cerrar sesión</a>
-    </div>
+<ul id="sidebar">
 
     <!-- Cerrar sidebar -->
     <div class="cerrar-sidebar" (click)="cerrarSidebar()">
@@ -30,7 +7,65 @@
         <div class="barra"></div>
     </div>
 
-</div>
+    <li class="item">
+        <div (click)="abrirSubmenu('gramatica')">
+            Gramática
+            <i class="flecha fa fa-angle-down" data-target="gramatica"></i>
+        </div>
+
+        <ul class="submenu" data-target="gramatica">
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['gramatica', 'wish']">Wish</a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['gramatica', 'used-to']">Used to</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="item" routerLinkActive="active">
+        <div (click)="abrirSubmenu('vocabulario')">
+            Vocabulario
+            <i class="flecha fa fa-angle-down" data-target="vocabulario"></i>
+        </div>
+        
+        <ul class="submenu" data-target="vocabulario">
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['listado', 'palabras']">Palabras</a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['listado', 'verbos']">Verbos</a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['listado', 'frases']">Frases</a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="item" routerLinkActive="active">
+        <div (click)="abrirSubmenu('eoi')">
+            EOI
+            <i class="flecha fa fa-angle-down" data-target="eoi"></i>
+        </div>
+        
+        <ul class="submenu" data-target="eoi">
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['listado', 'palabras']">B1</a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['listado', 'verbos']">B2</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="item">
+        <a href="#" (click)="salir()">Cerrar sesión</a>
+    </li>
+
+</ul>
 
 <!-- Abrir sidebar -->
 <div class="abrir-sidebar" (click)="abrirSidebar()">
