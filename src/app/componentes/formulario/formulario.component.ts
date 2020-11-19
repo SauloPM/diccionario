@@ -182,7 +182,7 @@ export class FormularioComponent implements OnInit {
       item.ingles = `To ${ item.ingles }`;
     }
 
-    // Pasamos a mayúscula la primera letra
+    // Pasamos la primera letra a mayúscula
     item.ingles    .replace( item.ingles    [0], item.ingles    [0].toUpperCase() );
     item.castellano.replace( item.castellano[0], item.castellano[0].toUpperCase() );
   }
@@ -216,27 +216,35 @@ export class FormularioComponent implements OnInit {
     } else {
       this.abrirFormulario();
     }
-    
-    this.estadoFormulario = this.estadoFormulario === 'abierto' ? 'cerrado' : 'abierto';
-    localStorage.setItem( 'estado-formulario', this.estadoFormulario );
   }
 
   abrirFormulario( duracionAnimacion: number = 250 ) {
+
+    // Animación
     $( '.formulario' ).animate({
       bottom: '',
     }, duracionAnimacion, () => {
       this.textoCierreFormulario = 'Cerrar formulario';
     });
+
+    // Ponemos estas dos instrucciones aquí en lugar de en la función 'minimizarFormulario()' porque cuando se edita un ítem del listado, se llama a esta función
+    // Si no pusiéramos estas dos instrucciones aquí, sino en la función 'minimizarFormulario()', al editar un ítem del listado e invocar esta función, el formulario no se abriría si estuviera cerrado
+    this.estadoFormulario = 'abierto';
+    localStorage.setItem( 'estado-formulario', this.estadoFormulario );
   }
 
   cerrarFormulario( duracionAnimacion: number = 250 ) {
 
     let alturaFormulario = $( '.formulario' ).outerHeight();
 
+    // Animación
     $( '.formulario' ).animate({
       bottom: '-' + alturaFormulario + 'px',
     }, duracionAnimacion, () => {
       this.textoCierreFormulario = 'Abrir formulario';
     });
+
+    this.estadoFormulario = 'cerrado';
+    localStorage.setItem( 'estado-formulario', this.estadoFormulario );
   }
 }
