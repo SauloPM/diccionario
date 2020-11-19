@@ -69,6 +69,7 @@ export class ListadoComponent implements OnInit {
 
     item.categoria = categoria;
 
+    this.formulario.minimizarFormulario();
     this.formulario.rellenarFormulario( item );
   }
 
