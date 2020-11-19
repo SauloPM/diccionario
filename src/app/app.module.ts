@@ -17,6 +17,7 @@ import { LoginComponent      } from './componentes/login/login.component';
 import { InicioComponent     } from './componentes/inicio/inicio.component';
 import { ListadoComponent    } from './componentes/listado/listado.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { GramaticaComponent } from './componentes/gramatica/gramatica.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormularioComponent } from './componentes/formulario/formulario.compone
     ListadoComponent,
     FormularioComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    GramaticaComponent
   ],
   imports: [
     FormsModule,
