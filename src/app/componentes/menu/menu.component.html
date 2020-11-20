@@ -1,6 +1,8 @@
 
 <ul id="sidebar">
 
+    <div class="overlay"></div>
+
     <!-- Cerrar sidebar -->
     <div class="cerrar-sidebar" (click)="cerrarSidebar()">
         <div class="barra"></div>
@@ -17,6 +19,7 @@
 
         <!-- Ítem -->
         <div class="texto" (click)="abrirSubmenu('gramatica')">
+            <i class="icono fa fa-fw fa-tags" aria-hidden="true"></i>
             Gramática
         </div>
 
@@ -42,6 +45,7 @@
 
         <!-- Ítem -->
         <div class="texto" (click)="abrirSubmenu('vocabulario')">
+            <i class="icono fa fa-fw fa-bullhorn" aria-hidden="true"></i>
             Vocabulario
         </div>
         
@@ -102,10 +106,14 @@
     <!-- ─────────── -->
 
     <li class="item" routerLinkActive="active">
+
+        <!-- Ítem -->
         <div class="texto" (click)="abrirSubmenu('eoi')">
+            <i class="icono fa fa-fw fa-university" aria-hidden="true"></i>
             EOI
         </div>
         
+        <!-- Submenú -->
         <ul class="submenu primer-nivel" data-target="eoi">
             <li class="item" routerLinkActive="active">
                 <a [routerLink]="['listado', 'palabras']">B1</a>
@@ -117,9 +125,11 @@
     </li>
 
     <li class="item">
-        <a href="#" (click)="salir()">Cerrar sesión</a>
+        <div class="texto" (click)="cerrarSesion( 'eoi' )">
+            <i class="icono fa fa-fw fa-coffee" aria-hidden="true"></i>
+            Cerrar sesión
+        </div>
     </li>
-
 </ul>
 
 <!-- Abrir sidebar -->

@@ -3,6 +3,8 @@
 
 #sidebar {
     background: $primary;
+    background: url('~src/assets/img/fondo1.jpg') no-repeat center;
+    background-size: cover;
     position: fixed;
     top: 0;
     left: 0;
@@ -11,6 +13,20 @@
     height: 100%;
     overflow-y: auto;
     transition: .25s;
+
+    .overlay {
+        background: $primary;
+        background-image: linear-gradient( $primary, rgba(255,0,100,0.35));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: .95;
+    }
     
     .titulo {
         color: $blanco;
@@ -28,6 +44,12 @@
         position: relative;
         height: 50px;
         cursor: pointer;
+
+        .icono {
+            font-size: 12px;
+            margin-right: 10px;
+            opacity: .85;
+        }
     }
 
     .submenu {
@@ -47,45 +69,58 @@
     }
 
     .item {
-        box-shadow: inset 0 1px 0 lighten( $primary, 5% );
+        // box-shadow: inset 0 1px 0 lighten( $primary, 5% );
+        box-shadow: inset 0 -1px 0 transparentize( $blanco, .85 );
 
-        &:last-child {
-            box-shadow: inset 0  1px 0 lighten( $primary, 5% ),
-                        inset 0 -1px 0 lighten( $primary, 5% );
+        &:nth-child(4) {
+            // box-shadow: inset 0  1px 0 lighten( $primary, 5% ),
+            //             inset 0 -1px 0 lighten( $primary, 5% );
+            box-shadow: inset 0  1px 0 transparentize( $blanco, .85 ),
+                        inset 0 -1px 0 transparentize( $blanco, .85 );
         }
 
         .submenu.primer-nivel .item {
-            background: lighten($primary, 5%);
-            box-shadow: inset 0 -1px 0 lighten( $primary, 10% );
+            // background: lighten( $primary, 5% );
+            background: transparentize( $blanco, .85 );
+            // box-shadow: inset 0 -1px 0 lighten( $primary, 10% );
+            box-shadow: inset 0 -1px 0 transparentize( $blanco, .85 );
 
             &:first-child {
-                box-shadow: inset 0  1px 0 lighten( $primary,  5% ),
-                            inset 0 -1px 0 lighten( $primary, 10% );
+                // box-shadow: inset 0  1px 0 lighten( $primary,  5% ),
+                //             inset 0 -1px 0 lighten( $primary, 10% );
+                box-shadow: inset 0  1px 0 transparentize( $blanco, .85 ),
+                            inset 0 -1px 0 transparentize( $blanco, .85 );
             }
 
             &:last-child  {
-                box-shadow: inset 0 -1px 0 lighten( $primary, 5% );
+                // box-shadow: inset 0 -1px 0 lighten( $primary, 5% );
+                box-shadow: none;
             }
 
-            &:hover:not(.active) a {
+            &:hover:not(.active) > a {
                 animation: meneo 1s;
             }
         }
 
         .submenu.segundo-nivel .item {
-            background: lighten($primary, 10%);
-            box-shadow: inset 0 -1px 0 lighten( $primary, 15% );
+            // background: lighten( $primary, 10%);
+            background: transparentize( $blanco, .85 );
+            // box-shadow: inset 0 -1px 0 lighten( $primary, 15% );
+            box-shadow: inset 0 -1px 0 transparentize( $blanco, .85 );
 
             &:first-child {
-                box-shadow: inset 0  1px 0 lighten( $primary, 10% ),
-                            inset 0 -1px 0 lighten( $primary, 15% );
+                // box-shadow: inset 0  1px 0 lighten( $primary, 10% ),
+                //             inset 0 -1px 0 lighten( $primary, 15% );
+                box-shadow: inset 0  1px 0 transparentize( $blanco, .85 ),
+                            inset 0 -1px 0 transparentize( $blanco, .85 );
             }
 
             &:last-child  {
-                box-shadow: inset 0 -1px 0 lighten( $primary, 10% );
+                // box-shadow: inset 0 -1px 0 lighten( $primary, 10% );
+                box-shadow: none;
             }
 
-            &:hover:not(.active) a {
+            &:hover:not(.active) > a {
                 animation: meneo 1s;
             }
         }
@@ -154,7 +189,7 @@ ul {
     cursor: pointer;
     
     .barra {
-        background: $blanco;
+        background: transparentize( $blanco, 0.5 );
         margin-top: -3px;
         margin-left: 3px;
         width: 25px;
@@ -169,6 +204,6 @@ ul {
     }
 
     &:hover .barra {
-        background: transparentize($blanco, 0.5)
+        background: $blanco;       
     }
 }

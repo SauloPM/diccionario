@@ -20,7 +20,7 @@ export class MenuComponent {
     this.onAbrirSidebar = new EventEmitter();
   }
 
-  salir() {
+  cerrarSesion() {
 
     // Eliminamos el token del local storage
     this.auth.logout();
