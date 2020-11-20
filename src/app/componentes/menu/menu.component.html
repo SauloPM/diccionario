@@ -7,6 +7,8 @@
         <div class="barra"></div>
     </div>
 
+    <h1 class="titulo">Diccionario</h1>
+
     <!-- ───────────────── -->
     <!--     GRAMÁTICA     -->
     <!-- ───────────────── -->
@@ -14,7 +16,7 @@
     <li class="item">
 
         <!-- Ítem -->
-        <div (click)="abrirSubmenu('gramatica')">
+        <div class="texto" (click)="abrirSubmenu('gramatica')">
             Gramática
         </div>
 
@@ -22,6 +24,9 @@
         <ul class="submenu primer-nivel" data-target="gramatica">
             <li class="item" routerLinkActive="active">
                 <a [routerLink]="['gramatica', 'wish']">Wish</a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['gramatica', 'gerundios']">Gerundios</a>
             </li>
             <li class="item" routerLinkActive="active">
                 <a [routerLink]="['gramatica', 'used-to']">Used to</a>
@@ -36,7 +41,7 @@
     <li class="item" routerLinkActive="active">
 
         <!-- Ítem -->
-        <div (click)="abrirSubmenu('vocabulario')">
+        <div class="texto" (click)="abrirSubmenu('vocabulario')">
             Vocabulario
         </div>
         
@@ -46,7 +51,7 @@
             <li class="item" routerLinkActive="active">
 
                 <!-- Ítem -->
-                <div (click)="abrirSubmenu('vocabulario-categoria-gramatical')">
+                <div class="texto" (click)="abrirSubmenu('vocabulario-categoria-gramatical')">
                     Por categoría gramatical
                 </div>
 
@@ -71,7 +76,7 @@
             <li class="item" routerLinkActive="active">
 
                 <!-- Ítem -->
-                <div (click)="abrirSubmenu('vocabulario-tematica')">
+                <div class="texto" (click)="abrirSubmenu('vocabulario-tematica')">
                     Por temática
                 </div>
 
@@ -97,7 +102,7 @@
     <!-- ─────────── -->
 
     <li class="item" routerLinkActive="active">
-        <div (click)="abrirSubmenu('eoi')">
+        <div class="texto" (click)="abrirSubmenu('eoi')">
             EOI
         </div>
         
