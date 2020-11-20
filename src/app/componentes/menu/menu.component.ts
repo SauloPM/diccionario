@@ -45,26 +45,59 @@ export class MenuComponent {
 
   abrirSubmenu( target: string ) {
 
-    let flecha  = $( `.flecha[data-target=${ target }]` );
-    let submenu = $( `.submenu[data-target=${ target }]` );
+    let submenu     = $( `.submenu[data-target=${ target }]` );
     let numeroItems = $( `.submenu[data-target=${ target }] > li` ).length;
 
-    // Giramos la flecha
-    if ( flecha.hasClass( 'active' )) {
-      flecha.css( 'transform', 'translateY(-50%)' );
-      flecha.removeClass( 'active' );
-    } else {
-      flecha.css( 'transform', 'translateY(-50%) rotate(180deg)' );
-      flecha.addClass( 'active' );
+    // Hemos seleccionado un submenú de primer nivel
+    if ( submenu.hasClass( 'primer-nivel' )) {
+
+      // Cerrar submenú
+      if ( submenu.hasClass( 'active' )) {
+        submenu.css( 'max-height', '' );
+        submenu.removeClass( 'active' );
+      }
+      
+      // Abrir submenú
+      else {
+        submenu.css( 'max-height', numeroItems * 50+ 'px' );
+        submenu.addClass( 'active' );
+      }
+
+      // Si el submenú de primer nivel seleccionado contuviera submenús de segundo nivel, los cerraríamos
+      for( let submenuHijo of submenu.children() ) {
+        if ( submenuHijo.lastChild.className.indexOf( 'submenu' ) !== -1 ) {
+          submenuHijo.lastChild.style.maxHeight = '';
+          submenuHijo.lastChild.className = 'submenu segundo-nivel';
+        }
+      }
     }
 
-    // Abrimos o cerramos el submenu
-    if ( submenu.hasClass( 'active' )) {
-      submenu.css( 'max-height', '' );
-      submenu.removeClass( 'active' );
-    } else {
-      submenu.css( 'max-height', numeroItems * 50+ 'px' );
-      submenu.addClass( 'active' );
+    // Hemos seleccionado un submenú de segundo nivel
+    else {
+
+      let submenuPadre = submenu.closest( '.primer-nivel' );
+      let totalItems   = submenuPadre.children.length;
+
+      if ( submenu.hasClass( 'active' )) {
+        submenu.removeClass( 'active' );
+      }
+      else {
+        submenu.addClass( 'active' );
+      }
+
+      for( let submenuHijo of submenuPadre.children() ) {
+        if ( submenuHijo.lastChild.className.indexOf( 'active' ) !== -1 ) {
+          totalItems = totalItems + submenuHijo.lastChild.children.length;
+        }
+      }
+
+      if ( submenu.hasClass( 'active' )) {
+        submenu.css( 'max-height', numeroItems * 50+ 'px' );
+      } else {
+        submenu.css( 'max-height', '' );
+      }
+
+      submenuPadre.css( 'max-height', totalItems * 50+ 'px' );
     }
   }
 }

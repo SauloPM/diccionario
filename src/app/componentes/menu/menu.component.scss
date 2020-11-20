@@ -15,6 +15,10 @@
 
     .item {
         border-bottom: 1px solid lighten($primary, 5%);
+
+        &:last-child {
+            border-bottom: none;
+        }
         
         div, a {
             display: flex;
@@ -27,19 +31,6 @@
             cursor: pointer;
         }
 
-        &:last-child {
-            border-bottom: none;
-        }
-
-        .flecha {
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: 25px;
-            transform: translateY(-50%);
-            transition: .25s;
-        }
-
         .submenu {
             max-height: 0;
             overflow: hidden;
@@ -49,23 +40,38 @@
                 background: lighten($primary, 5%);
                 border-bottom: 1px solid lighten($primary, 10%);
 
-                a {
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                div, a {
                     padding-left: 50px;
                 }
 
-                &.active {
-        
-                    a {
-                        color: $blanco;
+                &.active a {
+                    color: $blanco;
+                }
+
+                // &:hover:not(.active) a {
+                //     animation: meneo 1s;
+                // }
+
+                .submenu .item {
+
+                    background: lighten($primary, 10%);
+                    border-bottom: 1px solid lighten($primary, 15%);
+
+                    &:last-child {
+                        border-bottom: none;
                     }
-                }
 
-                &:hover:not(.active) a {
-                    animation: meneo 1s;
-                }
+                    div, a {
+                        padding-left: 75px;
+                    }
 
-                &:last-child {
-                    border-bottom: none;
+                    // &:hover:not(.active) a {
+                    //     animation: meneo 1s;
+                    // }
                 }
             }
         }

@@ -7,13 +7,19 @@
         <div class="barra"></div>
     </div>
 
+    <!-- ───────────────── -->
+    <!--     GRAMÁTICA     -->
+    <!-- ───────────────── -->
+
     <li class="item">
+
+        <!-- Ítem -->
         <div (click)="abrirSubmenu('gramatica')">
             Gramática
-            <i class="flecha fa fa-angle-down" data-target="gramatica"></i>
         </div>
 
-        <ul class="submenu" data-target="gramatica">
+        <!-- Submenú -->
+        <ul class="submenu primer-nivel" data-target="gramatica">
             <li class="item" routerLinkActive="active">
                 <a [routerLink]="['gramatica', 'wish']">Wish</a>
             </li>
@@ -23,35 +29,79 @@
         </ul>
     </li>
 
+    <!-- ─────────────────── -->
+    <!--     VOCABULARIO     -->
+    <!-- ─────────────────── -->
+    
     <li class="item" routerLinkActive="active">
+
+        <!-- Ítem -->
         <div (click)="abrirSubmenu('vocabulario')">
             Vocabulario
-            <i class="flecha fa fa-angle-down" data-target="vocabulario"></i>
         </div>
         
-        <ul class="submenu" data-target="vocabulario">
+        <!-- Submenú -->
+        <ul class="submenu primer-nivel" data-target="vocabulario">
+
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['listado', 'palabras']">Palabras</a>
+
+                <!-- Ítem -->
+                <div (click)="abrirSubmenu('vocabulario-categoria-gramatical')">
+                    Por categoría gramatical
+                </div>
+
+                <!-- Submenú -->
+                <ul class="submenu segundo-nivel" data-target="vocabulario-categoria-gramatical">
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'palabras']">Palabras</a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'verbos']">Verbos</a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'frases']">Frases</a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
+                    </li>
+                </ul>
+
             </li>
+
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['listado', 'verbos']">Verbos</a>
-            </li>
-            <li class="item" routerLinkActive="active">
-                <a [routerLink]="['listado', 'frases']">Frases</a>
-            </li>
-            <li class="item" routerLinkActive="active">
-                <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
+
+                <!-- Ítem -->
+                <div (click)="abrirSubmenu('vocabulario-tematica')">
+                    Por temática
+                </div>
+
+                <!-- Submenú -->
+                <ul class="submenu segundo-nivel" data-target="vocabulario-tematica">
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'palabras']">Música</a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'verbos']">Cine</a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['listado', 'frases']">Moda</a>
+                    </li>
+                </ul>
+
             </li>
         </ul>
     </li>
 
+    <!-- ─────────── -->
+    <!--     EOI     -->
+    <!-- ─────────── -->
+
     <li class="item" routerLinkActive="active">
         <div (click)="abrirSubmenu('eoi')">
             EOI
-            <i class="flecha fa fa-angle-down" data-target="eoi"></i>
         </div>
         
-        <ul class="submenu" data-target="eoi">
+        <ul class="submenu primer-nivel" data-target="eoi">
             <li class="item" routerLinkActive="active">
                 <a [routerLink]="['listado', 'palabras']">B1</a>
             </li>
