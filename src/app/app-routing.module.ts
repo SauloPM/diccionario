@@ -5,10 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 // Componentes
-import { LoginComponent      } from './componentes/login/login.component';
-import { InicioComponent     } from './componentes/inicio/inicio.component';
-import { ListadoComponent    } from './componentes/listado/listado.component';
-import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { LoginComponent     } from './componentes/login/login.component';
+import { InicioComponent    } from './componentes/inicio/inicio.component';
+import { ListadoComponent   } from './componentes/listado/listado.component';
+import { GramaticaComponent } from './componentes/gramatica/gramatica.component';
 
 const routes: Routes = [
 
@@ -17,17 +17,17 @@ const routes: Routes = [
 
   // Mapeo ruta con parámetros - componente
   { path: 'diccionario', component: InicioComponent, canActivate: [ AuthGuard ], children: [
-    { path: 'listado/:categoria'                  , component: ListadoComponent,    canActivate: [ AuthGuard ] },
-    { path: 'formulario/:operacion/:categoria/:id', component: FormularioComponent, canActivate: [ AuthGuard ] },
+    { path: 'gramatica/:id'     , component: GramaticaComponent, canActivate: [ AuthGuard ] },
+    { path: 'listado/:categoria', component: ListadoComponent  , canActivate: [ AuthGuard ] },
   ]},
 
   // Mapeo ruta - ruta
-  { path: '**'                 , pathMatch: 'full', redirectTo: 'login'                       },
+  { path: '**', pathMatch: 'full', redirectTo: 'login'                       },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

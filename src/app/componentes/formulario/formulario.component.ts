@@ -40,8 +40,6 @@ export class FormularioComponent implements OnInit {
 
     this.estadoFormulario = localStorage.getItem( 'estado-formulario' );
 
-    console.log( this.estadoFormulario );
-
     if ( isNullOrUndefined( this.estadoFormulario ) ) {
       this.estadoFormulario = 'abierto';
     }
