@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 // Componentes
+import { EoiComponent       } from './componentes/eoi/eoi.component';
 import { LoginComponent     } from './componentes/login/login.component';
 import { InicioComponent    } from './componentes/inicio/inicio.component';
 import { ListadoComponent   } from './componentes/listado/listado.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
 
   // Mapeo ruta con parámetros - componente
   { path: 'diccionario', component: InicioComponent, canActivate: [ AuthGuard ], children: [
+    { path: 'eoi/:team'         , component: EoiComponent      , canActivate: [ AuthGuard ] },
     { path: 'gramatica/:id'     , component: GramaticaComponent, canActivate: [ AuthGuard ] },
     { path: 'listado/:categoria', component: ListadoComponent  , canActivate: [ AuthGuard ] },
   ]},

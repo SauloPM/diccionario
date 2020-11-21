@@ -18,6 +18,7 @@ import { InicioComponent     } from './componentes/inicio/inicio.component';
 import { ListadoComponent    } from './componentes/listado/listado.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
 import { GramaticaComponent } from './componentes/gramatica/gramatica.component';
+import { EoiComponent } from './componentes/eoi/eoi.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GramaticaComponent } from './componentes/gramatica/gramatica.component'
     FormularioComponent,
     LoginComponent,
     InicioComponent,
-    GramaticaComponent
+    GramaticaComponent,
+    EoiComponent
   ],
   imports: [
     FormsModule,
