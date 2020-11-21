@@ -1,14 +1,9 @@
-<div class="wrapper">
+<!-- Sidebar -->
+<app-menu (onAbrirSidebar)="abrirSidebar( $event )"></app-menu>
+
+<!-- Contenido -->
+<div id="contenido">
     <div>
-
-        <!-- Sidebar -->
-        <app-menu (onAbrirSidebar)="abrirSidebar( $event )"></app-menu>
-
-        <!-- Contenido -->
-        <div id="contenido">
-            <div class="container">
-                <router-outlet></router-outlet>
-            </div>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 </div>
