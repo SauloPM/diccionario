@@ -4,8 +4,18 @@
 $blanco: rgb(255,255,255);
 
 $primary     : rgb(095,040,205);
-$darkprimary : rgb(055,000,155);
-$lightprimary: rgb(135,080,245);
+
+
+$rosa: rgb(255,0,100);
+$mostaza: rgb(255,150,25);
+
+$primary: blue;
+$rosa: red;
+
+$lightprimary : transparentize( $primary, .25 );
+$darkprimary: darken( $primary, .25 );
+
+$texto: black;
 
 // Responsive breakpoints
 
