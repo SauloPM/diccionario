@@ -31,13 +31,25 @@ input:-webkit-autofill:focus {
 
 // Text selection
 
-::-moz-selection { color: white; background: $primary }
-     ::selection { color: white; background: $primary }
+::-moz-selection { color: white; background: transparentize( $primary, .01 ) }
+     ::selection { color: white; background: transparentize( $primary, .01 ) }
 
 // Scrollbar
 
 ::-webkit-scrollbar {
-    width: 0;
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $blanco; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: $primary;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: $rosa; 
 }
 
 // ─────────────── //
@@ -67,17 +79,16 @@ hr {
     margin-bottom: 50px;
 }
 
-.wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    min-height: 100vh;
-    padding-bottom: 113px; // Para dejar una distancia de 50 píxeles entre la tabla y el formulario al hacer scroll down al máximo
-}
-
 #contenido {
+    padding: 75px;
     margin-left: 300px;
     transition: margin-left .25s;
+    
+    & > div {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1000px;
+    }
 }
 
 // Mobile First
@@ -310,7 +321,7 @@ hr {
 
         .ingles {
             color: white;
-            background: $lightprimary;
+            background: transparentize( $primary, .15 );
             border-bottom: 1px solid transparentize( $blanco, .85 );
         }
 
