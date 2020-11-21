@@ -3,7 +3,7 @@
 
 #sidebar {
     background: $primary;
-    background: url('~src/assets/img/fondo1.jpg') no-repeat center;
+    background: url('~src/assets/img/uk2.jpg') no-repeat center;
     background-size: cover;
     position: fixed;
     top: 0;
@@ -16,7 +16,7 @@
 
     .overlay {
         background: $primary;
-        background-image: linear-gradient( $primary, rgba(255,0,100,0.35));
+        background-image: linear-gradient( $primary 35%, transparentize( $rosa, .5 ));
         position: absolute;
         top: 0;
         left: 0;
@@ -154,7 +154,7 @@ ul {
 }
 
 .abrir-sidebar {
-    position: absolute;
+    position: fixed;
     top: 25px;
     left: 25px;
     z-index: 25;
@@ -175,7 +175,7 @@ ul {
     }
 
     &:hover .barra {
-        background: transparentize($primary, 0.5)
+        background: $rosa;
     }
 }
 
@@ -189,7 +189,7 @@ ul {
     cursor: pointer;
     
     .barra {
-        background: transparentize( $blanco, 0.5 );
+        background: $blanco;
         margin-top: -3px;
         margin-left: 3px;
         width: 25px;
@@ -204,6 +204,6 @@ ul {
     }
 
     &:hover .barra {
-        background: $blanco;       
+        background: $rosa;       
     }
 }
