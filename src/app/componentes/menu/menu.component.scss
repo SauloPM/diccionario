@@ -101,6 +101,10 @@
             &:hover:not(.active) > a {
                 animation: meneo 1s;
             }
+            
+            &.active > a .icono {
+                color: red;
+            }
         }
 
         .submenu.segundo-nivel .item {
