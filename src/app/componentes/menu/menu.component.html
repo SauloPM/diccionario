@@ -19,20 +19,29 @@
 
         <!-- Ítem -->
         <div class="texto" (click)="abrirSubmenu('gramatica')">
-            <i class="icono fa fa-fw fa-tags" aria-hidden="true"></i>
+            <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
             Gramática
         </div>
 
         <!-- Submenú -->
         <ul class="submenu primer-nivel" data-target="gramatica">
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['gramatica', 'wish']">Wish</a>
+                <a [routerLink]="['gramatica', 'wish']">
+                    <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
+                    Wish
+                </a>
             </li>
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['gramatica', 'gerundios']">Gerundios</a>
+                <a [routerLink]="['gramatica', 'gerundios']">
+                    <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
+                    Gerundios
+                </a>
             </li>
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['gramatica', 'used-to']">Used to</a>
+                <a [routerLink]="['gramatica', 'used-to']">
+                    <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
+                    Used to
+                </a>
             </li>
         </ul>
     </li>
@@ -45,7 +54,7 @@
 
         <!-- Ítem -->
         <div class="texto" (click)="abrirSubmenu('vocabulario')">
-            <i class="icono fa fa-fw fa-bullhorn" aria-hidden="true"></i>
+            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
             Vocabulario
         </div>
         
@@ -56,25 +65,41 @@
 
                 <!-- Ítem -->
                 <div class="texto" (click)="abrirSubmenu('vocabulario-categoria-gramatical')">
+                    <i class="icono fa fa-comment-o" aria-hidden="true"></i>
                     Por categoría gramatical
                 </div>
 
                 <!-- Submenú -->
                 <ul class="submenu segundo-nivel" data-target="vocabulario-categoria-gramatical">
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'palabras']">Palabras</a>
+                        <a [routerLink]="['listado', 'palabras']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Palabras
+                        </a>
                     </li>
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'verbos']">Verbos</a>
+                        <a [routerLink]="['listado', 'verbos']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Verbos
+                        </a>
                     </li>
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'frases']">Frases</a>
+                        <a [routerLink]="['listado', 'frases']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Frases
+                        </a>
                     </li>
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'expresiones']">Expresiones</a>
+                        <a [routerLink]="['listado', 'expresiones']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Expresiones
+                        </a>
                     </li>
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'todo']">Todo</a>
+                        <a [routerLink]="['listado', 'todo']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Todo
+                        </a>
                     </li>
                 </ul>
 
@@ -84,19 +109,29 @@
 
                 <!-- Ítem -->
                 <div class="texto" (click)="abrirSubmenu('vocabulario-tematica')">
+                    <i class="icono fa fa-comment-o" aria-hidden="true"></i>
                     Por temática
                 </div>
 
                 <!-- Submenú -->
                 <ul class="submenu segundo-nivel" data-target="vocabulario-tematica">
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'palabras']">Música</a>
+                        <a [routerLink]="['listado', 'musica']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Música
+                        </a>
                     </li>
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'verbos']">Cine</a>
+                        <a [routerLink]="['listado', 'cine']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Cine
+                        </a>
                     </li>
                     <li class="item" routerLinkActive="active">
-                        <a [routerLink]="['listado', 'frases']">Moda</a>
+                        <a [routerLink]="['listado', 'moda']">
+                            <i class="icono fa fa-comment-o" aria-hidden="true"></i>
+                            Moda
+                        </a>
                     </li>
                 </ul>
 
@@ -112,24 +147,169 @@
 
         <!-- Ítem -->
         <div class="texto" (click)="abrirSubmenu('eoi')">
-            <i class="icono fa fa-fw fa-university" aria-hidden="true"></i>
+            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
             EOI
         </div>
         
         <!-- Submenú -->
         <ul class="submenu primer-nivel" data-target="eoi">
+
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['listado', 'palabras']">B1</a>
+
+                <!-- Ítem -->
+                <div class="texto" (click)="abrirSubmenu('eoi-b1')">
+                    <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                    B1
+                </div>
+
+                <!-- Submenú -->
+                <ul class="submenu segundo-nivel" data-target="eoi-b1">
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema1']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 1
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema2']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 2
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema3']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 3
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema4']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 4
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema5']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 5
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema6']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 6
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema7']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 7
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema8']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 8
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema9']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 9
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema10']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 10
+                        </a>
+                    </li>
+                </ul>
             </li>
+
+            <!-- Ítem -->
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['listado', 'verbos']">B2</a>
+
+                <!-- Ítem -->
+                <div class="texto" (click)="abrirSubmenu('eoi-b2')">
+                    <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                    B2
+                </div>
+
+                <!-- Submenú -->
+                <ul class="submenu segundo-nivel" data-target="eoi-b2">
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema1']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 1
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema2']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 2
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema3']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 3
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema4']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 4
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema5']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 5
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema6']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 6
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema7']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 7
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema8']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 8
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema9']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 9
+                        </a>
+                    </li>
+                    <li class="item" routerLinkActive="active">
+                        <a [routerLink]="['eoi', 'tema10']">
+                            <i class="icono fa fa-bookmark-o" aria-hidden="true"></i>
+                            Tema 10
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </li>
 
+    <!-- ───────────────────── -->
+    <!--     CERRAR SESIÓN     -->
+    <!-- ───────────────────── -->
+
     <li class="item">
-        <div class="texto" (click)="cerrarSesion( 'eoi' )">
-            <i class="icono fa fa-fw fa-coffee" aria-hidden="true"></i>
+        <div class="texto" (click)="cerrarSesion()">
+            <i class="icono fa fa-sign-out" aria-hidden="true"></i>
             Cerrar sesión
         </div>
     </li>
