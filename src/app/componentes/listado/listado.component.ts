@@ -22,8 +22,10 @@ declare var $: any;
 })
 export class ListadoComponent implements OnInit {
 
-  items    : Item[] = [];
+  recuento : number = 0;
   categoria: string = '';
+  items    : Item[] = [];
+
 
   @ViewChild( 'formulario', { static: true } ) formulario: any;
 
@@ -63,6 +65,8 @@ export class ListadoComponent implements OnInit {
         $( this ).parent().css( 'display', 'none' );
       }
     });
+
+    this.recuento = this.items.length - $( '.elemento:hidden' ).length;
   }
 
   editar( item: Item, categoria: string ) {
@@ -110,10 +114,11 @@ export class ListadoComponent implements OnInit {
       this.getListado( this.categoria );
     });
   }
-
+  
   getListado( categoria: string ) {
     this.servicio.getListado( categoria ).subscribe( ( data: Item[] ) => {
       this.items = data.sort( this.ordenarAlfabeticamente('ingles') );
+      this.recuento = this.items.length;
     });
   }
 
