@@ -63,7 +63,7 @@ h1 {
 
 hr {
     display: block;
-    border-color: $lightprimary;
+    border-color: $primary;
     margin-bottom: 50px;
 }
 
@@ -137,165 +137,6 @@ hr {
     &:active {
         transform: scale(1.05);
     }
-}
-
-// ───────────── //
-//     LOGIN     //
-// ───────────── //
-
-#login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: url('assets/img/bg4.svg') no-repeat center;
-    background-size: cover;
-    min-height: 100vh;
-
-    .entrada {
-
-        input {
-            color: white;
-            text-align: center;
-            background: none;
-            background-image: linear-gradient(180deg, transparent 50%, rgba(255,255,255,.025) 50%);
-            border: 1px solid rgba(255,255,255,.075);
-            border-radius: 2px;
-            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
-            margin-bottom: 25px;
-            width: 275px;
-            max-width: 300px;
-            transition: .25s;
-
-            &:focus {
-                border-color: rgba(255,255,255,.5);
-            }
-        }
-
-        .validacion {
-            color: yellow !important;
-            font-size: 10px;
-            padding-left: 5px;
-            margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            bottom: -20px;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 400px;
-        }
-    }
-
-    .boton {
-        display: block;
-        color: rgba(255,255,255,.7);
-        font-size: 18px;
-        background: rgba(255,255,255,.25);
-        background: rgb(255,0,100);
-        background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.075) 50%);
-        border: 2px solid white;
-        border: none;
-        border-radius: 2px;;
-        box-shadow: none;
-        margin-top: 15px;
-        position: relative;
-        height: 40px;
-        overflow: hidden;
-
-        .icono {
-            // text-shadow: 0 2px 5px rgb(70,15,100);
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .icono:first-child {
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-        }
-
-        .icono:last-child {
-            right: -150%;
-            transform: translateX(-50%) translateY(-50%);
-        }
-        
-        &:hover {
-            background: rgba(255,255,255,.35);
-            background: rgb(255,150,25);
-            
-            .icono:first-child {
-                animation: mover1 .5s .25s forwards;
-            }
-    
-            .icono:last-child {
-                animation: mover2 .5s .5s forwards;
-            }
-        }
-
-        &:active {
-            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
-        }
-    }
-
-    // Recordar usuario
-
-    .recordar-usuario {
-        display: flex;
-        display: none;
-        justify-content: flex-start;
-        padding: 10px 0 0 10px;
-        width: 100%;
-        max-width: 400px;
-
-        input {
-            margin-right: 5px;
-        }
-
-        label {
-            color: white;
-            font-size: 10px;
-            position: relative;
-            bottom: 1px;
-        }
-    }
-
-    // Placeholder
-
-    input::-webkit-input-placeholder { color: rgba(255,255,255,.35) }
-         input:-ms-input-placeholder { color: rgba(255,255,255,.35) }
-                  input::placeholder { color: rgba(255,255,255,.35) }
-
-    input:focus::-webkit-input-placeholder { color: transparent }
-         input:focus:-ms-input-placeholder { color: transparent }
-                  input:focus::placeholder { color: transparent }
-}
-
-@keyframes mover1 {
-
-    from {
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-    }
-
-    to {
-        left: 150%;
-        transform: translateX(-50%) translateY(-50%);
-    }
-
-}
-
-@keyframes mover2 {
-
-    from {
-        right: 150%;
-        transform: translateX(-50%) translateY(-50%);
-    }
-
-    to {
-        right: 50%;
-        transform: translateX(50%) translateY(-50%);
-    }
-
 }
 
 // ────────────────── //
@@ -433,83 +274,99 @@ hr {
     padding: 0 5px 5px 0;
 }
 
-.elemento {
-    display: flex;
-    text-decoration: none !important;
-    border: 1px solid $primary;
-    margin-top: -1px;
-    position: relative;
-    transition: .5s;
-    cursor: pointer;
-    
-    .ingles,
-    .castellano {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-        color: black;
-        padding: 10px 15px;
-        width: 50%;
-        transition: .25s;
-    }
+.elementos {
+    border: 1px solid transparentize( $primary, .85 );
+    border-radius: 2px;
+    overflow: hidden;
 
-    .ingles {
-        color: white;
-        background: $lightprimary;
-    }
-
-    .opciones {
+    .elemento {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: white;
-        padding: 0 5px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
+        text-decoration: none !important;
+        position: relative;
         transition: .5s;
-        opacity: 0;
-
-        .opcion {
+        min-height: 50px;
+        cursor: pointer;
+        
+        &:last-child .ingles,
+        &:last-child .castellano {
+            border-bottom: none;
+        }
+        
+        .ingles,
+        .castellano {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: $primary;
-            font-size: 15px;
-            text-decoration: none;
-            border: 1px solid $lightprimary;
-            border-radius: 2px;
-            width: 28px;
-            height: 28px;
-            opacity: 0;
-
-            &.editar {
-                margin-right: 5px;
-            }
-
-            &:hover {
-                color: white;
-                background: $primary;
-            }
+            flex-shrink: 0;
+            color: black;
+            background: white;
+            padding: 10px 15px;
+            width: 50%;
+            transition: .25s;
         }
-    }
 
-    &:hover {
+        .castellano {
+            border-bottom: 1px solid transparentize( $primary, .85 );
+        }
 
         .ingles {
-            background: rgba(135,080,245,.85);
+            color: white;
+            background: $lightprimary;
+            border-bottom: 1px solid transparentize( $blanco, .85 );
         }
 
         .opciones {
-            opacity: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 0 15px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 1px;
+            transition: .5s;
+            opacity: 0;
 
-            .opcion.editar {
-                animation: revelar .25s .1s forwards;
+            .opcion {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $primary;
+                font-size: 15px;
+                text-decoration: none;
+                border: 1px solid $lightprimary;
+                border-radius: 2px;
+                width: 28px;
+                height: 28px;
+                opacity: 0;
+
+                &.editar {
+                    margin-right: 5px;
+                }
+
+                &:hover {
+                    color: white;
+                    background: $primary;
+                }
             }
-    
-            .opcion.borrar {
-                animation: revelar .25s .15s forwards;
+        }
+
+        &:hover {
+
+            .ingles {
+                background: $primary
+            }
+
+            .opciones {
+                opacity: 1;
+
+                .opcion.editar {
+                    animation: revelar .25s .1s forwards;
+                }
+        
+                .opcion.borrar {
+                    animation: revelar .25s .15s forwards;
+                }
             }
         }
     }
@@ -542,8 +399,10 @@ hr {
     }
 
     .ejemplos {
-        background: transparentize($primary, 0.95);
+        background: linear-gradient( to right, transparentize( $primary, .95 ), transparentize( $primary, .9 ));
         border-left: 1px solid $primary;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
         padding: 35px;
         margin-left: 35px;
         margin-bottom: 35px;
@@ -569,7 +428,7 @@ hr {
 
         & + small {
             display: block;
-            color: black;
+            color: $texto;
             font-size: 12px;
             margin-top: -35px;
             margin-left: 35px;
