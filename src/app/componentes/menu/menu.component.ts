@@ -35,11 +35,13 @@ export class MenuComponent {
 
   abrirSidebar() {
     $( '#sidebar' ).css( 'left', '' );
+    $( '#sidebar .overlay' ).css( 'width', '' );
     this.onAbrirSidebar.emit();
   }
   
   cerrarSidebar() {
     $( '#sidebar' ).css( 'left', '-300px' );
+    $( '#sidebar .overlay' ).css( 'width', 0 );
     this.onAbrirSidebar.emit( '0' );
   }
 
