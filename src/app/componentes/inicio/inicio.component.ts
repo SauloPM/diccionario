@@ -12,6 +12,13 @@ export class InicioComponent {
   constructor() { }
 
   abrirSidebar( margenIzquierdo: string = '' ) {
+    
     $( '#contenido' ).css( 'margin-left', margenIzquierdo );
+
+    if ( margenIzquierdo === '' ) {
+      $( '.formulario' ).css( 'left', '' );
+    } else {
+      $( '.formulario' ).css( 'left', '0' );
+    }
   }
 }
