@@ -19,6 +19,7 @@ import { ListadoComponent    } from './componentes/listado/listado.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
 import { GramaticaComponent } from './componentes/gramatica/gramatica.component';
 import { EoiComponent } from './componentes/eoi/eoi.component';
+import { TopButtonComponent } from './componentes/top-button/top-button.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EoiComponent } from './componentes/eoi/eoi.component';
     LoginComponent,
     InicioComponent,
     GramaticaComponent,
-    EoiComponent
+    EoiComponent,
+    TopButtonComponent
   ],
   imports: [
     FormsModule,
