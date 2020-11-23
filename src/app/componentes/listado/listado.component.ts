@@ -45,35 +45,11 @@ export class ListadoComponent implements OnInit {
     }
   }
 
-  buscar( secuencia: string ) {
-
-    let textoIngles  = '';
-
-    secuencia = secuencia.toLowerCase().trim();
-
-    $( '.elemento .ingles' ).each( function() {
-
-      textoIngles = $( this ).html().toLowerCase();
-
-      // Ha habido coincidencias o no se ha escrito nada
-      if (( textoIngles.indexOf( secuencia ) > -1 ) || ( secuencia.length === 0 )) {
-        $( this ).parent().css( 'display', '' );
-      }
-
-      // No ha habido coincidencia
-      else {
-        $( this ).parent().css( 'display', 'none' );
-      }
-    });
-
-    this.recuento = this.items.length - $( '.elemento:hidden' ).length;
-  }
-
   editar( item: Item, categoria: string ) {
 
     item.categoria = categoria;
 
-    this.formulario.minimizarFormulario();
+    this.formulario.abrirFormulario();
     this.formulario.rellenarFormulario( item );
   }
 
@@ -102,6 +78,62 @@ export class ListadoComponent implements OnInit {
     } else {
       this.getListado( categoria );
     }
+  }
+
+  // ──────────────── //
+  //     BUSCADOR     //
+  // ──────────────── //
+
+  buscar( secuencia: string ) {
+
+    let textoIngles  = '';
+
+    secuencia = secuencia.toLowerCase().trim();
+
+    // Recorremos todos los ítems en busca de coincidencias
+    $( '.elemento .ingles' ).each( function() {
+
+      textoIngles = $( this ).html().toLowerCase();
+
+      // Si ha habido coincidencias o no se ha escrito nada, mostramos el ítem
+      if (( textoIngles.indexOf( secuencia ) > -1 ) || ( secuencia.length === 0 )) {
+        $( this ).parent().css( 'display', '' );
+      }
+
+      // Si no ha habido coincidencia, ocultamos el ítem
+      else {
+        $( this ).parent().css( 'display', 'none' );
+      }
+    });
+
+    // Actualizamos el recuento acorde al número de ítems que satisfacieron la búsqueda
+    this.recuento = this.items.length - $( '.elemento:hidden' ).length;
+
+    // En caso de no haber ninguna coincidencia, eliminamos el borde de la tabla para evitar que se vea una raya horizontal
+    if ( this.recuento === 0 ) {
+      $( '.elementos' ).css( 'border', 'none' );
+    }
+    else {
+      $( '.elementos' ).css( 'border', '' );
+    }
+  }
+
+  insertar( inputBuscador: HTMLInputElement, secuencia: string ) {
+
+    let item: Item = {
+      ingles: secuencia,
+      categoria: this.categoria
+    }
+
+    // Abrimos el formulario y lo completamos
+    this.formulario.abrirFormulario();
+    this.formulario.rellenarFormulario( item );
+
+    // Vaciamos el input del buscador
+    inputBuscador.value = '';
+
+    // Volvemos a mostrar la tabla al completo
+    this.buscar( '' );
   }
 
   // ──────────────── //

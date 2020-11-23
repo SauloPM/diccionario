@@ -277,6 +277,17 @@ hr {
         padding: 5px 40px;
         max-width: 250px;
     }
+
+    .boton {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 248px;
+        width: 80px;
+        height: 33px;
+    }
 }
 
 .recuento {

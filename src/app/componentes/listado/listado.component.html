@@ -14,6 +14,7 @@
         <div class="entrada buscador">
             <input #buscador type="text" placeholder="Buscar" (keyup)="buscar( buscador.value )">
             <i class="icono fa fa-search" aria-hidden="true"></i>
+            <button *ngIf="recuento === 0" class="boton" (click)="insertar( buscador, buscador.value )">Insertar</button>
         </div>
         
         <!-- Recuento -->
