@@ -80,7 +80,6 @@ hr {
 
 .contenido {
     padding: 75px 25px;
-    margin-left: 300px;
     transition: margin-left .25s;
     
     & > div {
@@ -100,6 +99,10 @@ hr {
 
     h1 {
         font-size: 35px;
+    }
+
+    .contenido {
+        margin-left: 300px;
     }
 }
 

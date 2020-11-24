@@ -40,7 +40,10 @@ export class MenuComponent {
   }
   
   cerrarSidebar() {
-    $( '#sidebar' ).css( 'left', '-300px' );
+
+    let anchoSidebar  = $( '#sidebar' ).width();
+
+    $( '#sidebar' ).css( 'left', `-${ anchoSidebar }px` );
     $( '#sidebar .overlay' ).css( 'width', 0 );
     this.onAbrirSidebar.emit( '0' );
   }
