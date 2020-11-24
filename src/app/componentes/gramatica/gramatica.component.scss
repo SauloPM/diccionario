@@ -4,7 +4,8 @@
 
     p {
         color: $texto;
-        margin-bottom: 20px;
+        font-size: 15px;
+        margin-bottom: 35px;
     }
 
     span {
@@ -17,9 +18,9 @@
         border-left: 1px solid $primary;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
-        padding: 20px;
-        margin-left: 20px;
-        margin-bottom: 20px;
+        padding: 35px;
+        margin-left: 35px;
+        margin-bottom: 35px;
 
         p {
             color: $primary;
@@ -33,7 +34,7 @@
                 color: red;
 
                 sup {
-                    font-size: 8px;
+                    font-size: 12px;
                     font-style: normal;
                     margin-left: 5px;
                 }
@@ -43,40 +44,10 @@
         & + small {
             display: block;
             color: $texto;
-            font-size: 8px;
-            margin-top: -20px;
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-    }
-}
-
-// Mobile First
-
-@media only screen and (min-width: $mobile) {
-
-    #gramatica {
-
-        p {
-            font-size: 15px;
-            margin-bottom: 35px;
-        }
-
-        .ejemplos {
-            padding: 35px;
+            font-size: 12px;
+            margin-top: -35px;
             margin-left: 35px;
             margin-bottom: 35px;
-
-            p.error sup {
-                font-size: 12px;
-            }
-
-            & + small {
-                font-size: 12px;
-                margin-top: -35px;
-                margin-left: 35px;
-                margin-bottom: 35px;
-            }
         }
     }
 }
