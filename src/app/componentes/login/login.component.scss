@@ -8,7 +8,8 @@
     flex-direction: column;
     background: url('~src/assets/img/uk1.jpg') no-repeat center;
     background-size: cover;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 500px;
 
     .titulo {
         color: $blanco;
@@ -16,8 +17,123 @@
         text-transform: lowercase;
         position: absolute;
         top: 45px;
-        left: 50px;
+        left: 50%;
         margin: 0;
+        transform: translateX(-50%);
+    }
+    
+    .formulario-login {
+        padding: 25px;
+        width: 100%;
+        max-width: 300px;
+
+        .entrada {
+            position: relative;
+    
+            input {
+                color: white;
+                text-align: center;
+                background: transparentize( $blanco, .85 );
+                border: 1px solid transparentize( $blanco, .5 );
+                border: none;
+                border-radius: 2px;
+                margin-bottom: 25px;
+                width: 100%;
+                transition: .25s;
+    
+                &:focus {
+                    border-color: $mostaza;
+                }
+            }
+    
+            .validacion {
+                color: $blanco;
+                font-size: 10px;
+                margin: 0 auto;
+                position: absolute;
+                left: 5px;
+                bottom: 8px;
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    
+        .boton {
+            color: rgba(255,255,255,.7);
+            font-size: 18px;
+            background: $rosa;
+            border: none;
+            border-radius: 2px;;
+            box-shadow: none;
+            margin-top: 10px;
+            position: relative;
+            height: 40px;
+            overflow: hidden;
+    
+            .icono {
+                position: absolute;
+                top: 50%;
+            }
+    
+            .icono:first-child {
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+    
+            .icono:last-child {
+                right: -150%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+            
+            &:hover {
+                background: $mostaza;
+                // background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.075) 50%);
+                
+                .icono:first-child {
+                    animation: mover1 .5s .25s forwards;
+                }
+        
+                .icono:last-child {
+                    animation: mover2 .5s .5s forwards;
+                }
+            }
+    
+            &:active {
+                box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
+            }
+        }
+
+        // Recordar usuario
+    
+        .recordar-usuario {
+            display: flex;
+            display: none;
+            justify-content: flex-start;
+            padding: 10px 0 0 10px;
+            width: 100%;
+            max-width: 400px;
+    
+            input {
+                margin-right: 5px;
+            }
+    
+            label {
+                color: white;
+                font-size: 10px;
+                position: relative;
+                bottom: 1px;
+            }
+        }
+    
+        // Placeholder
+    
+        input::-webkit-input-placeholder { color: transparentize( $blanco, .5 ) }
+             input:-ms-input-placeholder { color: transparentize( $blanco, .5 ) }
+                      input::placeholder { color: transparentize( $blanco, .5 ) }
+    
+        input:focus::-webkit-input-placeholder { color: transparent }
+             input:focus:-ms-input-placeholder { color: transparent }
+                      input:focus::placeholder { color: transparent }
     }
 
     .overlay {
@@ -33,119 +149,6 @@
         height: 100%;
         opacity: .75;
     }
-
-    .entrada {
-        position: relative;
-
-        input {
-            color: white;
-            text-align: center;
-            background: transparentize( $blanco, .85 );
-            border: 1px solid transparentize( $blanco, .5 );
-            border: none;
-            border-radius: 2px;
-            // box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
-            margin-bottom: 25px;
-            width: 275px;
-            max-width: 300px;
-            transition: .25s;
-
-            &:focus {
-                border-color: $mostaza;
-            }
-        }
-
-        .validacion {
-            color: $blanco;
-            font-size: 10px;
-            margin: 0 auto;
-            position: absolute;
-            left: 5px;
-            bottom: 8px;
-            width: 100%;
-            max-width: 400px;
-        }
-    }
-
-    .boton {
-        color: rgba(255,255,255,.7);
-        font-size: 18px;
-        background: $rosa;
-        // background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.075) 50%);
-        border: none;
-        border-radius: 2px;;
-        box-shadow: none;
-        margin-top: 10px;
-        position: relative;
-        height: 40px;
-        overflow: hidden;
-
-        .icono {
-            // text-shadow: 0 2px 5px rgb(70,15,100);
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .icono:first-child {
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-        }
-
-        .icono:last-child {
-            right: -150%;
-            transform: translateX(-50%) translateY(-50%);
-        }
-        
-        &:hover {
-            background: $mostaza;
-            // background-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.075) 50%);
-            
-            .icono:first-child {
-                animation: mover1 .5s .25s forwards;
-            }
-    
-            .icono:last-child {
-                animation: mover2 .5s .5s forwards;
-            }
-        }
-
-        &:active {
-            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
-        }
-    }
-
-    // Recordar usuario
-
-    .recordar-usuario {
-        display: flex;
-        display: none;
-        justify-content: flex-start;
-        padding: 10px 0 0 10px;
-        width: 100%;
-        max-width: 400px;
-
-        input {
-            margin-right: 5px;
-        }
-
-        label {
-            color: white;
-            font-size: 10px;
-            position: relative;
-            bottom: 1px;
-        }
-    }
-
-    // Placeholder
-
-    input::-webkit-input-placeholder { color: transparentize( $blanco, .5 ) }
-         input:-ms-input-placeholder { color: transparentize( $blanco, .5 ) }
-                  input::placeholder { color: transparentize( $blanco, .5 ) }
-
-    input:focus::-webkit-input-placeholder { color: transparent }
-         input:focus:-ms-input-placeholder { color: transparent }
-                  input:focus::placeholder { color: transparent }
 }
 
 @keyframes mover1 {
@@ -171,5 +174,15 @@
     to {
         right: 50%;
         transform: translateX(50%) translateY(-50%);
+    }
+}
+
+@media only screen and ( min-width: $mobile ) {
+
+    #login {
+        .titulo {
+            left: 50px;
+            transform: none;
+        }
     }
 }
