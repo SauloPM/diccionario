@@ -166,7 +166,7 @@ hr {
     text-align: center;
     background: white;
     border-top: 1px solid $primary;
-    padding: 35px 0;
+    padding: 35px 0 10px;
     position: fixed;
     bottom: 0;
     left: 300px;
@@ -175,7 +175,7 @@ hr {
 
     .container {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
         grid-column-gap: 25px;
     }
 
@@ -186,7 +186,7 @@ hr {
         border-left: 1px solid $primary;
         padding: 5px 0 0;
         position: absolute;
-        top: -22px;
+        top: -20px;
         right: 0;
         width: 105px;
         cursor: pointer;
@@ -195,6 +195,7 @@ hr {
 
 .entrada {
     display: block;
+    margin-bottom: 25px;
     position: relative;
     
     input {
@@ -222,6 +223,7 @@ hr {
     border: none;
     border: 1px solid $primary;
     border-radius: 2px;
+    margin-bottom: 25px;
     position: relative;
     width: 100%;
     
@@ -255,9 +257,9 @@ hr {
     background: $primary;
     border: 1px solid $primary;
     border-radius: 2px;
-    // box-shadow: 0 2px 5px $darkprimary;
     outline: none;
     padding: 10px 20px;
+    margin-bottom: 25px;
     width: 100%;
     
     &:hover {
@@ -270,6 +272,22 @@ hr {
     &:focus {
         outline: none;
         transition: .25s;
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $tablet) {
+
+    .formulario .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (min-width: $laptop) {
+
+    .formulario .container {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
