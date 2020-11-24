@@ -1,0 +1,82 @@
+@import "~src/assets/styles/variables";
+
+#gramatica {
+
+    p {
+        color: $texto;
+        margin-bottom: 20px;
+    }
+
+    span {
+        color: $primary;
+        font-style: italic;
+    }
+
+    .ejemplos {
+        background: linear-gradient( to right, transparentize( $primary, .95 ), transparentize( $primary, .9 ));
+        border-left: 1px solid $primary;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        padding: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+
+        p {
+            color: $primary;
+            font-style: italic;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &.error {
+                color: red;
+
+                sup {
+                    font-size: 8px;
+                    font-style: normal;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        & + small {
+            display: block;
+            color: $texto;
+            font-size: 8px;
+            margin-top: -20px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+
+    #gramatica {
+
+        p {
+            font-size: 15px;
+            margin-bottom: 35px;
+        }
+
+        .ejemplos {
+            padding: 35px;
+            margin-left: 35px;
+            margin-bottom: 35px;
+
+            p.error sup {
+                font-size: 12px;
+            }
+
+            & + small {
+                font-size: 12px;
+                margin-top: -35px;
+                margin-left: 35px;
+                margin-bottom: 35px;
+            }
+        }
+    }
+}

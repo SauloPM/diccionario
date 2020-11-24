@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gramatica',
-  templateUrl: './gramatica.component.html'
+  templateUrl: './gramatica.component.html',
+  styleUrls: ['./gramatica.component.scss']
 })
 export class GramaticaComponent implements OnInit {
 
