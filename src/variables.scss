@@ -1,0 +1,23 @@
+
+// Colores
+
+$blanco : rgb(255,255,255);
+$mostaza: rgb(255,150,25);
+
+$texto: rgb(000,000,000);
+
+$primary  : rgb(000,000,255);
+$secondary: rgb(255,000,000);
+
+$darkprimary  : darken( $primary  , .25 );
+$darksecondary: darken( $secondary, .25 );
+
+$lightprimary  : transparentize( $primary  , .25 );
+$lightsecondary: transparentize( $secondary, .25 );
+
+// Responsive breakpoints
+
+$mobile : 576px;
+$tablet : 768px;
+$laptop : 980px;
+$desktop: 1200px;
