@@ -26,7 +26,6 @@ export class ListadoComponent implements OnInit {
   categoria: string = '';
   items    : Item[] = [];
 
-
   @ViewChild( 'formulario', { static: true } ) formulario: any;
 
   // ─────────────── //
@@ -36,7 +35,7 @@ export class ListadoComponent implements OnInit {
   constructor( private servicio: ServicioService, private auth: AuthService, private router: Router, private activatedRoute: ActivatedRoute ) { }
   
   ngOnInit() {
-    
+
     this.getCategoria();
 
     // Redirigimos al usuario a la página del login si no hubiera iniciado sesión

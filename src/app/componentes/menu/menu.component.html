@@ -26,21 +26,33 @@
         <!-- Submenú -->
         <ul class="submenu primer-nivel" data-target="gramatica">
             <li class="item" routerLinkActive="active">
+                <a [routerLink]="['gramatica', 'may-vs-might']">
+                    <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
+                    May vs might
+                </a>
+            </li>
+            <li class="item" routerLinkActive="active">
                 <a [routerLink]="['gramatica', 'wish']">
                     <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
                     Wish
                 </a>
             </li>
             <li class="item" routerLinkActive="active">
-                <a [routerLink]="['gramatica', 'gerundios']">
+                <a [routerLink]="['gramatica', 'infinitives-and-gerunds']">
                     <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
-                    Gerundios
+                    Infinitives and gerunds
                 </a>
             </li>
             <li class="item" routerLinkActive="active">
                 <a [routerLink]="['gramatica', 'used-to']">
                     <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
                     Used to
+                </a>
+            </li>
+            <li class="item" routerLinkActive="active">
+                <a [routerLink]="['gramatica', 'past-modals']">
+                    <i class="icono fa fa-fw fa-file-o" aria-hidden="true"></i>
+                    Past modals
                 </a>
             </li>
         </ul>

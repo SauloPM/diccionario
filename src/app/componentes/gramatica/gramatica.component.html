@@ -6,11 +6,39 @@
     <ng-container *ngIf="tiempoVerbal.length > 0">
         <ng-container [ngSwitch]="tiempoVerbal">
 
-            <!--
-            ╔══════════════╗
-            ║     WISH     ║
-            ╚══════════════╝
-            -->
+            <!-- ──────────────────── -->
+            <!--     MAY VS MIGHT     -->
+            <!-- ───────────────────── -->
+
+            <ng-container *ngSwitchCase="'may-vs-might'">
+
+                <p>May se suele utilizar en present tenses, mientras que Might se suele utilizar en past tenses</p>
+
+                <div class="ejemplos">
+                    <p class="error">I <u>thought</u> I <u>may</u> go to the gym<sup><i class="fa fa-times-circle-o"></i></sup></p>
+                    <p>I think I may go to the gym</p>
+                    <p>I thought I might go to the gym</p>
+                </div>
+
+                <p>Se utiliza may para algo que es posible o que podría darse (tiene más fundamento, es más factible)</p>
+
+                <div class="ejemplos">
+                    <p>I may have dessert after dinner</p>
+                    <p>Don't tell anybody, but he may lose his job</p>
+                </div>
+
+                <p>Se utiliza might para algo más hipotético (tiene menos fundamento, es menos factible)</p>
+
+                <div class="ejemplos">
+                    <p>If you hurry, you might get there on time</p>
+                    <p>If I win the lottery, I might buy a Ferrari</p>
+                </div>
+
+            </ng-container>
+
+            <!-- ──────────── -->
+            <!--     WISH     -->
+            <!-- ──────────── -->
 
             <ng-container *ngSwitchCase="'wish'">
 
@@ -39,11 +67,120 @@
 
             </ng-container>
 
-            <!--
-            ╔═════════════════╗
-            ║     USED TO     ║
-            ╚═════════════════╝
-            -->
+            <!-- ────────────────────────────── -->
+            <!--     INFINITIVE AND GERUNDS     -->
+            <!-- ────────────────────────────── -->
+
+            <ng-container *ngSwitchCase="'infinitives-and-gerunds'">
+
+                <p>Cuando tenemos dos verbos seguidos, el primer verbo es el que determina si el siguiente va en infinitivo o en gerundio</p>
+
+                <h2>Infinitivos</h2>
+
+                <p>Utilizamos infintivo más to cuando el primer verbo es want, afford...</p>
+
+                <div class="ejemplos">
+                    <p>I <u>want to pass</u> my exam</p>
+                    <p>We cannot <u>afford to have</u> a swimming pool in our house because they are usually very expensive</p>
+                </div>
+
+                <p>Utilizamos infintivo sin to cuando el primer verbo es modal (might, would, rather...) o make y let</p>
+
+                <div class="ejemplos">
+                    <p><u>Let go</u> on me!</p>
+                    <p>They <u>would help</u> you if you had better manners</p>
+                </div>
+
+                <h2>Gerundios</h2>
+
+                <p>Utilizamos gerundio cuando el primer verbo es enjoy, can't help...</p>
+
+                <div class="ejemplos">
+                    <p>I <u>enjoy singing</u> in the shower</p>
+                    <p>She <u>couldn't help</u> laughing</p>
+                </div>
+
+                <p>Utilizamos gerundio después de una preposición</p>
+
+                <div class="ejemplos">
+                    <p>Support my channel <u>by becoming</u> a Patreon</p>
+                    <p>I was punished <u>for getting</u> asleep during the lesson</p>
+                </div>
+
+                <p>Utilizamos gerundio cuando el primer verbo es un phrasal verb (claro, un prhasal verb se compone de un verbo y de una preposición)</p>
+
+                <div class="ejemplos">
+                    <p><u>Keep on doing</u> exercise, you look great!</p>
+                    <p></p>
+                </div>
+
+                <h2>Like, love, hate y prefer</h2>
+
+                <p>Después de estos verbos lo más común es utilizar gerundio</p>
+                <p>No obstante, es posible utilizar infinitivo + to y gerundio</p>
+                <p>Utilizamos gerundio para hablar en general</p>
+
+                <div class="ejemplos">
+                    <p>I <u>like swimming</u></p>
+                    <p>I <u>prefer cycling</u> to driving</p>
+                </div>
+                <small>Nótese que <span>drive</span> está en gerundio a pesar ir seguido de <span>to</span></small>
+                
+                <p>Utilizamos infintivo + to para hablar de algo en específico</p>
+
+                <div class="ejemplos">
+                    <p>I <u>like to swim</u> first thing in the morning when there aren't many people</p>
+                    <p>You don't need to give me a lift to the station, I <u>prefer to walk</u></p>
+                </div>
+
+                <p>No obstante, utilizamos infinitivo + to si cualquiera de estos verbos fuera seguido de <span>would</span></p>
+
+                <div class="ejemplos">
+                    <p>I would like to travel abroad</p>
+                    <p>I'd prefer to stay at home tonight</p>
+                </div>
+
+                <h2>Ambos</h2>
+
+                <p>Utilizamos infinitive + to o gerund con los siguientes verbos:</p>
+
+                <div class="ejemplos">
+                    <p>It started to rain / It started raining</p>
+                    <p>Remember to lock the door / I remember going to Italy as a child</p>
+                    <p>Sorry, I forgot to do it / I will never forget seeing the Taj Mahal</p>
+                    <p>I tried to open the window / Try calling her on her mobile</p>
+                </div>
+
+                <p>Cuando los verbos son begin, start y continue, podemos utilizar infinitive + to o gerund sin que su significado varíe</p>
+
+                <div class="ejemplos">
+                    <p>It started to rain / It started raining</p>
+                    <p>He continues to work in the company / He contiues working in the company</p>
+                    <p>You need to clean the car / </p>
+                </div>
+
+                <p>No obstante, en algunos casos el significado puede variar</p>
+
+                <div class="ejemplos" style="margin-bottom: 0">
+                    <p>Remember + infinitive » Primero recuerdas, luego haces algo (Remember to lock the door. Recuerda que debes cerrar la puerta y luego la cierras)</p>
+                    <p>Remember + gerund » Primero haces algo, luego lo recuerdas (I remember going to Italy as a child. Primero fuiste a Italia y luego lo recordaste)</p>
+                    <p>Forget + infinitive » No recordaste hacer algo (I forgot to do it)</p>
+                    <p>Forget + gerund » Hiciste algo que no puedes olvidar (I will never forget seeing the Taj Mahal)</p>
+                    <p>Try + infinitive » Hacer el esfuerzo para conseguir algo (I tried to open the window)</p>
+                    <p>Try + gerund » Prueba a ver si algo funciona (Try calling her on her mobile)</p>
+                    <p>Need + infinitive » Algo que necesitas o que necesitas hacer (You need to clean the car)</p>
+                    <p>Need + gerund » Es, por narices, una pasiva (The car needs cleaning (passive voice) = The car needs to be cleaned)</p>
+                    <p class="error">The car needs to clean<sup><i class="fa fa-times-circle-o" aria-hidden="true"></i></sup></p>
+                </div>
+
+                <p>he learned to ride horses</p>
+                <p>he learned horse riding (en gerundio, el verbo actúa como sustantivo)</p>
+
+            </ng-container>
+
+            <!-- ─────────────── -->
+            <!--     USED TO     -->
+            <!-- ─────────────── -->
 
             <ng-container *ngSwitchCase="'used-to'">
 
@@ -74,6 +211,60 @@
                     <p>It's very hard to get used to working out every afternoon</p>
                     <p>I can't get used to sleeping in complete darkness during the night, I'm terrified!</p>
                 </div>
+
+            </ng-container>
+
+            <!-- ─────────────────── -->
+            <!--     PAST MODALS     -->
+            <!-- ─────────────────── -->
+
+            <ng-container *ngSwitchCase="'past-modals'">
+
+                <p>Se utiliza <b>ought to / should have + verb in past participle</b> cuando creemos que alguien no hizo lo correcto o para expresar o arrepentimiento</p>
+
+                <div class="ejemplos">
+                    <p>It's my fault. I ought to have told you earlier that my mother was coming.</p>
+                    <p>We've gone the wrong way. We shouldn't have turned left at the traffic lights.</p>
+                </div>
+                
+                <p>Se utiliza <b>may / might have + verb in past participle</b> cuando creemos que algo es verdad o que ha sucedido (probabilidad)</p>
+
+                <div class="ejemplos">
+                    <p>He still haven't arrived. You may not have given him the right directions.</p>
+                    <p>Somebody might have stolen your wallet when you were getting off the train.</p>
+                </div>
+
+                <p>Se utiliza <b>must have + verb in past participle</b> cuando estamos seguros o casi seguros de que algo es verdad o que ha sucedido (certeza)</p>
+
+                <div class="ejemplos">
+                    <p>I must have left my phone at Anna's. I definitely remember having it there.</p>
+                    <p>You must have seen something. You were there when the accident happened.</p>
+                </div>
+
+                <p>Se utiliza <b>can't have + verb in past participle</b> cuando estamos seguros o casi seguros de que algo es imposible o que no ha sucedido</p>
+
+                <div class="ejemplos">
+                    <p>She can't have gone to bed. It's only ten o'clock!</p>
+                    <p>You can't have seen their faces very clearly. It was too dark.</p>
+                </div>
+
+                <p>Se utiliza <b>couldn't have + verb in past participle</b> cuando las especulaciones tratan de un tema <u>del pasado</u></p>
+
+                <div class="ejemplos">
+                    <p>She couldn't have gone to bed. It was only ten o'clock!</p>
+                    <p>You couldn't have seen their faces very clearly. It was too dark.</p>
+                </div>
+
+                <p>Se utiliza <b>can't have + verb in past participle</b> como la forma negativa de <b>must have + verb in participle</b></p>
+
+                <div class="ejemplos">
+                    <p class="error">I <u>mustn't have left</u> my phone at Anna's. I definitely remember having it somewhere else.<sup><i class="fa fa-times-circle-o" aria-hidden="true"></i></sup></p>
+                    <p>I can't have left my phone at Anna's. I definitely remember having it somewhere else.</p>
+                    <p class="error">You <u>mustn't have seen</u> anything. You weren't there when the accident happened.<sup><i class="fa fa-times-circle-o" aria-hidden="true"></i></sup></p>
+                    <p>You can't have seen anything. You weren't there when the accident happened.</p>
+                </div>
+
+                <p style="margin-bottom: 0;">No obstante, el resto de casos admite forma negativa (ought not to / oughtn't to, should not / shouln't, may not o might not)</p>
 
             </ng-container>
 

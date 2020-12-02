@@ -1,4 +1,4 @@
-@import "~src/assets/styles/variables";
+@import "~src/variables";
 
 // Placeholder
 
@@ -22,7 +22,7 @@ input:-webkit-autofill:focus {
 
 @keyframes autocompletar {
     to {
-        color: white;
+        color: $blanco;
         background: transparent;
         background-image: linear-gradient(180deg, transparent 50%, rgba(255,255,255,.025) 50%);
     }
@@ -30,8 +30,8 @@ input:-webkit-autofill:focus {
 
 // Text selection
 
-::-moz-selection { color: white; background: transparentize( $primary, .01 ) }
-     ::selection { color: white; background: transparentize( $primary, .01 ) }
+::-moz-selection { color: $blanco; background: transparentize( $primary, .01 ) }
+     ::selection { color: $blanco; background: transparentize( $primary, .01 ) }
 
 // Scrollbar
 
@@ -48,7 +48,7 @@ input:-webkit-autofill:focus {
 }
   
 ::-webkit-scrollbar-thumb:hover {
-    background: $rosa; 
+    background: $secondary; 
 }
 
 // ─────────────── //
@@ -62,11 +62,11 @@ html {
 body {
     color: $primary;
     font-size: 12px;
-    font-family: 'Nunito', 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 h1 {
-    color: black;
+    color: $texto;
     font-size: 30px;
     font-weight: 700;
     margin: 0;
@@ -128,7 +128,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $blanco;
     font-size: 15px;
     text-decoration: none !important;
     background: $primary;
@@ -146,7 +146,7 @@ hr {
     }
 
     &:hover {
-        color: white;
+        color: $blanco;
 
         .icono {
             transform: rotate(360deg);
@@ -164,12 +164,12 @@ hr {
 
 .formulario {
     text-align: center;
-    background: white;
+    background: $blanco;
     border-top: 1px solid $primary;
     padding: 35px 0 10px;
     position: fixed;
     bottom: 0;
-    left: 300px;
+    left: 0;
     right: 0;
     transition: .25s;
 
@@ -181,7 +181,7 @@ hr {
 
     .cierre {
         color: $primary;
-        background: white;
+        background: $blanco;
         border-top: 1px solid $primary;
         border-left: 1px solid $primary;
         padding: 5px 0 0;
@@ -199,7 +199,7 @@ hr {
     position: relative;
     
     input {
-        color: black;
+        color: $texto;
         border: none;
         border: 1px solid $primary;
         border-radius: 2px;
@@ -211,7 +211,7 @@ hr {
 
     .icono {
         color: $primary;
-        background: white;
+        background: $blanco;
         position: absolute;
         top: 50%;
         left: 15px;
@@ -228,7 +228,8 @@ hr {
     width: 100%;
     
     select {
-        color: black;
+        color: $texto;
+        background: $blanco;
         border: none;
         outline: none;
         margin: 0;
@@ -242,7 +243,7 @@ hr {
         align-items: center;
         justify-content: center;
         color: $primary;
-        background: white;
+        background: $blanco;
         position: absolute;
         top: 0;
         right: 0;
@@ -253,7 +254,7 @@ hr {
 
 .boton {
     display: block;
-    color: white;
+    color: $blanco;
     background: $primary;
     border: 1px solid $primary;
     border-radius: 2px;
@@ -264,7 +265,7 @@ hr {
     
     &:hover {
         color: $primary;
-        background: white;
+        background: $blanco;
         box-shadow: none;
         transition: .5s;
     }
@@ -276,6 +277,13 @@ hr {
 }
 
 // Mobile First
+
+@media only screen and (min-width: $mobile) {
+
+    .formulario {
+        left: 300px;
+    }
+}
 
 @media only screen and (min-width: $tablet) {
 
@@ -346,8 +354,8 @@ hr {
             display: flex;
             align-items: center;
             flex-shrink: 0;
-            color: black;
-            background: white;
+            color: $texto;
+            background: $blanco;
             padding: 10px 15px;
             width: 50%;
             transition: .25s;
@@ -358,7 +366,7 @@ hr {
         }
 
         .ingles {
-            color: white;
+            color: $blanco;
             background: transparentize( $primary, .15 );
             border-bottom: 1px solid transparentize( $blanco, .85 );
         }
@@ -367,7 +375,7 @@ hr {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: white;
+            background: $blanco;
             padding: 0 15px;
             position: absolute;
             top: 0;
@@ -394,7 +402,7 @@ hr {
                 }
 
                 &:hover {
-                    color: white;
+                    color: $blanco;
                     background: $primary;
                 }
             }
