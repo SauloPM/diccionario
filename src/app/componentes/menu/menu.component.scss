@@ -1,5 +1,4 @@
-
-@import "~src/assets/styles/variables";
+@import "~src/variables";
 
 #sidebar {
     background: $primary;
@@ -16,7 +15,7 @@
 
     .overlay {
         background: $primary;
-        background-image: linear-gradient( $primary 35%, transparentize( $rosa, .5 ));
+        background-image: linear-gradient( $primary 35%, transparentize( $secondary, .5 ));
         position: fixed;
         top: 0;
         left: 0;
@@ -180,7 +179,7 @@ ul {
     }
 
     &:hover .barra {
-        background: $rosa;
+        background: $secondary;
     }
 }
 
@@ -209,7 +208,7 @@ ul {
     }
 
     &:hover .barra {
-        background: $rosa;       
+        background: $secondary;       
     }
 }
 

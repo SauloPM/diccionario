@@ -1,4 +1,4 @@
-@import "~src/assets/styles/variables";
+@import "~src/variables";
 
 #login {
     display: flex;
@@ -36,7 +36,6 @@
                 border: 1px solid transparentize( $blanco, .5 );
                 border: none;
                 border-radius: 2px;
-                margin-bottom: 25px;
                 width: 100%;
                 transition: .25s;
     
@@ -51,7 +50,7 @@
                 margin: 0 auto;
                 position: absolute;
                 left: 5px;
-                bottom: 8px;
+                bottom: -17px;
                 width: 100%;
                 max-width: 400px;
             }
@@ -60,11 +59,11 @@
         .boton {
             color: rgba(255,255,255,.7);
             font-size: 18px;
-            background: $rosa;
+            background: $secondary;
             border: none;
             border-radius: 2px;;
             box-shadow: none;
-            margin-top: 10px;
+            margin: 35px 0 0;
             position: relative;
             height: 40px;
             overflow: hidden;
@@ -137,7 +136,7 @@
 
     .overlay {
         background: $primary;
-        background-image: linear-gradient( $primary 50%, $rosa );
+        background-image: linear-gradient( $primary 50%, $secondary );
         position: fixed;
         top: 0;
         left: 0;

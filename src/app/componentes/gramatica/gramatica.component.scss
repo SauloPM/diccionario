@@ -1,6 +1,16 @@
-@import "~src/assets/styles/variables";
+@import "~src/variables";
 
 #gramatica {
+
+    h2 {
+        display: inline-block;
+        color: $texto;
+        font-size: 15px;
+        font-weight: bold;
+        border-bottom: 1px solid $texto;
+        padding: 0 2px;
+        margin-bottom: 35px;
+    }
 
     p {
         color: $texto;
@@ -10,7 +20,6 @@
 
     span {
         color: $primary;
-        font-style: italic;
     }
 
     .ejemplos {
@@ -24,7 +33,6 @@
 
         p {
             color: $primary;
-            font-style: italic;
 
             &:last-child {
                 margin-bottom: 0;

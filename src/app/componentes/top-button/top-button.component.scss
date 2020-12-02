@@ -1,4 +1,4 @@
-@import "~src/assets/styles/variables";
+@import "~src/variables";
 
 .top-button {
     display: flex;
@@ -27,22 +27,14 @@
     }
 
     &:visited {
-        background: $rosa;
+        background: $secondary;
     }
 
     &:hover {
-        background: $rosa;
-
-        .flecha {
-            // color: $primary;
-        }
+        background: $secondary;
     }
     
     &:active {
-        background: $rosa;
-
-        .flecha {
-            // color: $primary;
-        }
+        background: $secondary;
     }
 }
